@@ -1,12 +1,11 @@
-'use strict';
-var mysql = require('mysql')
-  , pool = mysql.createPool({
-    connectionLimit : 10,
-    host: 'localhost',
-    user: 'topdmc',
-    password: 'Chengwei2015',
-    database: 'Potunes'
-  });
+import mysql from 'mysql'
+const pool = mysql.createPool({
+	connectionLimit: 10,
+	host: 'localhost',
+	user: 'root',
+	password: '',
+	database: 'Potunes',
+})
 
 
 //存储用户信息

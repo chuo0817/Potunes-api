@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-		"dev": "DEBUG=app* pm2-dev ./bin/www"
+    "dev": "DEBUG=app* pm2-dev ./bin/www"
   },
   "dependencies": {
     "async": "^1.5.2",
@@ -31,7 +31,7 @@
     "babel-plugin-syntax-async-functions": "^6.8.0",
     "babel-plugin-transform-regenerator": "^6.9.0",
     "babel-plugin-transform-runtime": "^6.9.0",
-    "babel-preset-node6": "^11.0.0",
+    "babel-preset-eslatest-node6": "^1.0.1",
     "babel-register": "^6.9.0",
     "eslint": "^2.9.0",
     "eslint-config-airbnb": "^9.0.1",

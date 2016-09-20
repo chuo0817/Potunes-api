@@ -1,3 +1,3 @@
-var mysql = require('mysql'),
-  , DATABASE = 'Potunes'
-  , USER_TABLE = 'users';
+import mysql from 'mysql'
+const DATABASR = 'Potunes'
+const USER_TABLE = 'users'
