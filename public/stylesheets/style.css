@@ -1,0 +1,54 @@
+.top-margin {
+  margin-top: 30px;
+}
+
+.bottom-margin {
+  margin-bottom: 30px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.right-border {
+  border-right: 1px solid #ddd;
+  width: 100px;
+}
+.left-border {
+  border-left: 1px solid #ddd;
+  width: 100px;
+}
+
+.edit {
+  padding-right: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  height: 25px;
+}
+
+h1 {
+  color: #00b3ee !important;
+}
+
+button {
+  border: 0px;
+}
+
+.edit-btn {
+  width: 90px;
+}
+
+.modal-body {
+  margin-bottom: 30px;
+}
+
+input {
+  margin-top: 10px !important;
+}
+
+input#content {
+  height: 330px;
+}
