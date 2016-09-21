@@ -1,38 +1,38 @@
-'use strict';
+import * as User from '../models/user'
+import * as Articles from '../models/articles'
 
-var parser = require('co-body')
-  , User = require('../models/user.js')
-  , Articles = require('../models/articles');
-
-//首页
+// 首页
 export function *home(next) {
-  yield this.render('admin', {
-    title: '后台'
-  });
+	yield this.render('admin', {
+		title: '后台',
+	})
 }
-//管理员登录
+// 管理员登录
 export function *adminLogin(next) {
-  var body = this.request.body;
+	const body = this.request.body
+	console.log(body)
 
-  if (!body.name || !body.password) {
-    return this.body = {
-      status: 400,
-      message: '{name} & {password} is required.'
-    }
-  }
+	if (!body.name || !body.password) {
+		return this.body = {
+			status: 400,
+			message: '{name} & {password} is required.',
+		}
+	}
 
-  var user = yield User.get(body.name);
+	const user = yield User.get(body.name)
 
-  console.log(user.name);
+	console.log(user.name)
   // this.session.user = user;
-  this.redirect('/articles');
+	this.redirect('/articles')
+	return null
 }
 
-//获取文章列表
+// 获取文章列表
 export function *articles(next) {
-  var articles = yield Articles.getAll();
-  yield this.render('index', {
-    title: '歌单',
-    articles: articles
-  });
+	const article = yield Articles.getAll()
+	yield this.render('index', {
+		title: '歌单',
+		articles: article,
+	})
+	return null
 }

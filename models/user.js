@@ -8,43 +8,44 @@ const pool = mysql.createPool({
 })
 
 
-//存储用户信息
+// 存储用户信息
 export function *save(next) {
-  var userAddSql = 'INSERT INTO users(user_name,user_password,user_email) VALUES(?,?,?)';
-  var userAddSql_Params = [this.name, this.password, this.email];
+	const userAddSql = 'INSERT INTO users(user_name,user_password,user_email) VALUES(?,?,?)'
+	const userAddSql_Params = [this.name, this.password, this.email]
 
-  pool.getConnection(function(err, connection) {
-    connection.query(userAddSql, userAddSql_Params, function(err, result) {
-      connection.release();
-      if (err) {
-        console.log('[INSERT ERROR] - ',err.message);
-        return;
-      }
-      console.log('-------INSERT----------');
-      console.log('INSERT ID:',result);
-      console.log('#######################');
-    });
-  });
+	pool.getConnection((err, connection) => {
+		connection.query(userAddSql, userAddSql_Params, (error, result) => {
+			connection.release()
+			if (err) {
+				console.log('[INSERT ERROR] - ', error.message)
+				return
+			}
+			console.log('-------INSERT----------')
+			console.log('INSERT ID:', result)
+			console.log('#######################')
+		})
+	})
 }
 
 export function get(name) {
-  var userQuery = 'SELECT * FROM users where user_name = ?';
-  var userQuerry_Params = name;
+	const userQuery = 'SELECT * FROM users where user_name = ?'
+	const userQuerry_Params = name
 
-  return new Promise(function (resolve, reject) {
-    pool.getConnection(function(err, connection) {
-      connection.query(userQuery, userQuerry_Params, function(err, result) {
-        connection.release();
+	return new Promise((resolve, reject) => {
+		pool.getConnection((err, connection) => {
+			connection.query(userQuery, userQuerry_Params, (error, result) => {
+				connection.release()
 
-        if (err) return reject(err);
-
-        var user = {
-            name:result[0].user_name,
-            password:result[0].user_password,
-            email:result[0].user_email,
-        }
-        resolve(user);
-      });
-    });
-  });
+				if (error) return reject(err)
+				console.log(result)
+				const user = {
+					name: result[0].user_name,
+					password: result[0].user_password,
+					email: result[0].user_email,
+				}
+				resolve(user)
+				return null
+			})
+		})
+	})
 }

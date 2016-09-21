@@ -42,3 +42,4 @@ rules:
   no-unused-vars: [1, {"vars": "local", "args": "none"}]
   new-cap: [2, {"capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]}]
   no-underscore-dangle: 0
+  no-shadow: ["error", { "allow": ["err"] }]
