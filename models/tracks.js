@@ -1,5 +1,5 @@
 import mysql from 'mysql'
-import Article from '../models/articles.js'
+import * as Article from '../models/articles.js'
 import async from 'async'
 
 const pool = mysql.createPool({
@@ -9,6 +9,7 @@ const pool = mysql.createPool({
 	password: '',
 	database: 'Potunes',
 })
+
 
 export function *get(article_id) {
 	const articleQuery = 'SELECT * FROM article_tracks where article_id = ?'
@@ -24,24 +25,23 @@ export function *get(article_id) {
 
 			connection.query(articleQuery, articleQuerry_Params, (error, result) => {
 				connection.release()
-
 				const idQuery = 'SELECT * FROM tracks WHERE track_id = ?'
 				for (let i = 0; i < result.length; i++) {
 					const idParams = [result[i].track_id]
 					trackIDs.push(Article.cr(idQuery, idParams))
 				}
-
+				// console.log(trackIDs)
 				async.series(trackIDs, (errors, results) => {
 					if (errors) {
-						console.log(err.message)
+						console.log(errors.message)
 						return
 					}
 					const tracks = []
 					for (let i = 0; i < results.length; i++) {
-						const temp = result[i]
-						tracks.push(temp[0])
+						// const temp = result[i]
+						// console.log(temp.track_id)
+						tracks.push(results[i][0])
 					}
-
 					resolve(tracks)
 				})
 			})

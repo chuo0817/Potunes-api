@@ -14,13 +14,13 @@ block content
             a(href='/add-track?id=#{id}')
               button.btn.btn-primary.edit-btn 添加
       tbody#tracks
-        for track in tracks
+        - each track in tracks
          tr.align-center
           td.right-border.trackId #{track.track_id}
           td.right-border(colspan='2') #{track.track_name}
           td(colspan='2') #{track.track_artist}
           td.left-border
-            -var id = track.track_id.toString()
+            - var id = track.track_id.toString()
             button.editBtn.edit(data-id=id)
               span.glyphicon.glyphicon-pencil
             button.removeBtn.edit(data-id=id, data-list-id=listId)

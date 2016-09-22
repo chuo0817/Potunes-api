@@ -1,3 +1,10 @@
 import mysql from 'mysql'
-const DATABASR = 'Potunes'
-const USER_TABLE = 'users'
+import async from 'async'
+
+const pool = mysql.createPool({
+	connectionLimit: 10,
+	host: 'localhost',
+	user: 'root',
+	password: '',
+	database: 'Potunes',
+})

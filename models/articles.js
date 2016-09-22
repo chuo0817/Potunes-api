@@ -33,23 +33,22 @@ export function getOne() {
 
 }
 
-function cr(query, params){
-  return function(callback){
-    pool.getConnection(function(err, connection) {
-      if (err) {
-        console.log(err.message);
-        callback(err);
-        return;
-      }
+export function cr(query, params) {
+	return (cb) => {
+		pool.getConnection((err, connection) => {
+			if (err) {
+				console.log(err.message)
+				cb(err)
+				return
+			}
 
-      connection.query(query, params, function(err, result) {
-        if(err) console.log(err.message);
-        connection.release();
-        // console.log(result);
-        callback(null, result);
-      });
-    });
-  }
+			connection.query(query, params, (err, result) => {
+				if (err) console.log(err.message)
+				connection.release()
+				cb(null, result)
+			})
+		})
+	}
 }
 
 // 保存文章
@@ -58,7 +57,7 @@ export function save(article) {
 	// 新增文章
 	const articleQuery = `INSERT INTO articles(article_title, article_type,
               article_content, article_cover, article_songs) VALUES(?,?,?,?,?)`
-	const articleCoverURL = `${preURL},cover.png`
+	const articleCoverURL = `${preURL}cover.png`
 	const articleParams = [
 		article.title,
 		article.type,
@@ -70,9 +69,9 @@ export function save(article) {
 	pool.getConnection((err, connection) => {
 		if (err) console.log(err.message)
 
-		connection.query(articleQuery, articleParams, (error, result) => {
+		connection.query(articleQuery, articleParams, (err, result) => {
 			connection.release()
-			if (error) console.log(err.message)
+			if (err) console.log(err.message)
 		})
 	})
 
@@ -93,13 +92,13 @@ export function save(article) {
 		let track_cover = ''
 		const t = i + 1
 		if (t < 10) {
-			track_url = `${preURL},0,${t},.mp3`
-			track_cover = `${preURL},0,${t},.jpg`
+			track_url = `${preURL}0${t}.mp3`
+			track_cover = `${preURL}0${t}.jpg`
 		}
 
 		if (t >= 10) {
-			track_url = `${preURL},${t},.mp3`
-			track_cover = `${preURL},${t},.jpg`
+			track_url = `${preURL}${t}.mp3`
+			track_cover = `${preURL}${t}.jpg`
 		}
 		const trackParams = ['unwritten', 'unwritten', 'unwritten', 'unwritten']
 		trackParams.push(track_url, track_cover)
@@ -114,7 +113,7 @@ export function save(article) {
 		if (result) {
 			const idQuery = 'SELECT * FROM articles order by article_id desc'
 			const idParams = [article.title]
-			pool.getConnection((error, connection) => {
+			pool.getConnection((err, connection) => {
 				if (err) {
 					console.log(err.message)
 					return
@@ -129,13 +128,15 @@ export function save(article) {
 						const relationParams = [results[0].article_id]
 
 						for (let i = 0; i < article.songCount; i++) {
-							relationFunc.push(cr(relationQuery, relationParams))
+							relationFunc.push(cr(relationQuery, relationParams).result)
 						}
+						console.log(relationFunc)
 						async.series(relationFunc, (err, res) => {
 							if (err) {
 								console.log(err.message)
 								return
 							}
+							console.log(res)
 						})
 					}
 				})
