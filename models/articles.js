@@ -1,4 +1,4 @@
-import mysql from 'mysql'
+import mysql from 'promise-mysql'
 import async from 'async'
 
 const pool = mysql.createPool({
@@ -12,19 +12,13 @@ const pool = mysql.createPool({
 // 获取所有的文章
 export function getAll() {
 	const articleQuery = 'SELECT * FROM articles order by article_id desc'
-
 	return new Promise((resolve, reject) => {
-		pool.getConnection((err, connection) => {
-			if (err) return reject(err)
-
-			connection.query(articleQuery, (error, result) => {
-				connection.release()
-
-				if (error) return reject(error)
-				resolve(result)
-				return null
-			})
-			return null
+		pool.query(articleQuery)
+		.then((rows) => {
+			resolve(rows)
+		})
+		.catch((err) => {
+			reject(err)
 		})
 	})
 }
@@ -35,18 +29,16 @@ export function getOne() {
 
 export function cr(query, params) {
 	return (cb) => {
-		pool.getConnection((err, connection) => {
-			if (err) {
-				console.log(err.message)
-				cb(err)
-				return
-			}
-
-			connection.query(query, params, (err, result) => {
-				if (err) console.log(err.message)
-				connection.release()
+		pool.getConnection()
+		.then((connection) => {
+			connection.query(query, params)
+			.then((result) => {
 				cb(null, result)
 			})
+		})
+		.catch((err) => {
+			console.log(err.message)
+			cb(err)
 		})
 	}
 }
@@ -66,13 +58,16 @@ export function save(article) {
 		article.songCount,
 	]
 
-	pool.getConnection((err, connection) => {
-		if (err) console.log(err.message)
-
-		connection.query(articleQuery, articleParams, (err, result) => {
+	pool.getConnection()
+	.then((connection) => {
+		connection.query(articleQuery, articleParams)
+		.then((result) => {
 			connection.release()
-			if (err) console.log(err.message)
+			console.log('文章新增成功')
 		})
+	})
+	.catch((err) => {
+		console.log(err.message)
 	})
 
 	// 新增歌曲
@@ -102,44 +97,31 @@ export function save(article) {
 		}
 		const trackParams = ['unwritten', 'unwritten', 'unwritten', 'unwritten']
 		trackParams.push(track_url, track_cover)
-
-		// let relationParams = [article.id, t];
-
-
 		tracksFunc.push(cr(tracksQuery, trackParams))
 	}
-
 	async.series(tracksFunc, (err, result) => {
 		if (result) {
+			console.log('进1')
 			const idQuery = 'SELECT * FROM articles order by article_id desc'
-			const idParams = [article.title]
-			pool.getConnection((err, connection) => {
-				if (err) {
-					console.log(err.message)
-					return
-				}
-				connection.query(idQuery, (err, results) => {
-					connection.release()
-					if (err) {
-						console.log(err.message)
-						return
+			pool.getConnection()
+			.then((connection) => {
+				connection.query(idQuery)
+				.then((results) => {
+					const relationParams = [results[0].article_id]
+					console.log(relationParams)
+					for (let i = 0; i < article.songCount; i++) {
+						relationFunc.push(cr(relationQuery, relationParams))
 					}
-					if (results) {
-						const relationParams = [results[0].article_id]
-
-						for (let i = 0; i < article.songCount; i++) {
-							relationFunc.push(cr(relationQuery, relationParams).result)
-						}
-						console.log(relationFunc)
-						async.series(relationFunc, (err, res) => {
-							if (err) {
-								console.log(err.message)
-								return
-							}
-							console.log(res)
-						})
-					}
+					console.log('*******')
+					console.log(relationFunc)
+					async.waterfall(relationFunc)
+					.then((res) => {
+						console.log('歌曲存储成功')
+					})
 				})
+			})
+			.catch((err) => {
+				console.log(err.message)
 			})
 		}
 	})

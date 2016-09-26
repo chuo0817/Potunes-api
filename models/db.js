@@ -1,6 +1,7 @@
 import mysql from 'mysql'
 import async from 'async'
 
+
 const pool = mysql.createPool({
 	connectionLimit: 10,
 	host: 'localhost',
@@ -8,3 +9,5 @@ const pool = mysql.createPool({
 	password: '',
 	database: 'Potunes',
 })
+
+pool.query()

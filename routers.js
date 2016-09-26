@@ -1,27 +1,25 @@
-'use strict';
+import Router from 'koa-router'
+import _requiredir from 'require-dir'
 
-var Router = require('koa-router')
-  , _requiredir = require('require-dir');
+const controllers = _requiredir('./controllers')
 
-const controllers = _requiredir('./controllers');
+export default function() {
+	const router = new Router()
 
-module.exports = function() {
-  const router = Router();
+	router.get('/', ctx => {
+		ctx.body = 'Hello World.'
+	})
 
-  router.get('/', function *(next){
-    this.body = 'Hello World.';
-  });
+	router.get('/adminCenter', controllers.index.home)
+	router.post('/adminCenter', controllers.index.adminLogin)
 
-  router.get('/adminCenter', controllers.index.home);
-  router.post('/adminCenter', controllers.index.adminLogin);
+	router.get('/articles', controllers.index.articles)
 
-  router.get('/articles', controllers.index.articles);
+	router.get('/newArticle', controllers.newArticle.home)
+	router.post('/newArticle', controllers.newArticle.post)
 
-  router.get('/newArticle', controllers.newArticle.home);
-  router.post('/newArticle', controllers.newArticle.post);
+	router.get('/track-list', controllers.track_list.getTracks)
+	router.post('/track-list', controllers.track_list.updateTracks)
 
-  router.get('/track-list', controllers.track_list.getTracks);
-  router.post('/track-list', controllers.track_list.updateTracks);
-
-  return router;
+	return router
 }
