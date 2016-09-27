@@ -1,6 +1,8 @@
 import mysql from 'promise-mysql'
+import promisify from 'promisify-es6'
 import async from 'async'
 
+const series = promisify(async.series)
 const pool = mysql.createPool({
 	connectionLimit: 10,
 	host: 'localhost',
@@ -33,6 +35,7 @@ export function cr(query, params) {
 		.then((connection) => {
 			connection.query(query, params)
 			.then((result) => {
+				pool.releaseConnection(connection)
 				cb(null, result)
 			})
 		})
@@ -62,7 +65,7 @@ export function save(article) {
 	.then((connection) => {
 		connection.query(articleQuery, articleParams)
 		.then((result) => {
-			connection.release()
+			pool.releaseConnection(connection)
 			console.log('文章新增成功')
 		})
 	})
@@ -70,7 +73,6 @@ export function save(article) {
 		console.log(err.message)
 	})
 
-	// 新增歌曲
 	const tracksFunc = []
 	const relationFunc = []
 	const tracksQuery = `INSERT INTO tracks (
@@ -99,30 +101,28 @@ export function save(article) {
 		trackParams.push(track_url, track_cover)
 		tracksFunc.push(cr(tracksQuery, trackParams))
 	}
-	async.series(tracksFunc, (err, result) => {
-		if (result) {
-			console.log('进1')
-			const idQuery = 'SELECT * FROM articles order by article_id desc'
-			pool.getConnection()
-			.then((connection) => {
-				connection.query(idQuery)
-				.then((results) => {
-					const relationParams = [results[0].article_id]
-					console.log(relationParams)
-					for (let i = 0; i < article.songCount; i++) {
-						relationFunc.push(cr(relationQuery, relationParams))
-					}
-					console.log('*******')
-					console.log(relationFunc)
-					async.waterfall(relationFunc)
-					.then((res) => {
-						console.log('歌曲存储成功')
-					})
+
+	series(tracksFunc)
+	.then((result) => {
+		const idQuery = 'SELECT * FROM articles order by article_id desc'
+		pool.getConnection()
+		.then((connection) => {
+			connection.query(idQuery)
+			.then((results) => {
+				pool.releaseConnection(connection)
+				const relationParams = [results[0].article_id]
+
+				for (let i = 0; i < article.songCount; i++) {
+					relationFunc.push(cr(relationQuery, relationParams))
+				}
+				series(relationFunc)
+				.then((res) => {
+					console.log('歌曲新增成功')
 				})
 			})
-			.catch((err) => {
-				console.log(err.message)
-			})
-		}
+		})
+	})
+	.catch((err) => {
+		console.log(err)
 	})
 }

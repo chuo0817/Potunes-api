@@ -3,7 +3,6 @@ import * as Article from '../models/articles'
 
 export function *getTracks(next) {
 	const tracks = yield Tracks.get(this.query.id)
-	console.log(tracks)
 	yield this.render('track-list', {
 		tracks,
 		page_id: this.query.id,

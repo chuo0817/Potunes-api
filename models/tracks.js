@@ -1,7 +1,9 @@
-import mysql from 'mysql'
+import mysql from 'promise-mysql'
+import promisify from 'promisify-es6'
 import * as Article from '../models/articles.js'
 import async from 'async'
 
+const series = promisify(async.series)
 const pool = mysql.createPool({
 	connectionLimit: 10,
 	host: 'localhost',
@@ -17,34 +19,29 @@ export function *get(article_id) {
 	const trackIDs = []
 
 	return new Promise((resolve, reject) => {
-		pool.getConnection((err, connection) => {
-			if (err) {
-				reject(err.message)
-				return
-			}
-
-			connection.query(articleQuery, articleQuerry_Params, (error, result) => {
-				connection.release()
+		pool.getConnection()
+		.then((connection) => {
+			connection.query(articleQuery, articleQuerry_Params)
+			.then((result) => {
+				pool.releaseConnection(connection)
 				const idQuery = 'SELECT * FROM tracks WHERE track_id = ?'
 				for (let i = 0; i < result.length; i++) {
 					const idParams = [result[i].track_id]
 					trackIDs.push(Article.cr(idQuery, idParams))
 				}
-				// console.log(trackIDs)
-				async.series(trackIDs, (errors, results) => {
-					if (errors) {
-						console.log(errors.message)
-						return
-					}
+
+				series(trackIDs)
+				.then((results) => {
 					const tracks = []
 					for (let i = 0; i < results.length; i++) {
-						// const temp = result[i]
-						// console.log(temp.track_id)
 						tracks.push(results[i][0])
 					}
 					resolve(tracks)
 				})
 			})
+		})
+		.catch((err) => {
+			console.log(err)
 		})
 	})
 }
