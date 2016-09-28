@@ -7,6 +7,8 @@ var app = require('koa')()
   , routers = require('./routers')
   , mysql = require('mysql');
 
+import multer from 'koa-multer'
+app.use(multer({ dest: './uploads/' }))
 
 app.use(function*(next){
   try {
@@ -20,14 +22,14 @@ app.use(views('views', {
   root: __dirname + '/views',
   default: 'jade'
 }));
-app.use(require('koa-bodyparser')());
-app.use(json());
-app.use(logger());
+app.use(require('koa-bodyparser')())
+app.use(json())
+app.use(logger())
 
-app.use(require('koa-static')(__dirname + '/public'));
+app.use(require('koa-static')(__dirname + '/public'))
 
 // mount root routes
-app.use(routers().routes());
+app.use(routers().routes())
 
 app.on('error', function(err, ctx){
   log.error('server error', err, ctx);

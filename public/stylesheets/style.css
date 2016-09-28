@@ -52,3 +52,40 @@ input {
 input#content {
   height: 330px;
 }
+
+.sel {
+  position: absolute;
+  top: 320px;
+  left: 0px;
+  width: 100%;
+}
+
+a {
+  cursor:pointer;
+}
+
+.file {
+  width: 10%;
+}
+#fileToUpload {
+    position: absolute;
+    font-size:50px;
+    opacity: 0;
+    width: 100%;
+    top: 0px;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+.upload {
+  position: relative;
+  border-style: dashed;
+  border-color: #E1E1E1;
+  border-width: 2px;
+  height: auto;
+  min-height: 600px;
+  text-align: center;
+}

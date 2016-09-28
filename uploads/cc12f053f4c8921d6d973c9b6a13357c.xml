@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Major Version</key><integer>1</integer>
+	<key>Minor Version</key><integer>1</integer>
+	<key>Date</key><date>2016-09-27T08:42:36Z</date>
+	<key>Application Version</key><string>12.5.1.21</string>
+	<key>Features</key><integer>5</integer>
+	<key>Show Content Ratings</key><true/>
+	<key>Music Folder</key><string>file:///Users/purchas/Music/iTunes/iTunes%20Media/</string>
+	<key>Library Persistent ID</key><string>CE6A0EDF62E053B2</string>
+	<key>Tracks</key>
+	<dict>
+		<key>6942</key>
+		<dict>
+			<key>Track ID</key><integer>6942</integer>
+			<key>Name</key><string>序曲:调音</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>3160287</integer>
+			<key>Total Time</key><integer>70922</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>0BE549134BD074F6</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/01.%E5%BA%8F%E6%9B%B2%EF%BC%9A%E8%B0%83%E9%9F%B3%20(Tuning%20Up).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6944</key>
+		<dict>
+			<key>Track ID</key><integer>6944</integer>
+			<key>Name</key><string>不为谁而作的歌</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>10965682</integer>
+			<key>Total Time</key><integer>266057</integer>
+			<key>Track Number</key><integer>2</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3554906044</integer>
+			<key>Play Date UTC</key><date>2016-08-24T09:54:04Z</date>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>AC240C337AA5B1CD</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/02.%E4%B8%8D%E4%B8%BA%E8%B0%81%E8%80%8C%E4%BD%9C%E7%9A%84%E6%AD%8C.mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6946</key>
+		<dict>
+			<key>Track ID</key><integer>6946</integer>
+			<key>Name</key><string>序曲:中场休息</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>2529174</integer>
+			<key>Total Time</key><integer>55144</integer>
+			<key>Track Number</key><integer>3</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>1</integer>
+			<key>Play Date</key><integer>3533934031</integer>
+			<key>Play Date UTC</key><date>2015-12-25T16:20:31Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2016-08-24T09:54:22Z</date>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>890EBFAF8AD51709</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/03.%E5%BA%8F%E6%9B%B2%EF%BC%9A%E4%B8%AD%E5%9C%BA%E4%BC%91%E6%81%AF%20(Intermission).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6948</key>
+		<dict>
+			<key>Track ID</key><integer>6948</integer>
+			<key>Name</key><string>关键词</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>8638683</integer>
+			<key>Total Time</key><integer>207882</integer>
+			<key>Track Number</key><integer>4</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>10</integer>
+			<key>Play Date</key><integer>3534095215</integer>
+			<key>Play Date UTC</key><date>2015-12-27T13:06:55Z</date>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>5DEA9B8FAA835AB5</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/04.%E5%85%B3%E9%94%AE%E8%AF%8D.mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6950</key>
+		<dict>
+			<key>Track ID</key><integer>6950</integer>
+			<key>Name</key><string>只要有你的地方 (晚安版)</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>11413956</integer>
+			<key>Total Time</key><integer>277263</integer>
+			<key>Track Number</key><integer>5</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2015-12-27T13:10:07Z</date>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>77D381C7D8C7332F</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/05.%E5%8F%AA%E8%A6%81%E6%9C%89%E4%BD%A0%E7%9A%84%E5%9C%B0%E6%96%B9%20(%E6%99%9A%E5%AE%89%E7%89%88).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6952</key>
+		<dict>
+			<key>Track ID</key><integer>6952</integer>
+			<key>Name</key><string>弹唱</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>7973080</integer>
+			<key>Total Time</key><integer>191242</integer>
+			<key>Track Number</key><integer>6</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>127DDB32B9CC91C2</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/06.%E5%BC%B9%E5%94%B1.mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6954</key>
+		<dict>
+			<key>Track ID</key><integer>6954</integer>
+			<key>Name</key><string>有梦不难</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>11149575</integer>
+			<key>Total Time</key><integer>270654</integer>
+			<key>Track Number</key><integer>7</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>622133E11336AEED</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/07.%E6%9C%89%E6%A2%A6%E4%B8%8D%E9%9A%BE.mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6956</key>
+		<dict>
+			<key>Track ID</key><integer>6956</integer>
+			<key>Name</key><string>序曲:Welcome to the Livehouse</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>2586656</integer>
+			<key>Total Time</key><integer>56581</integer>
+			<key>Track Number</key><integer>8</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>18B943D703D9A643</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/08.%E5%BA%8F%E6%9B%B2%EF%BC%9AWelcome%20to%20the%20Livehouse%20(%E5%8F%A3%E7%99%BD).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6958</key>
+		<dict>
+			<key>Track ID</key><integer>6958</integer>
+			<key>Name</key><string>Too Bad</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>10732656</integer>
+			<key>Total Time</key><integer>260231</integer>
+			<key>Track Number</key><integer>9</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>99BD58FF552A6955</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/09.Too%20Bad.mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6960</key>
+		<dict>
+			<key>Track ID</key><integer>6960</integer>
+			<key>Name</key><string>你,有没有过 (Livehouse版)</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>11417090</integer>
+			<key>Total Time</key><integer>277342</integer>
+			<key>Track Number</key><integer>10</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:01Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>E9CEA5FA7B986607</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/10.%E4%BD%A0%EF%BC%8C%E6%9C%89%E6%B2%A1%E6%9C%89%E8%BF%87%20(Livehouse%E7%89%88).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6962</key>
+		<dict>
+			<key>Track ID</key><integer>6962</integer>
+			<key>Name</key><string>序曲:12年前</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>15012568</integer>
+			<key>Total Time</key><integer>367229</integer>
+			<key>Track Number</key><integer>11</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:02Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>B54C51CE3F356759</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/11.%E5%BA%8F%E6%9B%B2%EF%BC%9A12%E5%B9%B4%E5%89%8D%20(%E5%8F%A3%E7%99%BD).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6964</key>
+		<dict>
+			<key>Track ID</key><integer>6964</integer>
+			<key>Name</key><string>现在的我和她</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>6925061</integer>
+			<key>Total Time</key><integer>165041</integer>
+			<key>Track Number</key><integer>12</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:02Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>3087B8898D7A7905</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/12.%E7%8E%B0%E5%9C%A8%E7%9A%84%E6%88%91%E5%92%8C%E5%A5%B9.mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6966</key>
+		<dict>
+			<key>Track ID</key><integer>6966</integer>
+			<key>Name</key><string>序曲:海边 初</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>1494725</integer>
+			<key>Total Time</key><integer>29283</integer>
+			<key>Track Number</key><integer>13</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:02Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>7F43188D6FBA016F</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/13.%E5%BA%8F%E6%9B%B2%EF%BC%9A%E6%B5%B7%E8%BE%B9%20%E5%88%9D%20(The%20Beach%20Arrival).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6968</key>
+		<dict>
+			<key>Track ID</key><integer>6968</integer>
+			<key>Name</key><string>Lier and Accuser</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>12766039</integer>
+			<key>Total Time</key><integer>311066</integer>
+			<key>Track Number</key><integer>14</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:02Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>48FD85296D12BA73</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/14.Lier%20and%20Accuser.mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6970</key>
+		<dict>
+			<key>Track ID</key><integer>6970</integer>
+			<key>Name</key><string>独舞</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>8901996</integer>
+			<key>Total Time</key><integer>214465</integer>
+			<key>Track Number</key><integer>15</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:02Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>FAD98CD8F231E31A</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/15.%E7%8B%AC%E8%88%9E.mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6972</key>
+		<dict>
+			<key>Track ID</key><integer>6972</integer>
+			<key>Name</key><string>序曲:海边 终</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>3370317</integer>
+			<key>Total Time</key><integer>76173</integer>
+			<key>Track Number</key><integer>16</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:02Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>304F85FC33584ED3</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/16.%E5%BA%8F%E6%9B%B2%EF%BC%9A%E6%B5%B7%E8%BE%B9%20%E7%BB%88%20(The%20Beach%20Departure).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6974</key>
+		<dict>
+			<key>Track ID</key><integer>6974</integer>
+			<key>Name</key><string>ü,钴倘钴锗 (�睢力��玲猪</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>9961562</integer>
+			<key>Total Time</key><integer>240953</integer>
+			<key>Track Number</key><integer>17</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:02Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>E3335F9E9AF2B23C</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/17.%E4%BD%A0%EF%BC%8C%E6%9C%89%E6%B2%A1%E6%9C%89%E8%BF%87%20(%E3%80%8A%E7%A0%B4%E9%A3%8E%E3%80%8B%E7%94%B5%E5%BD%B1%E4%B8%BB%E9%A2%98%E6%9B%B2).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+		<key>6976</key>
+		<dict>
+			<key>Track ID</key><integer>6976</integer>
+			<key>Name</key><string>只要有你的地方 (电影《消失的爱</string>
+			<key>Artist</key><string>林俊杰</string>
+			<key>Album</key><string>和自己对话</string>
+			<key>Genre</key><string>流行乐</string>
+			<key>Kind</key><string>MPEG 音频文件</string>
+			<key>Size</key><integer>11988679</integer>
+			<key>Total Time</key><integer>291631</integer>
+			<key>Track Number</key><integer>18</integer>
+			<key>Year</key><integer>2015</integer>
+			<key>Date Modified</key><date>2015-12-25T16:01:02Z</date>
+			<key>Date Added</key><date>2015-12-25T15:59:42Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>1</integer>
+			<key>Play Date</key><integer>3534095698</integer>
+			<key>Play Date UTC</key><date>2015-12-27T13:14:58Z</date>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>BED688ED3914F17C</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Users/purchas/Downloads/pt80-%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/%E6%9E%97%E4%BF%8A%E6%9D%B0%E3%80%8A%E5%92%8C%E8%87%AA%E5%B7%B1%E5%AF%B9%E8%AF%9D%E3%80%8B%5B320K%5D/18.%E5%8F%AA%E8%A6%81%E6%9C%89%E4%BD%A0%E7%9A%84%E5%9C%B0%E6%96%B9%20(%E3%80%8A%E6%B6%88%E5%A4%B1%E7%9A%84%E7%88%B1%E4%BA%BA%E3%80%8B%E7%94%B5%E5%BD%B1%E4%B8%BB%E9%A2%98%E6%9B%B2).mp3</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>3</integer>
+		</dict>
+	</dict>
+	<key>Playlists</key>
+	<array>
+		<dict>
+			<key>Name</key><string>林俊杰 - 和自己对话</string>
+			<key>Description</key><string></string>
+			<key>Playlist ID</key><integer>14271</integer>
+			<key>Playlist Persistent ID</key><string>2FD35543655F43D4</string>
+			<key>All Items</key><true/>
+			<key>Playlist Items</key>
+			<array>
+				<dict>
+					<key>Track ID</key><integer>6942</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6944</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6946</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6948</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6950</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6952</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6954</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6956</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6958</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6960</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6962</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6964</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6966</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6968</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6970</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6972</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6974</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>6976</integer>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

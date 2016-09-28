@@ -7,7 +7,7 @@ export default function() {
 	const router = new Router()
 
 	router.get('/', ctx => {
-		ctx.body = 'Hello World.'
+		ctx.redirect('/adminCenter')
 	})
 
 	router.get('/adminCenter', controllers.index.home)
