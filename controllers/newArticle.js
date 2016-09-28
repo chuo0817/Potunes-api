@@ -8,7 +8,9 @@ export function *home(next) {
 }
 
 export function *post(next) {
+	console.log(123)
   const body = this.request.body
+	console.log(this.request.body)
 
 	Articles.save(body)
 

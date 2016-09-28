@@ -10,13 +10,13 @@ export default function() {
 		ctx.redirect('/adminCenter')
 	})
 
-	router.get('/adminCenter', controllers.index.home)
-	router.post('/adminCenter', controllers.index.adminLogin)
+	router.get('/admin', controllers.index.home)
+	router.post('/admin', controllers.index.adminLogin)
 
 	router.get('/articles', controllers.index.articles)
 
-	router.get('/newArticle', controllers.newArticle.home)
-	router.post('/newArticle', controllers.newArticle.post)
+	router.get('/article/new', controllers.newArticle.home)
+	router.post('/article/new', controllers.newArticle.post)
 
 	router.get('/track-list', controllers.track_list.getTracks)
 	router.post('/track-list', controllers.track_list.updateTracks)
