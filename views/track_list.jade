@@ -11,7 +11,7 @@ block content
           th.align-center(colspan='2') 艺术家
           th.left-border
             -var listId = page_id
-            a(href='/add-track?id=#{id}')
+            a#create(href='/add-track?id=#{listId}')
               button.btn.btn-primary.edit-btn 添加
       tbody#tracks
         - each track in tracks
@@ -26,11 +26,11 @@ block content
             button.removeBtn.edit(data-id=id, data-list-id=listId)
               span.glyphicon.glyphicon-trash
     
-    form#form-horizontal(method='post', action='/track-list', enctype='multipart/form-data')
+    form#form-horizontal(method='post', action='/track-list/#{page_id}', enctype='multipart/form-data')
       h1.align-center 添加歌曲信息
       input#content(name='content', class='form-control', placeholder='歌曲信息', height='128')
+      input#page(name='page', class='form-control', placeholder='文章ID', height='14')
       input.bottom-margin.col-sm-4.col-sm-offset-4.btn.btn-info(type='submit', value='更新')
 
 block script
   script(src='/javascripts/track-list.js')
-  script(src='/javascripts/upload.js')

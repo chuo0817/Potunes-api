@@ -46,7 +46,7 @@ export function *get(article_id) {
 	})
 }
 
-export function updateTrackInfo(track_id, trackInfo) {
+export function *updateTrackInfo(track_id, trackInfo) {
 	const updateQuery = 'UPDATE tracks SET track_artist = ?, track_name = ? WHERE track_id = ?'
 	const infos = trackInfo.split(' - ')
 	const artist = infos[0]

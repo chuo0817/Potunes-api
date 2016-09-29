@@ -15,11 +15,11 @@ export default function() {
 
 	router.get('/articles', controllers.index.articles)
 
-	router.get('/article/new', controllers.newArticle.home)
-	router.post('/article/new', controllers.newArticle.post)
+	router.get('/article/new', controllers.new_article.home)
+	router.post('/article/new', controllers.new_article.post)
 
 	router.get('/track-list', controllers.track_list.getTracks)
-	router.post('/track-list', controllers.track_list.updateTracks)
+	router.post('/track-list/:id', controllers.track_list.updateTracks)
 
 	return router
 }

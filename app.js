@@ -32,7 +32,7 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(routers().routes())
 
 app.on('error', function(err, ctx){
-  log.error('server error', err, ctx);
+  logger.error('server error', err, ctx);
 });
 
 module.exports = app;
