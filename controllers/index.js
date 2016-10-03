@@ -10,6 +10,8 @@ export function *home(next) {
 // 管理员登录
 export function *adminLogin(next) {
 	const body = this.request.body
+	console.log('enter')
+	console.log(body)
 
 	if (!body.name || !body.password) {
 		return this.body = {

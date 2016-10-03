@@ -20,6 +20,7 @@ export default function() {
 
 	router.get('/track-list', controllers.track_list.getTracks)
 	router.post('/track-list/:id', controllers.track_list.updateTracks)
+	router.post('/track-list', controllers.track_list.updateTrack)
 
 	return router
 }

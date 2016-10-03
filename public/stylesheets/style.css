@@ -89,3 +89,13 @@ a {
   min-height: 600px;
   text-align: center;
 }
+
+fieldset {
+  padding:0;
+  border:0;
+  margin-top:25px;
+}
+
+/*#dialog-form {
+  display: none;
+}*/

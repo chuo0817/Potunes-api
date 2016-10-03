@@ -26,11 +26,21 @@ block content
             button.removeBtn.edit(data-id=id, data-list-id=listId)
               span.glyphicon.glyphicon-trash
     
-    form#form-horizontal(method='post', action='/track-list/#{page_id}', enctype='multipart/form-data')
+    form#form-horizontal(method='post', action='/track-list/#{page_id}')
       h1.align-center 添加歌曲信息
       input#content(name='content', class='form-control', ≤placeholder='歌曲信息', height='128')
-      input#page(name='page', class='form-control', placeholder='文章ID', height='14')
+      input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
       input.bottom-margin.col-sm-4.col-sm-offset-4.btn.btn-info(type='submit', value='更新')
+    .container
+      div#dialog-form(title='更新歌曲信息')
+        form#update
+          label(for='track_id') ID
+          input#track_id.form-control(type='text', name='track_id')
+          label(for='artist') 歌手名
+          input#artist.form-control(type='text', name='artist')
+          label(for='track_name') 歌曲名
+          input#track-name.form-control(type='text', name='track-name')
+
 
 block script
   script(src='/javascripts/track-list.js')
