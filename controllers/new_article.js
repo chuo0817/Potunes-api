@@ -1,4 +1,3 @@
-import * as User from '../models/user'
 import * as Articles from '../models/articles'
 
 export function *home(next) {
@@ -8,8 +7,7 @@ export function *home(next) {
 }
 
 export function *post(next) {
-  const body = this.request.body
-	console.log(this.request.body)
+	const body = this.request.body
 
 	Articles.save(body)
 

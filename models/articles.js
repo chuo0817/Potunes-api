@@ -61,68 +61,84 @@ export function save(article) {
 		article.songCount,
 	]
 
+
 	pool.getConnection()
 	.then((connection) => {
 		connection.query(articleQuery, articleParams)
 		.then((result) => {
 			pool.releaseConnection(connection)
+			const insertID = result.insertId
 			console.log('文章新增成功')
-		})
-	})
-	.catch((err) => {
-		console.log(err.message)
-	})
+			const tracksFunc = []
+			const relationFunc = []
+			const tracksQuery = `INSERT INTO tracks (
+												track_name,
+												track_artist,
+												track_lrc,
+												track_lrc_cn,
+												track_url,
+												track_cover) VALUE(?,?,?,?,?,?)`
+			const relationQuery = 'INSERT INTO article_tracks(article_id) VALUE(?)'
 
-	const tracksFunc = []
-	const relationFunc = []
-	const tracksQuery = `INSERT INTO tracks (
-										track_name,
-										track_artist,
-										track_lrc,
-										track_lrc_cn,
-										track_url,
-										track_cover) VALUE(?,?,?,?,?,?)`
-	const relationQuery = 'INSERT INTO article_tracks(article_id) VALUE(?)'
-
-	for (let i = 0; i < article.songCount; i++) {
-		let track_url = ''
-		let track_cover = ''
-		const t = i + 1
-		if (t < 10) {
-			track_url = `${preURL}0${t}.mp3`
-			track_cover = `${preURL}0${t}.jpg`
-		}
-
-		if (t >= 10) {
-			track_url = `${preURL}${t}.mp3`
-			track_cover = `${preURL}${t}.jpg`
-		}
-		const trackParams = ['unwritten', 'unwritten', 'unwritten', 'unwritten']
-		trackParams.push(track_url, track_cover)
-		tracksFunc.push(cr(tracksQuery, trackParams))
-	}
-
-	series(tracksFunc)
-	.then((result) => {
-		const idQuery = 'SELECT * FROM articles order by article_id desc'
-		pool.getConnection()
-		.then((connection) => {
-			connection.query(idQuery)
-			.then((results) => {
-				pool.releaseConnection(connection)
-				const relationParams = [results[0].article_id]
-
-				for (let i = 0; i < article.songCount; i++) {
-					relationFunc.push(cr(relationQuery, relationParams))
+			for (let i = 0; i < article.songCount; i++) {
+				let track_url = ''
+				let track_cover = ''
+				const t = i + 1
+				if (t < 10) {
+					track_url = `${preURL}0${t}.mp3`
+					track_cover = `${preURL}0${t}.jpg`
 				}
-				series(relationFunc)
-				.then((res) => {
-					console.log('歌曲新增成功')
+
+				if (t >= 10) {
+					track_url = `${preURL}${t}.mp3`
+					track_cover = `${preURL}${t}.jpg`
+				}
+				const trackParams = ['unwritten', 'unwritten', 'unwritten', 'unwritten']
+				trackParams.push(track_url, track_cover)
+				tracksFunc.push(cr(tracksQuery, trackParams))
+			}
+
+			series(tracksFunc)
+			.then(() => {
+				const idQuery = 'SELECT * FROM articles where article_id = ?'
+				const idParam = [insertID]
+				pool.getConnection()
+				.then((conn) => {
+					connection.query(idQuery, idParam)
+					.then((results) => {
+						pool.releaseConnection(conn)
+						const relationParams = [results[0].article_id]
+
+						for (let i = 0; i < article.songCount; i++) {
+							relationFunc.push(cr(relationQuery, relationParams))
+						}
+						series(relationFunc)
+						.then((res) => {
+							console.log('歌曲新增成功')
+						})
+					})
 				})
 			})
 		})
 	})
 	.catch((err) => {
-		console.log(err)
+		console.log(err.message)
+	})
+}
+
+function saveOldCR(article) {
+	return cb => {
+		cb(null, save(article))
+	}
+}
+
+export function* saveOld(articles) {
+	console.log('jinlaila')
+	const temp = []
+	for (let i = 0; i < articles.length; i++) {
+		temp.push(saveOldCR(articles[i]))
+	}
+	series(temp)
+	.then(res => {
 	})
 }

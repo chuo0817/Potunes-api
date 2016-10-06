@@ -1,5 +1,6 @@
 import * as Tracks from '../models/tracks'
 
+// 获取某篇文章下面的所有歌曲
 export function *getTracks(next) {
 	const tracks = yield Tracks.get(this.query.id)
 	yield this.render('track_list', {
@@ -7,19 +8,26 @@ export function *getTracks(next) {
 		page_id: this.query.id,
 	})
 }
+// 批量更新歌曲信息
 
 export function *updateTracks(next) {
-	const tracks = yield Tracks.updateTrackInfo(this.request.body)
+	const tracks = yield Tracks.updateTracksInfo(this.request.body)
 	yield this.render('track_list', {
 		tracks,
 	})
-	// const content = yield Tracks.updateTrackInfo(this.request.body.content, 2)
-	// const content = this.request.body.content
-	// console.log(this.request.body)
+}
+// 更新一首歌信息
+export function *updateTrack(next) {
+	const track = yield Tracks.updateTrack(this.request.body)
+	this.body = track
 }
 
-export function *updateTrack(next) {
-	console.log('进来啦')
-	console.log(this.request.body)
-	this.body='cheche'
+export function *getOne(next) {
+	const track = yield Tracks.getOne(this.query.id)
+	this.body = track
+}
+
+export function *deleteTrack(next) {
+	const result = yield Tracks.deleteTrack(this.request.body)
+	this.body = result
 }

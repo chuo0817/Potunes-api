@@ -34,12 +34,17 @@ block content
     .container
       div#dialog-form(title='更新歌曲信息')
         form#update
-          label(for='track_id') ID
+          label(for='track_id') 歌曲ID
           input#track_id.form-control(type='text', name='track_id')
-          label(for='artist') 歌手名
-          input#artist.form-control(type='text', name='artist')
+          label(for='track_artist') 歌手名
+          input#track_artist.form-control(type='text', name='track_artist')
           label(for='track_name') 歌曲名
-          input#track-name.form-control(type='text', name='track-name')
+          input#track_name.form-control(type='text', name='track_name')
+          label(for='track_cover') 专辑封面地址
+          input#track_cover.form-control(type='text', name='track_cover')
+          label(for='track_url') 歌曲试听地址
+          input#track_url.form-control(type='text', name='track_url')
+
 
 
 block script

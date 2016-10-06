@@ -23,7 +23,8 @@ block content
   .container
     .col-md-12
       h1.align-center #{title}
-
+      a(href='/tracks/fetch-old')
+        button.btn.btn-primary.edit-btn 获取旧数据内容
       table.table.table-striped
         thead.align-center
           tr
@@ -45,5 +46,6 @@ block content
                     span.glyphicon.glyphicon-pencil
                   a.removeBtn.edit(href='/delete-list?id=#{id}', data-id=id)
                     span.glyphicon.glyphicon-trash
+      
                   
           
