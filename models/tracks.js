@@ -147,6 +147,17 @@ export function *deleteTrack(body) {
 	})
 }
 
+function cr(url) {
+	return cb => {
+		agent.get(url)
+		.then(res => {
+			cb(null, JSON.parse(res.text))
+		})
+		.catch(err => {
+			cb(err)
+		})
+	}
+}
 // 抓取老数据库歌曲信息
 export function* fecthOld(next) {
 	const URL = 'http://121.41.121.87:3000/api/v1/lists'
@@ -165,49 +176,41 @@ export function* fecthOld(next) {
 				article.id = temp.id
 				articles.push(article)
 			}
-			resolve(articles)
+			return articles
+		})
+		.then(articles => {
+			const ids = []
+			for (let i = 0; i < articles.length; i++) {
+				const mp3URL = `http://121.41.121.87:3000/api/v1/list-mp3s?id=${articles[i].id}`
+				ids.push(cr(mp3URL))
+			}
+			const tracks = []
+			series(ids)
+			.then(res => {
+				tracks.push(res)
+			})
+			.then(res => {
+				const temp = []
+				for (let i = 0; i < tracks[0].length; i++) {
+					const query = 'INSERT INTO old(artist, name, title) VALUES(?,?,?)'
+					for(let j = 0; j < tracks[0][i].length; j++) {
+						const track = tracks[0][i][j]
+						const params = [track.author, track.title, articles[i].title]
+						temp.push(Article.cr(query, params))
+					}
+				}
+				series(temp)
+				.then(result => {
+					console.log(result)
+					resolve(articles)
+				})
+			})
 		})
 		.catch(err => {
 			reject(err)
 		})
 	})
 }
-
-function cr(url) {
-	return cb => {
-		agent.get(url)
-		.then(res => {
-			// console.log(JSON.parse(res.text).length)
-			cb(null, JSON.parse(res.text))
-		})
-		.catch(err => {
-			cb(err)
-		})
-	}
-}
-
-// 抓老歌曲信息
-export function* fecthOldTracks(articles) {
-	const ids = []
-	for (let i = 0; i < articles.length; i++) {
-		const mp3URL = `http://121.41.121.87:3000/api/v1/list-mp3s?id=${articles[i].id}`
-		ids.push(cr(mp3URL))
-	}
-	const tracks = []
-	return new Promise((resolve, reject) => {
-		series(ids)
-		.then(res => {
-			tracks.push(res)
-		})
-		.then(res => {
-			resolve(tracks[0])
-		})
-		.catch(err => {
-			console.log(err.message)
-		})
-	})
-}
-
 
 export function *macthOldMusicInfo(tracks) {
 	const tracksFunc = []
@@ -219,18 +222,10 @@ export function *macthOldMusicInfo(tracks) {
 			connection.query(articleQuery)
 			.then((result) => {
 				pool.releaseConnection(connection)
-				const updateQuery = 'UPDATE tracks SET track_artist = ?, track_name = ? WHERE track_id = ?'
-
-				for (let j = 0; j < result.length; j++) {
-					tracksFunc.push(Article.cr(updateQuery, [article_tracks[j].author, article_tracks[j].title, result[j].track_id]))
-					console.log(article_tracks[j].author)
-				}
-
 			})
 		})
 		.catch((err) => {
 			console.log(err)
 		})
 	}
-
 }
