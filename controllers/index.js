@@ -1,5 +1,6 @@
 import * as User from '../models/user'
 import * as Articles from '../models/articles'
+import * as Tracks from '../models/tracks'
 
 // 首页
 export function *home(next) {
@@ -28,10 +29,18 @@ export function *adminLogin(next) {
 
 // 获取文章列表
 export function *articles(next) {
-	const article = yield Articles.getAll()
-	yield this.render('index', {
-		title: '歌单',
-		articles: article,
-	})
+	if (this.query.id) {
+		const tracks = yield Tracks.get(this.query.id)
+		yield this.render('track_list', {
+			tracks,
+			page_id: this.query.id,
+		})
+	} else {
+		const article = yield Articles.getAll()
+		yield this.render('index', {
+			title: '歌单',
+			articles: article,
+		})
+	}
 	return null
 }

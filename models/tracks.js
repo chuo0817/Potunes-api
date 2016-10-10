@@ -1,50 +1,35 @@
-/* eslint global-require: "error" */
-import mysql from 'promise-mysql'
 import promisify from 'promisify-es6'
 import * as Article from '../models/articles'
+import * as pool from '../models/db'
 import async from 'async'
 import xml2js from 'xml2js-es6-promise'
 import agent from 'superagent-es6-promise'
 
 const series = promisify(async.series)
-const pool = mysql.createPool({
-	connectionLimit: 10,
-	host: 'localhost',
-	user: 'root',
-	password: '',
-	database: 'Potunes',
-})
+
 
 // 获取某篇文章下面的所有歌曲
 export function *get(article_id) {
 	const articleQuery = 'SELECT * FROM article_tracks where article_id = ?'
 	const articleQuery_Params = [article_id]
 	const trackIDs = []
-
+	const result = yield pool.query(articleQuery, articleQuery_Params)
+	const idQuery = 'SELECT * FROM tracks WHERE track_id = ?'
+	for (let i = 0; i < result.length; i++) {
+		const idParams = [result[i].track_id]
+		trackIDs.push(Article.cr(idQuery, idParams))
+	}
 	return new Promise((resolve, reject) => {
-		pool.getConnection()
-		.then((connection) => {
-			connection.query(articleQuery, articleQuery_Params)
-			.then((result) => {
-				pool.releaseConnection(connection)
-				const idQuery = 'SELECT * FROM tracks WHERE track_id = ?'
-				for (let i = 0; i < result.length; i++) {
-					const idParams = [result[i].track_id]
-					trackIDs.push(Article.cr(idQuery, idParams))
-				}
-
-				series(trackIDs)
-				.then((results) => {
-					const tracks = []
-					for (let i = 0; i < results.length; i++) {
-						tracks.push(results[i][0])
-					}
-					resolve(tracks)
-				})
-			})
+		series(trackIDs)
+		.then((results) => {
+			const tracks = []
+			for (let i = 0; i < results.length; i++) {
+				tracks.push(results[i][0])
+			}
+			resolve(tracks)
 		})
-		.catch((err) => {
-			console.log(err)
+		.catch(err => {
+			reject(err)
 		})
 	})
 }
@@ -159,73 +144,65 @@ function cr(url) {
 	}
 }
 // 抓取老数据库歌曲信息
-export function* fecthOld(next) {
-	const URL = 'http://121.41.121.87:3000/api/v1/lists'
-	const articles = []
-	return new Promise((resolve, reject) => {
-		agent.get(URL)
-		.then(res => {
-			const result = JSON.parse(res.text).reverse()
-			for (let i = 0; i < result.length; i++) {
-				const article = {}
-				const temp = result[i]
-				article.title = temp.title
-				article.type = temp.category
-				article.content = temp.content
-				article.prefixUrl = temp.coverImage.substr(0, temp.coverImage.length - 9)
-				article.id = temp.id
-				articles.push(article)
+export function* fecthOldTracks(articles) {
+	console.log(articles.length)
+	const oldIdQuery = 'select * from articles order by article_id desc'
+	const ids = []
+	const tracks = []
+	const result = yield pool.query(oldIdQuery)
+	for (let i = 0; i < result.length; i++) {
+		const mp3URL = `http://121.41.121.87:3000/api/v1/list-mp3s?id=${result[i].old_id}`
+		ids.push(cr(mp3URL))
+	}
+	series(ids)
+	.then(res => {
+		tracks.push(res)
+		return tracks
+	})
+	.then((tracks) => {
+		const tracksTemp = []
+		const tracksQuery = `INSERT INTO tracks(track_artist,
+			track_name, album, track_url, track_cover) VALUES(?,?,?,?,?)`
+
+		for (let i = 0; i < tracks[0].length; i++) {
+			const album = result[i].article_title
+			for (let j = 0; j < tracks[0][i].length; j++) {
+				const track = tracks[0][i][j]
+				const tracksParams = [track.author, track.title, album, track.sourceUrl, track.thumb]
+				tracksTemp.push(Article.cr(tracksQuery, tracksParams))
 			}
-			return articles
-		})
-		.then(articles => {
-			const ids = []
-			for (let i = 0; i < articles.length; i++) {
-				const mp3URL = `http://121.41.121.87:3000/api/v1/list-mp3s?id=${articles[i].id}`
-				ids.push(cr(mp3URL))
-			}
-			const tracks = []
-			series(ids)
-			.then(res => {
-				tracks.push(res)
+		}
+		return new Promise((resolve, reject) => {
+			series(tracksTemp)
+			.then((res) => {
+				resolve(res)
+				console.log('旧歌曲已插入Tracks表')
 			})
-			.then(res => {
-				const temp = []
-				for (let i = 0; i < tracks[0].length; i++) {
-					const query = 'INSERT INTO old(artist, name, title) VALUES(?,?,?)'
-					for(let j = 0; j < tracks[0][i].length; j++) {
-						const track = tracks[0][i][j]
-						const params = [track.author, track.title, articles[i].title]
-						temp.push(Article.cr(query, params))
-					}
-				}
-				series(temp)
-				.then(result => {
-					console.log(result)
-					resolve(articles)
-				})
+			.catch(err => {
+				reject(err)
 			})
-		})
-		.catch(err => {
-			reject(err)
 		})
 	})
 }
 
-export function *macthOldMusicInfo(tracks) {
-	const tracksFunc = []
-	for (let i = 0; i < tracks.length; i++) {
-		const article_tracks = tracks[i]
-		const articleQuery = `SELECT * from article_tracks where article_id = ${i+1}`
-		pool.getConnection()
-		.then((connection) => {
-			connection.query(articleQuery)
-			.then((result) => {
-				pool.releaseConnection(connection)
-			})
-		})
-		.catch((err) => {
-			console.log(err)
-		})
+export function* match(next) {
+	const titleQuery = 'select distinct album from tracks'
+	const idQuery = 'select article_id from articles'
+	const titles = yield pool.query(titleQuery)
+	const article_ids = yield pool.query(idQuery)
+	const track_ids = []
+	for (let i = 0 ; i < titles.length; i++) {
+		const matchQuery = `select track_id from tracks where album = '${titles[i].album}'`
+		const result = yield pool.query(matchQuery)
+		track_ids.push(result)
 	}
+	for (let i = 0; i < article_ids.length; i++) {
+		const insertQuery = 'insert into article_tracks(article_id) values(?)'
+		const insertParam = [article_ids.reverse()[i].article_id]
+		console.log(insertParam)
+		for (let j = 0; j < track_ids[i].length; j++) {
+			yield pool.query(insertQuery, insertParam)
+		}
+	}
+	return titles
 }

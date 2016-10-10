@@ -1,6 +1,7 @@
 import mysql from 'promise-mysql'
 import promisify from 'promisify-es6'
 import async from 'async'
+import agent from 'superagent-es6-promise'
 
 const series = promisify(async.series)
 const pool = mysql.createPool({
@@ -126,19 +127,38 @@ export function save(article) {
 	})
 }
 
-function saveOldCR(article) {
-	return cb => {
-		cb(null, save(article))
-	}
-}
-
-export function* saveOld(articles) {
-	console.log('jinlaila')
-	const temp = []
-	for (let i = 0; i < articles.length; i++) {
-		temp.push(saveOldCR(articles[i]))
-	}
-	series(temp)
+// 获取旧歌单
+export function* fecthOldArticles(next) {
+	const URL = 'http://121.41.121.87:3000/api/v1/lists'
+	agent.get(URL)
 	.then(res => {
+		// 获取全部旧歌单
+		const result = JSON.parse(res.text).reverse()
+		const articlesTemp = []
+		const articleQuery = `INSERT INTO articles(article_title, article_type,
+					article_content, article_cover, old_id) VALUES(?,?,?,?,?)`
+		for (let i = 0; i < result.length; i++) {
+			const article = {}
+			const temp = result[i]
+			article.prefixUrl = temp.coverImage.substr(0, temp.coverImage.length - 9)
+			const cover = `${article.prefixUrl}cover.png`
+			const articleParams = [
+				temp.title,
+				temp.category,
+				temp.content,
+				cover,
+				temp.id,
+			]
+			articlesTemp.push(cr(articleQuery, articleParams))
+		}
+		return new Promise((resolve, reject) => {
+			series(articlesTemp)
+			.then(() => {
+				resolve(getAll())
+			})
+			.catch(err => {
+				reject(err)
+			})
+		})
 	})
 }
