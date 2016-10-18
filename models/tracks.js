@@ -145,7 +145,6 @@ function cr(url) {
 }
 // 抓取老数据库歌曲信息
 export function* fecthOldTracks(articles) {
-	console.log(articles.length)
 	const oldIdQuery = 'select * from articles order by article_id desc'
 	const ids = []
 	const tracks = []
@@ -154,33 +153,33 @@ export function* fecthOldTracks(articles) {
 		const mp3URL = `http://121.41.121.87:3000/api/v1/list-mp3s?id=${result[i].old_id}`
 		ids.push(cr(mp3URL))
 	}
-	series(ids)
-	.then(res => {
-		tracks.push(res)
-		return tracks
-	})
-	.then((tracks) => {
-		const tracksTemp = []
-		const tracksQuery = `INSERT INTO tracks(track_artist,
-			track_name, album, track_url, track_cover) VALUES(?,?,?,?,?)`
+	return new Promise((resolve, reject) => {
+		series(ids)
+		.then(res => {
+			tracks.push(res)
+			return tracks
+		})
+		.then((tracks) => {
+			const tracksTemp = []
+			const tracksQuery = `INSERT INTO tracks(track_artist,
+				track_name, album, track_url, track_cover) VALUES(?,?,?,?,?)`
 
-		for (let i = 0; i < tracks[0].length; i++) {
-			const album = result[i].article_title
-			for (let j = 0; j < tracks[0][i].length; j++) {
-				const track = tracks[0][i][j]
-				const tracksParams = [track.author, track.title, album, track.sourceUrl, track.thumb]
-				tracksTemp.push(Article.cr(tracksQuery, tracksParams))
+			for (let i = 0; i < tracks[0].length; i++) {
+				const album = result[i].article_title
+				for (let j = 0; j < tracks[0][i].length; j++) {
+					const track = tracks[0][i][j]
+					const tracksParams = [track.author, track.title, album, track.sourceUrl, track.thumb]
+					tracksTemp.push(Article.cr(tracksQuery, tracksParams))
+				}
 			}
-		}
-		return new Promise((resolve, reject) => {
 			series(tracksTemp)
 			.then((res) => {
 				resolve(res)
 				console.log('旧歌曲已插入Tracks表')
 			})
-			.catch(err => {
-				reject(err)
-			})
+		})
+		.catch(err => {
+			reject(err)
 		})
 	})
 }
@@ -191,7 +190,7 @@ export function* match(next) {
 	const titles = yield pool.query(titleQuery)
 	const article_ids = yield pool.query(idQuery)
 	const track_ids = []
-	for (let i = 0 ; i < titles.length; i++) {
+	for (let i = 0; i < titles.length; i++) {
 		const matchQuery = `select track_id from tracks where album = '${titles[i].album}'`
 		const result = yield pool.query(matchQuery)
 		track_ids.push(result)
@@ -199,7 +198,6 @@ export function* match(next) {
 	for (let i = 0; i < article_ids.length; i++) {
 		const insertQuery = 'insert into article_tracks(article_id) values(?)'
 		const insertParam = [article_ids.reverse()[i].article_id]
-		console.log(insertParam)
 		for (let j = 0; j < track_ids[i].length; j++) {
 			yield pool.query(insertQuery, insertParam)
 		}

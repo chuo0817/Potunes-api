@@ -130,28 +130,28 @@ export function save(article) {
 // 获取旧歌单
 export function* fecthOldArticles(next) {
 	const URL = 'http://121.41.121.87:3000/api/v1/lists'
-	agent.get(URL)
-	.then(res => {
-		// 获取全部旧歌单
-		const result = JSON.parse(res.text).reverse()
-		const articlesTemp = []
-		const articleQuery = `INSERT INTO articles(article_title, article_type,
-					article_content, article_cover, old_id) VALUES(?,?,?,?,?)`
-		for (let i = 0; i < result.length; i++) {
-			const article = {}
-			const temp = result[i]
-			article.prefixUrl = temp.coverImage.substr(0, temp.coverImage.length - 9)
-			const cover = `${article.prefixUrl}cover.png`
-			const articleParams = [
-				temp.title,
-				temp.category,
-				temp.content,
-				cover,
-				temp.id,
-			]
-			articlesTemp.push(cr(articleQuery, articleParams))
-		}
-		return new Promise((resolve, reject) => {
+	return new Promise((resolve, reject) => {
+		agent.get(URL)
+		.then(res => {
+			// 获取全部旧歌单
+			const result = JSON.parse(res.text).reverse()
+			const articlesTemp = []
+			const articleQuery = `INSERT INTO articles(article_title, article_type,
+						article_content, article_cover, old_id) VALUES(?,?,?,?,?)`
+			for (let i = 0; i < result.length; i++) {
+				const article = {}
+				const temp = result[i]
+				article.prefixUrl = temp.coverImage.substr(0, temp.coverImage.length - 9)
+				const cover = `${article.prefixUrl}cover.png`
+				const articleParams = [
+					temp.title,
+					temp.category,
+					temp.content,
+					cover,
+					temp.id,
+				]
+				articlesTemp.push(cr(articleQuery, articleParams))
+			}
 			series(articlesTemp)
 			.then(() => {
 				resolve(getAll())
