@@ -5,8 +5,8 @@ import async from 'async'
 import xml2js from 'xml2js-es6-promise'
 import agent from 'superagent-es6-promise'
 
-const series = promisify(async.series)
 
+const series = promisify(async.series)
 
 // 获取某篇文章下面的所有歌曲
 export function *get(article_id) {
@@ -17,7 +17,7 @@ export function *get(article_id) {
 	const idQuery = 'SELECT * FROM tracks WHERE track_id = ?'
 	for (let i = 0; i < result.length; i++) {
 		const idParams = [result[i].track_id]
-		trackIDs.push(Article.cr(idQuery, idParams))
+		trackIDs.push(pool.cr(idQuery, idParams))
 	}
 	return new Promise((resolve, reject) => {
 		series(trackIDs)
@@ -38,20 +38,8 @@ export function *get(article_id) {
 export function *getOne(track_id) {
 	const trackQuery = 'SELECT * FROM tracks where track_id = ?'
 	const trackQuery_params = [track_id]
-
-	return new Promise((resolve, reject) => {
-		pool.getConnection()
-		.then(connection => {
-			connection.query(trackQuery, trackQuery_params)
-			.then(result => {
-				resolve(result[0])
-			})
-		})
-		.catch(err => {
-			console.log(err)
-			reject(err.message)
-		})
-	})
+	const result = yield pool.query(trackQuery, trackQuery_params)
+	return result[0]
 }
 
 // 批量更新歌曲信息
@@ -94,20 +82,8 @@ export function *updateTrack(body) {
 		trackParams.push(body[i].value)
 	}
 	trackParams.push(body[0].value)
-	return new Promise((resolve, reject) => {
-		pool.getConnection()
-		.then(connection => {
-			connection.query(updateQuery, trackParams)
-			.then(result => {
-				console.log(result)
-				resolve(result)
-			})
-		})
-		.catch(err => {
-			console.log(err)
-			reject(err.message)
-		})
-	})
+	const result = yield pool.query(updateQuery, trackParams)
+	return result
 }
 
 // 删除一首歌的信息
@@ -147,7 +123,7 @@ function cr(url) {
 export function* fecthOldTracks(articles) {
 	const oldIdQuery = 'select * from articles order by article_id desc'
 	const ids = []
-	const tracks = []
+	const tracksArr = []
 	const result = yield pool.query(oldIdQuery)
 	for (let i = 0; i < result.length; i++) {
 		const mp3URL = `http://121.41.121.87:3000/api/v1/list-mp3s?id=${result[i].old_id}`
@@ -156,8 +132,8 @@ export function* fecthOldTracks(articles) {
 	return new Promise((resolve, reject) => {
 		series(ids)
 		.then(res => {
-			tracks.push(res)
-			return tracks
+			tracksArr.push(res)
+			return tracksArr
 		})
 		.then((tracks) => {
 			const tracksTemp = []
@@ -169,7 +145,7 @@ export function* fecthOldTracks(articles) {
 				for (let j = 0; j < tracks[0][i].length; j++) {
 					const track = tracks[0][i][j]
 					const tracksParams = [track.author, track.title, album, track.sourceUrl, track.thumb]
-					tracksTemp.push(Article.cr(tracksQuery, tracksParams))
+					tracksTemp.push(pool.cr(tracksQuery, tracksParams))
 				}
 			}
 			series(tracksTemp)

@@ -23,3 +23,21 @@ export function* query(sql, params) {
 		})
 	})
 }
+
+
+export function cr(sql, params) {
+	return (cb) => {
+		pool.getConnection()
+		.then((connection) => {
+			connection.query(sql, params)
+			.then((result) => {
+				pool.releaseConnection(connection)
+				cb(null, result)
+			})
+		})
+		.catch((err) => {
+			console.log(err.message)
+			cb(err)
+		})
+	}
+}

@@ -9,7 +9,7 @@ export function *home(next) {
 export function *post(next) {
 	const body = this.request.body
 
-	Articles.save(body)
+	yield Articles.save(body)
 
 	this.redirect('/articles')
 }
