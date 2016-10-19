@@ -7,25 +7,25 @@ block content
       thead
         tr
           th.right-border.align-center 序号
-          th.align-center(colspan='2') 歌名
-          th.align-center(colspan='2') 艺术家
+          th.align-center(colspan='2') 歌手名
+          th.align-center(colspan='2') 歌曲名
           th.left-border
             -var listId = page_id
             a#create(href='/add-track?id=#{listId}')
               button.btn.btn-primary.edit-btn 添加
       tbody#tracks
-        - each track in tracks
+        each track in tracks
          tr.align-center
           td.right-border.trackId #{track.track_id}
-          td.right-border(colspan='2') #{track.track_name}
-          td(colspan='2') #{track.track_artist}
+          td.right-border(colspan='2') #{track.track_artist}
+          td(colspan='2') #{track.track_name}
           td.left-border
             - var id = track.track_id.toString()
             button.editBtn.edit(data-id=id)
               span.glyphicon.glyphicon-pencil
             button.removeBtn.edit(data-id=id, data-list-id=listId)
               span.glyphicon.glyphicon-trash
-    
+
     form#form-horizontal(method='post', action='/track-list/#{page_id}')
       h1.align-center 添加歌曲信息
       input#content(name='content', class='form-control', ≤placeholder='歌曲信息', height='128')
@@ -44,8 +44,5 @@ block content
           input#track_cover.form-control(type='text', name='track_cover')
           label(for='track_url') 歌曲试听地址
           input#track_url.form-control(type='text', name='track_url')
-
-
-
 block script
   script(src='/javascripts/track-list.js')

@@ -4,7 +4,8 @@ import * as Tracks from '../models/tracks'
 
 // 首页
 export function *home(next) {
-	yield this.render('admin', {
+	console.log('456')
+	this.render('admin', {
 		title: '后台',
 	})
 }
@@ -31,13 +32,15 @@ export function *adminLogin(next) {
 export function *articles(next) {
 	if (this.query.id) {
 		const tracks = yield Tracks.get(this.query.id)
-		yield this.render('track_list', {
+		this.render('track_list', {
 			tracks,
 			page_id: this.query.id,
 		})
 	} else {
+		console.log('123')
 		const article = yield Articles.getAll()
-		yield this.render('index', {
+		this.body = article
+		this.render('index', {
 			title: '歌单',
 			articles: article,
 		})

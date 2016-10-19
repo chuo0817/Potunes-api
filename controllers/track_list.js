@@ -3,18 +3,16 @@ import * as Tracks from '../models/tracks'
 // 获取某篇文章下面的所有歌曲
 export function *getTracks(next) {
 	const tracks = yield Tracks.get(this.query.id)
-	yield this.render('track_list', {
+	this.render('track_list', {
 		tracks,
 		page_id: this.query.id,
 	})
 }
-// 批量更新歌曲信息
 
+// 批量更新歌曲信息
 export function *updateTracks(next) {
-	const tracks = yield Tracks.updateTracksInfo(this.request.body)
-	yield this.render('track_list', {
-		tracks,
-	})
+	yield Tracks.updateTracksInfo(this.request.body)
+	this.redirect(`/articles?id=${this.params.id}`)
 }
 // 更新一首歌信息
 export function *updateTrack(next) {

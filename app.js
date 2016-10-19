@@ -1,39 +1,44 @@
-var app = require('koa')()
-  , koa = require('koa-router')()
-  , logger = require('koa-logger')
-  , json = require('koa-json')
-  , views = require('koa-views')
-  , onerror = require('koa-onerror')
-  , routers = require('./routers')
-  , mysql = require('mysql');
+import Koa from 'koa'
+import logger from 'koa-logger'
+import json from 'koa-json'
+import views from 'koa-views'
+import routers from './routers'
+import parser from 'koa-bodyparser'
+import Debug from 'debug'
+import Pug from 'koa-pug'
+import serve from 'koa-static'
 
-  const koaParser = require('koa-bodyParser');
+const debug = new Debug('app:index:')
+
+const app = new Koa()
+const pug = new Pug({
+	viewPath: `${__dirname}/views`,
+	debug: false,
+	pretty: false,
+	compileDebug: false,
+	app,
+})
+
+pug.locals.someKey = 'some value'
 
 
-
-
-app.use(function*(next){
-  try {
-    yield next;
-  }
-  catch(err) {
-    console.log(err);
-  }
-});
-app.use(views('views', {
-  root: __dirname + '/views',
-  default: 'jade'
-}))
-app.use(koaParser({ extended: true }))
+app.use(function* error(next) {
+	try {
+		yield next
+	} catch (err) {
+		debug('app error: ', err.status, ',', err.message, ',', err.stack)
+	}
+})
+app.use(parser({ extended: true }))
 app.use(json())
 app.use(logger())
 
-app.use(require('koa-static')(__dirname + '/public'))
-// mount root routes
+app.use(views(`${__dirname}/views`, {
+	map: {
+		html: 'pug',
+	},
+}))
+app.use(serve(`${__dirname}/public`))
 app.use(routers().routes())
 
-app.on('error', function(err, ctx){
-  logger.error('server error', err, ctx);
-});
-
-module.exports = app;
+module.exports = app

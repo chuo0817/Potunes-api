@@ -6,8 +6,8 @@ const controllers = _requiredir('./controllers')
 export default function() {
 	const router = new Router()
 
-	router.get('/', ctx => {
-		ctx.redirect('/adminCenter')
+	router.get('/', (next) => {
+		this.redirect('/admin')
 	})
 
 	router.get('/admin', controllers.index.home)
@@ -15,8 +15,12 @@ export default function() {
 
 	router.get('/articles', controllers.index.articles)
 
+	// 新建文章
 	router.get('/article/new', controllers.new_article.home)
 	router.post('/article/new', controllers.new_article.post)
+
+	// 获取一篇文章内容
+	router.get('/article', controllers.article.get)
 
 	// 获取某篇文章下面的所有歌曲
 	router.get('/track-list', controllers.track_list.getTracks)

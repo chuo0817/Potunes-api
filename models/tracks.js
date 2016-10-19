@@ -1,5 +1,4 @@
 import promisify from 'promisify-es6'
-import * as Article from '../models/articles'
 import * as pool from '../models/db'
 import async from 'async'
 import xml2js from 'xml2js-es6-promise'
@@ -46,30 +45,35 @@ export function *getOne(track_id) {
 export function *updateTracksInfo(body) {
 	const updateQuery = 'UPDATE tracks SET track_artist = ?, track_name = ? WHERE track_id = ?'
 	let ids = body.ids
-	ids = ids.substr(1, ids.length - 2).split(',')
+	ids = ids.split(',')
 	const content = body.content
-	xml2js(content)
-	.then((js) => {
-		const tracks = js.plist.dict[0].dict[0].dict
-		const temp = []
-		for (let i = 0; i < tracks.length; i++) {
-			const track = tracks[i].string
-			temp.push(track.slice(0, 2))
-		}
-		const tracksFunc = []
-		for (let i = 0; i < ids.length; i++) {
-			const artist = temp[i][1]
-			const track_name = temp[i][0]
-			const track_id = ids[i]
-			const trackParams = [artist, track_name, track_id]
-			tracksFunc.push(Article.cr(updateQuery, trackParams))
-		}
-		series(tracksFunc)
-		.then((result) => {
-			console.log('歌曲信息修改成功')
+	return new Promise((resolve, reject) => {
+		xml2js(content)
+		.then((js) => {
+			const tracks = js.plist.dict[0].dict[0].dict
+			const temp = []
+			for (let i = 0; i < tracks.length; i++) {
+				const track = tracks[i].string
+				temp.push(track.slice(0, 2))
+			}
+			const tracksFunc = []
+			for (let i = 0; i < ids.length; i++) {
+				const artist = temp[i][1]
+				const track_name = temp[i][0]
+				const track_id = ids[i]
+
+				const trackParams = [artist, track_name, track_id]
+				tracksFunc.push(pool.cr(updateQuery, trackParams))
+			}
+			series(tracksFunc)
+			.then((result) => {
+				resolve(result)
+				console.log('歌曲信息修改成功')
+			})
 		})
 		.catch((err) => {
 			console.log(err)
+			reject(err)
 		})
 	})
 }
@@ -92,20 +96,8 @@ export function *deleteTrack(body) {
 											LEFT JOIN article_tracks
 											ON tracks.track_id = article_tracks.track_id WHERE tracks.track_id= ?`
 	const trackParams = [body.track_id]
-	return new Promise((resolve, reject) => {
-		pool.getConnection()
-		.then(connection => {
-			connection.query(deleteQuery, trackParams)
-			.then(result => {
-				console.log(result)
-				resolve(result)
-			})
-		})
-		.catch(err => {
-			console.log(err)
-			reject(err)
-		})
-	})
+	const result = yield pool.query(deleteQuery, trackParams)
+	return result
 }
 
 function cr(url) {

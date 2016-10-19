@@ -40,12 +40,9 @@ block content
                 - var id = a.article_id.toString();
                 td.right-border #{id}
                 td
-                  a(href='/articles?id=#{id}') #{a.article_title}
+                  a(href='/articles?id=' + id) #{a.article_title}
                 td.align-center.left-border
-                  a.editBtn.edit(href='/edit-list?id=#{id}', data-id=id)
+                  a.editBtn.edit(href='/article?id=' + id, data-id=id)
                     span.glyphicon.glyphicon-pencil
                   a.removeBtn.edit(href='/delete-list?id=#{id}', data-id=id)
                     span.glyphicon.glyphicon-trash
-      
-                  
-          
