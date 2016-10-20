@@ -19,52 +19,55 @@ export function getOne() {
 
 // 保存文章
 export function *save(article) {
-	const preURL = article.prefixUrl
-	// 新增文章
-	const articleQuery = `INSERT INTO articles(article_title, article_type,
+  const preURL = article.prefixUrl
+  // 新增文章
+  const articleQuery = `INSERT INTO articles(article_title, article_type,
               article_content, article_cover, article_songs) VALUES(?,?,?,?,?)`
-	const articleCoverURL = `${preURL}cover.png`
-	const articleParams = [
-		article.title,
-		article.type,
-		article.content,
-		articleCoverURL,
-		article.songCount,
-	]
+  const articleCoverURL = `${preURL}cover.png`
+  const articleParams = [
+    article.title,
+    article.type,
+    article.content,
+    articleCoverURL,
+    article.songCount,
+  ]
 
-	const result = yield pool.query(articleQuery, articleParams)
-	const insertID = result.insertId
-	const tracksFunc = []
-	const relationFunc = []
-	const tracksQuery = `INSERT INTO tracks (
-										track_name,
-										track_artist,
-										track_lrc,
-										track_lrc_cn,
-										track_url,
-										track_cover) VALUE(?,?,?,?,?,?)`
-	const relationQuery = 'INSERT INTO article_tracks(article_id) VALUE(?)'
+  const result = yield pool.query(articleQuery, articleParams)
+  const insertID = result.insertId
+  const tracksFunc = []
+  const relationFunc = []
+  const tracksQuery = `INSERT INTO tracks (
+                    track_name,
+                    track_artist,
+                    track_lrc,
+                    track_lrc_cn,
+                    track_url,
+                    track_cover) VALUE(?,?,?,?,?,?)`
+  const relationQuery = 'INSERT INTO article_tracks(article_id) VALUE(?)'
 
-	for (let i = 0; i < article.songCount; i++) {
-		let track_url = ''
-		let track_cover = ''
-		const t = i + 1
-		if (t < 10) {
-			track_url = `${preURL}0${t}.mp3`
-			track_cover = `${preURL}0${t}.jpg`
-		}
+  for (let i = 0; i < article.songCount; i++) {
+    let track_url = ''
+    let track_cover = ''
+    const t = i + 1
+    if (t < 10) {
+      track_url = `${preURL}0${t}.mp3`
+      track_cover = `${preURL}0${t}.jpg`
+    }
 
-		if (t >= 10) {
-			track_url = `${preURL}${t}.mp3`
-			track_cover = `${preURL}${t}.jpg`
-		}
-		const trackParams = ['unwritten', 'unwritten', 'unwritten', 'unwritten']
-		trackParams.push(track_url, track_cover)
-		tracksFunc.push(pool.cr(tracksQuery, trackParams))
-	}
-	const idQuery = 'SELECT * FROM articles where article_id = ?'
-	const idParam = [insertID]
-	const results = yield pool.query(idQuery, idParam)
+    if (t >= 10) {
+      track_url = `${preURL}${t}.mp3`
+      track_cover = `${preURL}${t}.jpg`
+    }
+    if (article.type === '专辑') {
+      track_cover = `${preURL}cover.jpg`
+    }
+    const trackParams = ['unwritten', 'unwritten', 'unwritten', 'unwritten']
+    trackParams.push(track_url, track_cover)
+    tracksFunc.push(pool.cr(tracksQuery, trackParams))
+  }
+  const idQuery = 'SELECT * FROM articles where article_id = ?'
+  const idParam = [insertID]
+  const results = yield pool.query(idQuery, idParam)
 
 	series(tracksFunc)
 	.then(() => {
@@ -82,15 +85,15 @@ export function *save(article) {
 
 // 获取旧歌单
 export function* fecthOldArticles(next) {
-	const URL = 'http://121.41.121.87:3000/api/v1/lists'
-	return new Promise((resolve, reject) => {
-		agent.get(URL)
+  const URL = 'http://121.41.121.87:3000/api/v1/lists'
+  return new Promise((resolve, reject) => {
+    agent.get(URL)
 		.then(res => {
 			// 获取全部旧歌单
 			const result = JSON.parse(res.text).reverse()
 			const articlesTemp = []
 			const articleQuery = `INSERT INTO articles(article_title, article_type,
-						article_content, article_cover, old_id) VALUES(?,?,?,?,?)`
+						article_content, article_cover, old_id, is_ready) VALUES(?,?,?,?,?,?)`
 			for (let i = 0; i < result.length; i++) {
 				const article = {}
 				const temp = result[i]
@@ -102,6 +105,7 @@ export function* fecthOldArticles(next) {
 					temp.content,
 					cover,
 					temp.id,
+          1,
 				]
 				articlesTemp.push(pool.cr(articleQuery, articleParams))
 			}
