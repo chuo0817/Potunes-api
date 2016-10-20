@@ -15,9 +15,9 @@ export function* query(sql, params) {
 			connection.query(sql, params)
 			.then(res => {
 				pool.releaseConnection(connection)
-				console.log('-------INSERT----------')
-				console.log('INSERT ID:', res)
-				console.log('#######################')
+				// console.log('-------INSERT----------')
+				// console.log('INSERT ID:', res)
+				// console.log('#######################')
 				resolve(res)
 			})
 		})
