@@ -9,16 +9,22 @@ import Pug from 'koa-pug'
 import serve from 'koa-static'
 import session from 'koa-generic-session'
 import MysqlStore from 'koa-mysql-session'
+import hbs from 'koa-hbs'
 const debug = new Debug('app:index:')
 
 const app = new Koa()
 const pug = new Pug({
-  viewPath: `${__dirname}/views`,
+  viewPath: `${__dirname}/views/pugs`,
   debug: false,
   pretty: false,
   compileDebug: false,
   app,
 })
+
+app.use(hbs.middleware({
+  viewPath: `${__dirname}/views/`,
+  partialsPath: `${__dirname}/views/partials/`,
+}))
 
 const THIRTY_MINTUES = 30 * 60 * 1000
 
@@ -56,9 +62,9 @@ app.use(parser({ extended: true }))
 app.use(json())
 app.use(logger())
 
-app.use(views(`${__dirname}/views`, {
+app.use(views(`${__dirname}/views/`, {
   map: {
-    html: 'pug',
+    html: 'handlebars',
   },
 }))
 app.use(serve(`${__dirname}/public`))

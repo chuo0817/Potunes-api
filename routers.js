@@ -7,9 +7,7 @@ const controllers = _requiredir('./controllers')
 export default function() {
   const router = new Router()
 
-  router.get('/', (next) => {
-    this.redirect('/admin')
-  })
+  router.get('/', controllers.index.home)
 
   router.get('/admin', controllers.index.home)
   router.post('/admin', controllers.index.adminLogin)
