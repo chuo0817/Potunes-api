@@ -1,0 +1,17 @@
+extends layout
+block body
+  body.home-template
+    span.mobile.btn-mobile-menu
+      i.fa.fa-list.btn-mobile-menu__icon
+      i.fa.fa-angle-up.btn-mobile-close__icon.hidden
+  include side_panel
+  div.content-wrapper
+    div.content-wrapper__inner
+      include posts
+      include footer
+
+  block script
+    script(src='//cdn.bootcss.com/jquery/3.1.1/jquery.min.js')
+    script(src='/javascripts/main.js')
+    script(src='javascripts/highlight.pack.js')
+    script hljs.initHighlightingOnLoad();

@@ -9,7 +9,7 @@ export default function() {
 
   router.get('/', controllers.index.home)
 
-  router.get('/admin', controllers.index.home)
+  router.get('/admin', controllers.index.admin)
   router.post('/admin', controllers.index.adminLogin)
 
   router.get('/articles', authentication, controllers.index.articles)
@@ -17,7 +17,6 @@ export default function() {
   // 新建文章
   router.get('/article/new', authentication, controllers.new_article.home)
   router.post('/article/new', authentication, controllers.new_article.post)
-
   // 获取一篇文章内容
   router.get('/article', authentication, controllers.article.get)
 

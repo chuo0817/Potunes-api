@@ -1,0 +1,19 @@
+div.main-post-list.hidden
+  ol.post-list
+    //- {{#foreach posts}}
+    li
+      h2.post-list__post-title.post-title 
+      a(href="{{url}}",title="link to {{{title}}}") {{{title}}}
+      p.excerpt {{excerpt characters="250"}}&hellip
+      div.post-list__meta 
+        time.post-list__meta--date.date(datetime="") &#8226; 
+        span.post-list__meta--tags.tags 于 
+        a.btn-border-small(href="{{url}}") 继续阅读
+      hr.post-list__divider
+    </li>
+    //- {{/foreach}}
+  </ol>
+
+  include pagination
+
+</div>

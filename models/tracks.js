@@ -38,6 +38,7 @@ export function *getOne(track_id) {
   const trackQuery = 'SELECT * FROM tracks where track_id = ?'
   const trackQuery_params = [track_id]
   const result = yield pool.query(trackQuery, trackQuery_params)
+  console.log(result)
   return result[0]
 }
 
