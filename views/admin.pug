@@ -1,7 +1,31 @@
 extends layout
 
 block content
+  head
+    link(rel="stylesheet",type="text/css",href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700")
+    link(rel="stylesheet" href="/stylesheets/vendor.css")
+    link(rel="stylesheet" href="/stylesheets/ghost.css")
   body.ember-application.ghost-login
     script(src='/javascripts/vendor.js')
     script(src='/javascripts/ghost.js')
-    
+    div.ember-view
+      div.ember-view.gh-app
+        a.ember-view.sr-only.sr-only-focusable(href='javascript:;') Skip to main content
+        aside.ember-view.gh-alerts
+        div.gh-viewport
+          main.ember-view.gh-main(role='main')
+            div.gh-flow
+              div.gh-flow-content-wrap
+                section.gh-flow-content
+                  form.gh-signin(method='post', novalidate='novalidate')
+                    div.ember-view.form-group.success
+                     span.input-icon.icon-mail
+                       input.gh-input.email.ember-view.ember-text-field.gh-input(autocapitalize="off",autocorrect="off",autofocus="",placeholder="Email Address",tabindex="1",name="email",type="email")
+                    div.ember-view.from-group
+                      span.input-icon.icon-lock.forgotten-wrap
+                        input.password.ember-view.ember-text-field.gh-input(autocorrect="off",placeholder="Password",tabindex="2",name="password",type="password")
+                        button.forgotten-link.btn.btn-link.ember-view(type="button",tabindex="4") Forgot?
+                    button.login.btn.btn-blue.btn-block.ember-view(type='submit',tabindex='3',style='margin-top:20px;') Sign in
+                  p.main-error
+          aside.ember-view.gh-notifications
+          div.ember-view.content-cover

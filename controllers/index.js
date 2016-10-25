@@ -12,14 +12,15 @@ export function *admin(next) {
 // 管理员登录
 export function* adminLogin(next) {
   const body = this.request.body
-  if (!body.name || !body.password) {
+  console.log(this.request.body)
+  if (!body.email || !body.password) {
     return this.body = {
       status: 400,
       message: '{name} & {password} is required.',
     }
   }
 
-  const user = yield User.get(body.name)
+  const user = yield User.get(body.email)
   delete user.password
   this.session.user = user
 
