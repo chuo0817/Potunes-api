@@ -9,10 +9,36 @@ block content
   body.ember-application
     script(src='/javascripts/ghost.js')
     script(src='/javascripts/vendor.js')
-    include admin_panel
-          main
-          aside
-          div
+    div.ember-view
+      div.ember-view.gh-app
+          div.gh-viewport
+            include admin_panel
+            main.ember-view.gh-main(role='main')
+              section.ember-view.gh-view.content-view-container
+                header.view-header
+                  h2.ember-view.view-title
+                    button.gh-mobilemenu-button(role='presentation',data-ember-action='1078')
+                      i.icon-gh
+                        span.sr-only Menu
+                    span Content
+                  section.view-actions
+                    a.btn.btn-green.ember-view(href='/new_article',title="New Post") New Playlist
+                div.view-container
+                  section.content-list.js-content-list
+                    section.ember-view.content-list-content.js-content-scrollbox
+                      ol.posts-list
+                        each article in articles
+                          li.ember-view.active
+                            a.permalink.ember-view.active(href='/',title='Edit this post')
+                              h3.entry-title #{article.article_title}
+                  section.content-preview.js-content-preview
+                    section.post-controls
+                      a.btn.btn-minor.post-edit.ember-view(href='', title='Edit this post')
+                        i.icon-edit
+                    section.ember-view.content-preview-content
+                      div.wrapper
+                        h1.content-preview-title
+                          a.ember-view
       
     //- .modal.fade#editListModal(tabindex='-1', role='dialog', aria-labelledby='editBannerModel')
     //-   .modal-dialog.modal-lg

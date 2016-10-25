@@ -1,46 +1,44 @@
-div.ember-view
-  div.ember-view.gh-app
-    div.gh-viewport
-      nav.ember-view.gh-nav
-        header.gh-nav-menu.ember-view.closed(role="button")
-          div.gh-nav-menu-icon(style="background-image: url(/images/panel.png)")
-          div.gh-nav-menu-details
-            div.gh-nav-menu-details-blog 程序车的炸鸡
-            div.gh-nav-menu-details-user 破车
-          i.icon-arrow
-        section.gh-nav-body
-          section.gh-nav-search
-            div.gh-nav-search-input.ember-view
-              select.ember-view.ember-selectize.selectized(autocomplete="off",tabindex="-1",style="display: none;")
-                option(value="",selected="selected")
-              div.selectize-control.ember-view.ember-selectize.multi.plugin-remove_button
-                div.selectize-input.items.not-full.has-options.focus.input-active
-                  input(type="text",autocomplete="off",tabindex="0",placeholder="Search",style="width: 46px; opacity: 1; position: relative; left: 0px;")
-                div.selectize-dropdown.multi.ember-view.ember-selectize.plugin-remove_button(style="display: none; width: 188px; top: 31px; left: 0px;")
-                  div.selectize-dropdown-content
-                  div.dropdown-empty-message(style="display: none;") Nothing found…
-              button.gh-nav-search-button(data-ember-action="883")
-                i.icon-search
-                span.sr-only Search
-          ul.gh-nav-list.gh-nav-main
-              li
-                a.ember-view.gh-nav-main-editor(href="/ghost/editor/")
-                  i.icon-pen NewPost
-              li
-                a.ember-view.gh-nav-main-content(href="/ghost/")
-                  i.icon-content Content
-          ul.gh-nav-list.gh-nav-settings
-            li.gh-nav-list-h Settings
-            li
-              a.ember-view.gh-nav-settings-general(href="/ghost/settings/general/")
-                i.icon-settings General
-            li
-              a.ember-view.gh-nav-settings-navigation(href="/ghost/settings/navigation/")
-                i.icon-compass Navigation
-            li
-              a.ember-view.gh-nav-settings-tags(href="/ghost/settings/tags/")
-                i.icon-tag Tags
-        footer.gh-nav-footer
-          div.ember-view.gh-menu-toggle
-            i.icon-minimise(role="button")
-          a.gh-nav-footer-sitelink(target="_blank" href="/") View blog
+
+nav.ember-view.gh-nav
+  header.gh-nav-menu.ember-view.closed(role="button")
+    div.gh-nav-menu-icon(style="background-image: url(/images/panel.png)")
+    div.gh-nav-menu-details
+      div.gh-nav-menu-details-blog 程序车的炸鸡
+      div.gh-nav-menu-details-user 破车
+    i.icon-arrow
+  section.gh-nav-body
+    section.gh-nav-search
+      div.gh-nav-search-input.ember-view
+        select.ember-view.ember-selectize.selectized(autocomplete="off",tabindex="-1",style="display: none;")
+          option(value="",selected="selected")
+        div.selectize-control.ember-view.ember-selectize.multi.plugin-remove_button
+          div.selectize-input.items.not-full.has-options.focus.input-active
+            input(type="text",autocomplete="off",tabindex="0",placeholder="Search",style="width: 46px; opacity: 1; position: relative; left: 0px;")
+          div.selectize-dropdown.multi.ember-view.ember-selectize.plugin-remove_button(style="display: none; width: 188px; top: 31px; left: 0px;")
+            div.selectize-dropdown-content
+            div.dropdown-empty-message(style="display: none;") Nothing found…
+        button.gh-nav-search-button(data-ember-action="883")
+          i.icon-search
+          span.sr-only Search
+    ul.gh-nav-list.gh-nav-main
+        li
+          a.ember-view.gh-nav-main-editor(href="/ghost/editor/")
+            i.icon-pen NewPost
+        li
+          a.ember-view.gh-nav-main-content(href="/ghost/")
+            i.icon-content Content
+    ul.gh-nav-list.gh-nav-settings
+      li.gh-nav-list-h Settings
+      li
+        a.ember-view.gh-nav-settings-general(href="/ghost/settings/general/")
+          i.icon-settings General
+      li
+        a.ember-view.gh-nav-settings-navigation(href="/ghost/settings/navigation/")
+          i.icon-compass Navigation
+      li
+        a.ember-view.gh-nav-settings-tags(href="/ghost/settings/tags/")
+          i.icon-tag Tags
+  footer.gh-nav-footer
+    div.ember-view.gh-menu-toggle
+      i.icon-minimise(role="button")
+    a.gh-nav-footer-sitelink(target="_blank" href="/") View blog
