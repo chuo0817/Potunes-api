@@ -3,8 +3,8 @@ import * as Articles from '../models/articles'
 import * as Tracks from '../models/tracks'
 
 // 首页
-export function *admin(next) {
-  this.render('admin', {
+export function *login(next) {
+  this.render('login', {
     title: '后台',
   })
   return null
@@ -38,7 +38,6 @@ export function *articles(next) {
     })
   } else {
     const article = yield Articles.getAll()
-    this.body = article
     this.render('index', {
       title: '歌单',
       articles: article,
@@ -48,9 +47,7 @@ export function *articles(next) {
 }
 
 export function* home(next) {
-  console.log('123')
   this.render('home', {
     title: '首页',
-    // meta_description: 'Thoughts, stories and ideas.',
   })
 }

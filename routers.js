@@ -9,7 +9,7 @@ export default function() {
 
   router.get('/', controllers.index.home)
 
-  router.get('/admin', controllers.index.admin)
+  router.get('/admin', controllers.index.login)
   router.post('/admin', controllers.index.adminLogin)
 
   router.get('/articles', authentication, controllers.index.articles)
