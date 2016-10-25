@@ -1,48 +1,51 @@
 extends layout
 
 block content
-  .container
-    table.table.table-striped
-      h1.align-center 歌单
-      thead
-        tr
-          th.right-border.align-center 序号
-          th.align-center(colspan='2') 歌手名
-          th.align-center(colspan='2') 歌曲名
-          th.left-border
-            -var listId = page_id
-            a#create(href='/add-track?id=#{listId}')
-              button.btn.btn-primary.edit-btn 添加
-      tbody#tracks
-        each track in tracks
-         tr.align-center
-          td.right-border.trackId #{track.track_id}
-          td.right-border(colspan='2') #{track.track_artist}
-          td(colspan='2') #{track.track_name}
-          td.left-border
-            - var id = track.track_id.toString()
-            button.editBtn.edit(data-id=id)
-              span.glyphicon.glyphicon-pencil
-            button.removeBtn.edit(data-id=id, data-list-id=listId)
-              span.glyphicon.glyphicon-trash
-
-    form#form-horizontal(method='post', action='/track-list/#{page_id}')
-      h1.align-center 添加歌曲信息
-      input#content(name='content', class='form-control', ≤placeholder='歌曲信息', height='128')
-      input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
-      input.bottom-margin.col-sm-4.col-sm-offset-4.btn.btn-info(type='submit', value='更新')
+  head
+    link(rel='stylesheet', href='//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css')
+  body
     .container
-      div#dialog-form(title='更新歌曲信息')
-        form#update
-          label(for='track_id') 歌曲ID
-          input#track_id.form-control(type='text', name='track_id')
-          label(for='track_artist') 歌手名
-          input#track_artist.form-control(type='text', name='track_artist')
-          label(for='track_name') 歌曲名
-          input#track_name.form-control(type='text', name='track_name')
-          label(for='track_cover') 专辑封面地址
-          input#track_cover.form-control(type='text', name='track_cover')
-          label(for='track_url') 歌曲试听地址
-          input#track_url.form-control(type='text', name='track_url')
+      table.table.table-striped
+        h1.align-center 歌单
+        thead
+          tr
+            th.right-border.align-center 序号
+            th.align-center(colspan='2') 歌手名
+            th.align-center(colspan='2') 歌曲名
+            th.left-border
+              -var listId = page_id
+              a#create(href='/add-track?id=#{listId}')
+                button.btn.btn-primary.edit-btn 添加
+        tbody#tracks
+          each track in tracks
+           tr.align-center
+            td.right-border.trackId #{track.track_id}
+            td.right-border(colspan='2') #{track.track_artist}
+            td(colspan='2') #{track.track_name}
+            td.left-border
+              - var id = track.track_id.toString()
+              button.editBtn.edit(data-id=id)
+                span.glyphicon.glyphicon-pencil
+              button.removeBtn.edit(data-id=id, data-list-id=listId)
+                span.glyphicon.glyphicon-trash
+
+      form#form-horizontal(method='post', action='/track-list/#{page_id}')
+        h1.align-center 添加歌曲信息
+        input#content(name='content', class='form-control', ≤placeholder='歌曲信息', height='128')
+        input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
+        input.bottom-margin.col-sm-4.col-sm-offset-4.btn.btn-info(type='submit', value='更新')
+      .container
+        div#dialog-form(title='更新歌曲信息')
+          form#update
+            label(for='track_id') 歌曲ID
+            input#track_id.form-control(type='text', name='track_id')
+            label(for='track_artist') 歌手名
+            input#track_artist.form-control(type='text', name='track_artist')
+            label(for='track_name') 歌曲名
+            input#track_name.form-control(type='text', name='track_name')
+            label(for='track_cover') 专辑封面地址
+            input#track_cover.form-control(type='text', name='track_cover')
+            label(for='track_url') 歌曲试听地址
+            input#track_url.form-control(type='text', name='track_url')
 block script
   script(src='/javascripts/track-list.js')
