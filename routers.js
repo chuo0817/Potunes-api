@@ -12,7 +12,7 @@ export default function() {
   router.get('/admin', controllers.index.login)
   router.post('/admin', controllers.index.adminLogin)
 
-  router.get('/articles', authentication, controllers.index.articles)
+  router.get('/articles/:id', authentication, controllers.index.articles)
 
   // 新建文章
   router.get('/article/new', authentication, controllers.new_article.home)

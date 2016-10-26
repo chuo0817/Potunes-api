@@ -20,17 +20,23 @@ block content
                     button.gh-mobilemenu-button(role='presentation',data-ember-action='1078')
                       i.icon-gh
                         span.sr-only Menu
-                    span Content
+                    span content
                   section.view-actions
                     a.btn.btn-green.ember-view(href='/new_article',title="New Post") New Playlist
                 div.view-container
                   section.content-list.js-content-list
                     section.ember-view.content-list-content.js-content-scrollbox
                       ol.posts-list
-                        each article in articles
-                          li.ember-view.active
-                            a.permalink.ember-view.active(href='/',title='Edit this post')
-                              h3.entry-title #{article.article_title}
+                        each a in articles
+                          if (a.article_id.toString() == page_id.toString())
+                            li.ember-view.active
+                              a.permalink.ember-view.active(href='/articles/' + a.article_id,title='Edit this post')
+                                h3.entry-title #{a.article_title}
+                          else
+                            li.ember-view
+                              a.permalink.ember-view.active(href='/articles/' + a.article_id,title='Edit this post')
+                                h3.entry-title #{a.article_title}
+                        
                   section.content-preview.js-content-preview
                     section.post-controls
                       a.btn.btn-minor.post-edit.ember-view(href='', title='Edit this post')

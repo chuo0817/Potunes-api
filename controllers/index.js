@@ -12,7 +12,6 @@ export function *login(next) {
 // 管理员登录
 export function* adminLogin(next) {
   const body = this.request.body
-  console.log(this.request.body)
   if (!body.email || !body.password) {
     return this.body = {
       status: 400,
@@ -23,26 +22,30 @@ export function* adminLogin(next) {
   const user = yield User.get(body.email)
   delete user.password
   this.session.user = user
+  const max = yield Articles.getMaxId()
 
-  this.redirect('/articles')
+  this.redirect(`/articles/${max}`)
   return null
 }
 
 // 获取文章列表
 export function *articles(next) {
-  if (this.query.id) {
-    const tracks = yield Tracks.get(this.query.id)
-    this.render('track_list', {
-      tracks,
-      page_id: this.query.id,
-    })
-  } else {
-    const article = yield Articles.getAll()
-    this.render('index', {
-      title: '歌单',
-      articles: article,
-    })
-  }
+  console.log('123')
+  // if (this.query.id) {
+  //   const tracks = yield Tracks.get(this.query.id)
+  //   this.render('track_list', {
+  //     tracks,
+  //     page_id: this.query.id,
+  //     id: this.query.id,
+  //   })
+  // } else {
+  const article = yield Articles.getAll()
+  this.render('index', {
+    title: '歌单',
+    articles: article,
+    page_id: this.params.id,
+  })
+  // }
   return null
 }
 

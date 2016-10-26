@@ -119,3 +119,9 @@ export function* fecthOldArticles(next) {
     })
   })
 }
+
+export function* getMaxId(next) {
+  const query = 'select max(article_id) as id from articles'
+  const max = yield pool.query(query)
+  return max[0].id
+}
