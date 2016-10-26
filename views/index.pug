@@ -22,7 +22,7 @@ block content
                         span.sr-only Menu
                     span content
                   section.view-actions
-                    a.btn.btn-green.ember-view(href='/new_article',title="New Post") New Playlist
+                    a.btn.btn-green.ember-view(href='/article/new',title="New Playlist") New Playlist
                 div.view-container
                   section.content-list.js-content-list
                     section.ember-view.content-list-content.js-content-scrollbox
@@ -39,12 +39,15 @@ block content
                         
                   section.content-preview.js-content-preview
                     section.post-controls
-                      a.btn.btn-minor.post-edit.ember-view(href='', title='Edit this post')
+                      a.btn.btn-minor.post-edit.ember-view(href='/articles/' + page_id.toString() + '/edit', title='Edit this post')
                         i.icon-edit
                     section.ember-view.content-preview-content
                       div.wrapper
                         h1.content-preview-title
-                          a.ember-view
+                        - var page = page_id.toString() - 1
+                        - var arr = articles.reverse()
+                        - var list_title = articles[page].article_title
+                          a.ember-view(href='/articles/' + page_id.toString() + '/edit') #{list_title}
       
     //- .modal.fade#editListModal(tabindex='-1', role='dialog', aria-labelledby='editBannerModel')
     //-   .modal-dialog.modal-lg
