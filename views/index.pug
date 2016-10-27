@@ -47,7 +47,9 @@ block content
                         - var page = page_id.toString() - 1
                         - var arr = articles.reverse()
                         - var list_title = articles[page].article_title
+                        - var content = articles[page].article_content
                           a.ember-view(href='/articles/' + page_id.toString() + '/edit') #{list_title}
+                          #{content}
       
     //- .modal.fade#editListModal(tabindex='-1', role='dialog', aria-labelledby='editBannerModel')
     //-   .modal-dialog.modal-lg

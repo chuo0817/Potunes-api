@@ -2,6 +2,7 @@ import promisify from 'promisify-es6'
 import async from 'async'
 import agent from 'superagent-es6-promise'
 import * as pool from '../models/db'
+import marked from 'marked'
 
 const series = promisify(async.series)
 
@@ -27,10 +28,11 @@ export function *save(article) {
   const articleParams = [
     article.title,
     article.type,
-    article.content,
+    marked(article.content),
     articleCoverURL,
     article.songCount,
   ]
+  console.log(marked(article.content))
 
   const result = yield pool.query(articleQuery, articleParams)
   const insertID = result.insertId
