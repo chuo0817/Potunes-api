@@ -2,7 +2,6 @@ extends layout
 
 block content
   head
-    //- link(rel='stylesheet', href='//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css')
     link(rel="stylesheet",type="text/css",href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700")
     link(rel="stylesheet" href="/stylesheets/vendor.css")
     link(rel="stylesheet" href="/stylesheets/ghost.css")
@@ -22,7 +21,7 @@ block content
                         span.sr-only Menu
                     span content
                   section.view-actions
-                    a.btn.btn-green.ember-view(href='/article/new',title="New Playlist") New Playlist
+                    a.btn.btn-green.ember-view(href='/api/admin/article/new',title="New Playlist") New Playlist
                 div.view-container
                   section.content-list.js-content-list
                     section.ember-view.content-list-content.js-content-scrollbox
@@ -30,11 +29,11 @@ block content
                         each a in articles
                           if (a.article_id.toString() == page_id.toString())
                             li.ember-view.active
-                              a.permalink.ember-view.active(href='/articles/' + a.article_id,title='Edit this post')
+                              a.permalink.ember-view.active(href='/api/admin/articles/' + a.article_id,title='Edit this post')
                                 h3.entry-title #{a.article_title}
                           else
                             li.ember-view
-                              a.permalink.ember-view.active(href='/articles/' + a.article_id,title='Edit this post')
+                              a.permalink.ember-view.active(href='/api/admin/articles/' + a.article_id,title='Edit this post')
                                 h3.entry-title #{a.article_title}
                         
                   section.content-preview.js-content-preview
@@ -48,7 +47,7 @@ block content
                         - var arr = articles.reverse()
                         - var list_title = articles[page].article_title
                         - var content = articles[page].article_content
-                          a.ember-view(href='/articles/' + page_id.toString() + '/edit') #{list_title}
+                          a.ember-view(href='/api/admin/articles/' + page_id.toString() + '/edit') #{list_title}
                           #{content}
       
     //- .modal.fade#editListModal(tabindex='-1', role='dialog', aria-labelledby='editBannerModel')
