@@ -32,7 +32,6 @@ export function *save(article) {
     articleCoverURL,
     article.songCount,
   ]
-  console.log(marked(article.content))
 
   const result = yield pool.query(articleQuery, articleParams)
   const insertID = result.insertId
