@@ -2,15 +2,17 @@ import Koa from 'koa'
 import logger from 'koa-logger'
 import json from 'koa-json'
 import views from 'koa-views'
-import routers from './routers'
+// import routers from './routers'
 import parser from 'koa-bodyparser'
 import Debug from 'debug'
 import Pug from 'koa-pug'
 import serve from 'koa-static'
 import session from 'koa-generic-session'
 import MysqlStore from 'koa-mysql-session'
-const debug = new Debug('app:index:')
+import _requiredir from 'require-dir'
+const routers = _requiredir('./routers')
 
+const debug = new Debug('app:index:')
 const app = new Koa()
 const pug = new Pug({
   viewPath: `${__dirname}/views/`,
@@ -63,6 +65,7 @@ app.use(views(`${__dirname}/views/`, {
   },
 }))
 app.use(serve(`${__dirname}/public`))
-app.use(routers().routes())
+app.use(routers.backend().routes())
+app.use(routers.frontend().routes())
 
 module.exports = app

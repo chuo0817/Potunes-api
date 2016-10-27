@@ -12,7 +12,7 @@ export function *getTracks(next) {
 // 批量更新歌曲信息
 export function *updateTracks(next) {
   yield Tracks.updateTracksInfo(this.request.body)
-  this.redirect(`/articles?id=${this.params.id}`)
+  this.redirect(`/api/admin/articles?id=${this.params.id}`)
 }
 // 更新一首歌信息
 export function *updateTrack(next) {

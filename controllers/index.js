@@ -3,3 +3,7 @@ export function* home(next) {
     title: '首页',
   })
 }
+
+export function* direct(next) {
+  this.redirect('/api/admin/')
+}

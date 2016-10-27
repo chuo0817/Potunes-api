@@ -11,5 +11,5 @@ export function* fetchOld(next) {
   // 匹配歌曲
   yield Tracks.match()
 
-  this.redirect('/articles')
+  this.redirect('/api/admin/articles')
 }

@@ -1,6 +1,5 @@
 import * as User from '../models/user'
 import * as Articles from '../models/articles'
-import * as Tracks from '../models/tracks'
 
 // 首页
 export function *index(next) {
@@ -24,6 +23,6 @@ export function* login(next) {
   this.session.user = user
   const max = yield Articles.getMaxId()
 
-  this.redirect(`/articles/${max}`)
+  this.redirect(`/api/admin/articles/${max}`)
   return null
 }
