@@ -13,3 +13,8 @@ export function* fetchOld(next) {
 
   this.redirect('/api/admin/articles')
 }
+
+export function* getTracks(next) {
+  const tracks = yield Tracks.getTracksByMobile(this.params.id)
+  this.body = tracks
+}

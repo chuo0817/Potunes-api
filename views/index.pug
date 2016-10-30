@@ -2,7 +2,6 @@ extends layout
 
 block content
   head
-    link(rel="stylesheet",type="text/css",href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700")
     link(rel="stylesheet" href="/stylesheets/vendor.css")
     link(rel="stylesheet" href="/stylesheets/ghost.css")
   body.ember-application
@@ -23,7 +22,7 @@ block content
                   section.view-actions
                     a.btn.btn-green.ember-view(href='/api/admin/article/new',title="New Playlist") New Playlist
                 div.view-container
-                  section.content-list.js-content-list
+                  section.content-list
                     section.ember-view.content-list-content.js-content-scrollbox
                       ol.posts-list
                         each a in articles
@@ -48,6 +47,7 @@ block content
                         - var list_title = articles[page].article_title
                         - var content = articles[page].article_content
                           a.ember-view(href='/api/admin/articles/' + page_id.toString() + '/edit') #{list_title}
+                          br
                           #{content}
       
     //- .modal.fade#editListModal(tabindex='-1', role='dialog', aria-labelledby='editBannerModel')

@@ -33,12 +33,19 @@ export function *get(article_id) {
   })
 }
 
+export function* getTracksByMobile(query) {
+  const tracksQuery = 'SELECT album, tracks.track_id,track_artist, track_cover, track_name, track_url FROM tracks INNER JOIN article_tracks ON tracks.track_id = article_tracks.track_id WHERE article_tracks.article_id = ?;'
+  const params = [query]
+  const tracks = yield pool.query(tracksQuery, params)
+  return tracks
+}
+
+
 // 获取一首歌的信息
 export function *getOne(track_id) {
   const trackQuery = 'SELECT * FROM tracks where track_id = ?'
   const trackQuery_params = [track_id]
   const result = yield pool.query(trackQuery, trackQuery_params)
-  console.log(result)
   return result[0]
 }
 
@@ -164,9 +171,10 @@ export function* match(next) {
     const result = yield pool.query(matchQuery)
     track_ids.push(result)
   }
+  const reverse = article_ids.reverse()
   for (let i = 0; i < article_ids.length; i++) {
     const insertQuery = 'insert into article_tracks(article_id) values(?)'
-    const insertParam = [article_ids.reverse()[i].article_id]
+    const insertParam = [reverse[i].article_id]
     for (let j = 0; j < track_ids[i].length; j++) {
       yield pool.query(insertQuery, insertParam)
     }

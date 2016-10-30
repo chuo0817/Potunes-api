@@ -13,6 +13,12 @@ export function *getAll() {
   const articles = yield pool.query(articleQuery)
   return articles
 }
+
+export function* getAllByMobile() {
+  const articleQuery = `SELECT article_id,article_title,article_cover FROM articles order by article_id desc`
+  const articles = yield pool.query(articleQuery)
+  return articles
+}
 // 获取单个文章列表
 export function getOne() {
 

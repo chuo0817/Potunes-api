@@ -22,3 +22,9 @@ export function *create(next) {
   yield Articles.save(body)
   this.redirect('/api/admin/articles')
 }
+
+
+export function* getArticles(next) {
+  const articles = yield Articles.getAllByMobile()
+  return this.body = articles
+}

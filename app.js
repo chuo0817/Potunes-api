@@ -67,5 +67,6 @@ app.use(views(`${__dirname}/views/`, {
 app.use(serve(`${__dirname}/public`))
 app.use(routers.backend().routes())
 app.use(routers.frontend().routes())
+app.use(routers.mobile().routes())
 
 module.exports = app
