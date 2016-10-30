@@ -34,7 +34,7 @@ export function *get(article_id) {
 }
 
 export function* getTracksByMobile(query) {
-  const tracksQuery = 'SELECT album, tracks.track_id,track_artist, track_cover, track_name, track_url FROM tracks INNER JOIN article_tracks ON tracks.track_id = article_tracks.track_id WHERE article_tracks.article_id = ?;'
+  const tracksQuery = 'SELECT tracks.track_id,track_artist, track_name, track_cover,  track_url FROM tracks INNER JOIN article_tracks ON tracks.track_id = article_tracks.track_id WHERE article_tracks.article_id = ?;'
   const params = [query]
   const tracks = yield pool.query(tracksQuery, params)
   return tracks
