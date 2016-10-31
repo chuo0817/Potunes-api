@@ -88,7 +88,7 @@ export function *updateTracksInfo(body) {
 // 更新一首歌信息
 export function *updateTrack(body) {
   const updateQuery = `UPDATE tracks SET track_artist = ?,
-  track_name = ?, track_cover = ?, track_url = ? WHERE track_id = ?`
+  track_name = ?, track_cover = ?, track_url = ? , track_lrc = ?, track_lrc_cn = ? WHERE track_id = ?`
   const trackParams = []
   for (let i = 1; i < body.length; i++) {
     trackParams.push(body[i].value)
