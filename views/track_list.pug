@@ -13,8 +13,7 @@ block content
             th.align-center(colspan='2') 歌手名
             th.align-center(colspan='2') 歌曲名
             th.left-border
-              -var listId = page_id
-              a#create(href='/api/admin/add-track?id=#{listId}')
+              a#create(href='/api/admin/add-track?id=' + page_id)
                 button.btn.btn-primary.edit-btn 添加
         tbody#tracks
           each track in tracks

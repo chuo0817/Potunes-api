@@ -21,74 +21,7 @@ block content
                 td 
                   a(href='/api/admin/articles/' + a.article_id) #{a.article_title}
                 td.align-center.left-border
-                  a.text-danger.editBtn.edit(href='/api/admin/article/' + a.article_id, data-id=id)
+                  a.text-danger.editBtn.edit(href='/api/admin/articles/' + a.article_id, data-id=id)
                     span.fa.fa-edit.fa-lg
-                  a.text-danger.removeBtn.edit(href='/api/admin/delete-list?id=' + a.article_id, data-id=id)
+                  a.text-danger.removeBtn.edit
                     span.fa.fa-trash.fa-lg
-
-                        
-                  //-         if (a.article_id.toString() == page_id.toString())
-                  //-           li.ember-view.active
-                  //-             a.permalink.ember-view.active(href='/api/admin/articles/' + a.article_id,title='Edit this post')
-                  //-               h3.entry-title #{a.article_title}
-                  //-         else
-                  //-           li.ember-view
-                  //-             a.permalink.ember-view.active(href='/api/admin/articles/' + a.article_id,title='Edit this post')
-                  //-               h3.entry-title #{a.article_title}
-                  //-       
-                  //- section.content-preview.js-content-preview
-                  //-   section.post-controls
-                  //-     a.btn.btn-minor.post-edit.ember-view(href='/articles/' + page_id.toString() + '/edit', title='Edit this post')
-                  //-       i.icon-edit
-                  //-   section.ember-view.content-preview-content
-                  //-     div.wrapper
-                  //-     - var page = page_id.toString() - 1
-                  //-     - var arr = articles.reverse()
-                  //-     - var article = articles[page]
-                  //-     - var content = articles[page].article_content
-                  //-         h2.content-preview-title #{article.article_title}
-                  //-         textarea
-                  //-           #{article.article_content}
-                  //-         
-      
-    //- .modal.fade#editListModal(tabindex='-1', role='dialog', aria-labelledby='editBannerModel')
-    //-   .modal-dialog.modal-lg
-    //-     .modal-content
-    //-       .modal-header
-    //-         h4.modal-title 修改歌单
-    //-       .modal-body
-    //-         form#editListForm.form-horizontal(onsubmit="return false;")
-    //-           .form-group.col-sm-12
-    //-             input#titleInput.form-control(name='title', placeholder='歌单名', required)
-    //-           .form-group.col-sm-12
-    //-             input#idInput.form-control(type='number', name='id', placeholder='歌单ID', required)
-    //-           .form-group.col-sm-12
-    //-             input#categoryInput.form-control(name='category', placeholder='歌单类型(可选)')
-    //-           .form-group.col-sm-12
-    //-             input#coverImageInput.form-control(name='coverImage', placeholder='封面url', required)
-    //-           .form-group.col-sm-12
-    //-             textarea#contentInput.form-control(rows='4', name='content', placeholder='想要bb的话(可选)')
-    //-           .form-group
-    //-             button#editBtn.col-sm-4.col-sm-offset-4.btn.btn-info 修改
-    //- .container
-    //-   .col-md-12
-    //-     h1.align-center #{title}
-    //-     a(href='/tracks/fetch-old')
-    //-       button.btn.btn-primary.edit-btn 获取旧数据
-    //-     table.table.table-striped
-    //-       thead.align-center
-    //-         tr
-    //-           th.right-border.align-center 歌单ID
-    //-           th.align-center 歌单名
-    //-           th.left-border
-    //-             a(href='/article/new')
-    //-               button.btn.btn-primary.edit-btn 添加
-    //-       tbody
-    //-         - var articleArr = articles
-    //-           each a in articleArr
-    //-             tr.align-center
-    //-               - var id = a.article_id.toString();
-    //-               td.right-border #{id}
-    //-               td
-    //-                 a(href='/articles?id=' + id) #{a.article_title}
-    

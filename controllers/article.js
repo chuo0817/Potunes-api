@@ -3,10 +3,11 @@ import * as Tracks from '../models/tracks'
 
 export function* get(next) {
   if (this.params.id) {
-    console.log('123')
     const tracks = yield Tracks.get(this.params.id)
     this.render('track_list', {
       tracks,
+      title: '歌单',
+      page_id: this.params.id,
     })
     return null
   }

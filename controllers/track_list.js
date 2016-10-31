@@ -6,6 +6,7 @@ export function *getTracks(next) {
   this.render('track_list', {
     tracks,
     page_id: this.query.id,
+    title: '歌单',
   })
 }
 
