@@ -18,3 +18,13 @@ export function* getTracks(next) {
   const tracks = yield Tracks.getTracksByMobile(this.params.id)
   this.body = tracks
 }
+
+export function* getOne(next) {
+  const track = yield Tracks.getOne(this.params.id)
+  this.body = track
+}
+
+export function* getLrc(next) {
+  const lrc = yield Tracks.getLrc(this.params.id)
+  this.body = lrc
+}

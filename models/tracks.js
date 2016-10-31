@@ -181,3 +181,10 @@ export function* match(next) {
   }
   return titles
 }
+
+export function* getLrc(query) {
+  const lrcQuery = 'select track_lrc,track_lrc_cn from tracks where track_id = ?'
+  const lrcParam = [query]
+  const lrc = yield pool.query(lrcQuery, lrcParam)
+  return lrc[0]
+}
