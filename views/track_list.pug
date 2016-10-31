@@ -1,12 +1,16 @@
 extends layout
 
 block content
-  head
-    link(rel='stylesheet', href='//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css')
   body
+    script(src='/javascripts/autosize.min.js')
+    script(src='/javascripts/common.js')
+    
     .container
+      .container
+        div.alert.alert-dismissible.alert-success.modal
+          button.close(type='button', data-dismiss='alert') x
+          strong 更新成功
       table.table.table-striped
-        h1.align-center 歌单
         thead
           tr
             th.right-border.align-center 序号
@@ -14,7 +18,7 @@ block content
             th.align-center(colspan='2') 歌曲名
             th.left-border
               -var listId = page_id
-              a#create(href='/add-track?id=#{listId}')
+              a#create(href='/api/admin/add-track?id=#{listId}')
                 button.btn.btn-primary.edit-btn 添加
         tbody#tracks
           each track in tracks
@@ -25,27 +29,36 @@ block content
             td.left-border
               - var id = track.track_id.toString()
               button.editBtn.edit(data-id=id)
-                span.glyphicon.glyphicon-pencil
+                span.fa.fa-edit.fa-lg
               button.removeBtn.edit(data-id=id, data-list-id=listId)
-                span.glyphicon.glyphicon-trash
+                span.fa.fa-trash.fa-lg
 
-      form#form-horizontal(method='post', action='/track-list/#{page_id}')
-        h1.align-center 添加歌曲信息
-        input#content(name='content', class='form-control', placeholder='歌曲信息', height='128')
+      form#form-horizontal(method='post', action='/api/admin/track-list/' + page_id)
+        textarea#content(name='content', class='form-control', placeholder='歌曲信息')
         input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
         input.bottom-margin.col-sm-4.col-sm-offset-4.btn.btn-info(type='submit', value='更新')
-      .container
-        div#dialog-form(title='更新歌曲信息')
-          form#update
-            label(for='track_id') 歌曲ID
-            input#track_id.form-control(type='text', name='track_id')
-            label(for='track_artist') 歌手名
-            input#track_artist.form-control(type='text', name='track_artist')
-            label(for='track_name') 歌曲名
-            input#track_name.form-control(type='text', name='track_name')
-            label(for='track_cover') 专辑封面地址
-            input#track_cover.form-control(type='text', name='track_cover')
-            label(for='track_url') 歌曲试听地址
-            input#track_url.form-control(type='text', name='track_url')
+      div.container
+        div.modal#update
+          div.modal-dialog
+            div.modal-content
+              div.modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') x
+                h4.modal-title 修改歌曲信息
+              form.modal-body
+                label.control-label(for='track_id') 歌曲ID
+                input#track_id.form-control(type='text', name='track_id')
+                label(for='track_artist') 歌手名
+                input#track_artist.form-control(type='text', name='track_artist')
+                label(for='track_name') 歌曲名
+                input#track_name.form-control(type='text', name='track_name')
+                label(for='track_cover') 专辑封面地址
+                input#track_cover.form-control(type='text', name='track_cover')
+                label(for='track_url') 歌曲试听地址
+                input#track_url.form-control(type='text', name='track_url')
+              div.modal-footer
+                buttton.btn.btn-default(data-dismiss='modal', type='button') Close
+                buttton#update.btn.btn-primary(type='button') Save Changes
+
+                
 block script
   script(src='/javascripts/track-list.js')

@@ -29,9 +29,7 @@
   height: 25px;
 }
 
-h1 {
-  color: #00b3ee !important;
-}
+
 
 button {
   border: 0px;
@@ -41,17 +39,17 @@ button {
   width: 90px;
 }
 
-.modal-body {
+/*.modal-body {
   margin-bottom: 30px;
-}
+}*/
 
-input {
+/*input {
   margin-top: 10px !important;
 }
 
 input#content {
   height: 330px;
-}
+}*/
 
 .sel {
   position: absolute;
@@ -96,6 +94,6 @@ fieldset {
   margin-top:25px;
 }
 
-/*#dialog-form {
-  display: none;
-}*/
+table, tr>th {
+  text-align: center;
+}

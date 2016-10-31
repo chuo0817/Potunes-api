@@ -12,7 +12,9 @@ export default function() {
   // 管理员登录
   router.get('/', controllers.admin.index)
   router.post('/', controllers.admin.login)
-  // 获取一篇文章内容
+  // 管理员首页
+  router.get('/articles/', authentication, controllers.article.get)
+  // 获取一篇文章下的歌曲
   router.get('/articles/:id', authentication, controllers.article.get)
   // 新建文章
   router.get('/article/new', authentication, controllers.article.edit)

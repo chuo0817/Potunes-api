@@ -21,8 +21,7 @@ export function* login(next) {
   const user = yield User.get(body.email)
   delete user.password
   this.session.user = user
-  const max = yield Articles.getMaxId()
 
-  this.redirect(`/api/admin/articles/${max}`)
+  this.redirect('/api/admin/articles/')
   return null
 }

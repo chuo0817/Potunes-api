@@ -1,11 +1,19 @@
 import * as Articles from '../models/articles'
+import * as Tracks from '../models/tracks'
 
 export function* get(next) {
-  const article = yield Articles.getAll()
-  this.render('index', {
-    title: '歌单',
-    articles: article,
-    page_id: this.params.id,
+  if (this.params.id) {
+    console.log('123')
+    const tracks = yield Tracks.get(this.params.id)
+    this.render('track_list', {
+      tracks,
+    })
+    return null
+  }
+  const articles = yield Articles.getAll()
+  this.render('admin_index', {
+    title: '管理员首页',
+    articles,
   })
   return null
 }

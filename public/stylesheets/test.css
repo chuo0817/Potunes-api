@@ -1,0 +1,46 @@
+/*******************************
+* MD DIALOG - MATERIAL DESIGN
+* Add "modal-sm" after "modal-dialog" class for smaller dialog.
+* Get free snippets on bootpen.com
+*******************************/
+
+
+
+/* ----- v CAN BE DELETED v ----- */
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #EF5350;
+}
+
+.demo {
+	padding-top: 60px;
+	padding-bottom: 110px;
+}
+
+.btn-demo {
+	margin: 15px;
+	padding: 10px 15px;
+	border-radius: 0;
+	font-size: 16px;
+	background-color: #FFFFFF;
+}
+
+.btn-demo:focus {
+	outline: none;
+}
+
+.demo-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 15px;
+	background-color: #212121;
+	text-align: center;
+}
+
+.demo-footer > a {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 16px;
+	color: #fff;
+}
