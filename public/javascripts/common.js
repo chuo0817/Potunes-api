@@ -35,8 +35,6 @@ $(function() {
   $('#update').click(function() {
     const form = $('.modal-body')
 		const updateInfo = JSON.stringify(form.serializeArray())
-    alert(updateInfo)
-    alert(updataInfo)
     $.ajax(
 			{
 				url: '/api/admin/track-list',
