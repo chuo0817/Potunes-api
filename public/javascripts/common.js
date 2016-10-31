@@ -16,13 +16,14 @@ $(function() {
     })
 		.done(result => {
 			const track = result
-			// alert(track[1])
-			$('#update').modal()
+			$('.modal').modal()
 			document.getElementById('track_id').value = track.track_id
 			document.getElementById('track_artist').value = track.track_artist
 			document.getElementById('track_name').value = track.track_name
 			document.getElementById('track_cover').value = track.track_cover
 			document.getElementById('track_url').value = track.track_url
+      document.getElementById('track_lrc').value = track.track_lrc
+			document.getElementById('track_lrc_cn').value = track.track_lrc_cn
 		})
 		.fail(function() {
 			alert('error')
@@ -34,6 +35,7 @@ $(function() {
   $('#update').click(function() {
     const form = $('.modal-body')
 		const updateInfo = JSON.stringify(form.serializeArray())
+    alert(updataInfo)
     $.ajax(
 			{
 				url: '/api/admin/track-list',
