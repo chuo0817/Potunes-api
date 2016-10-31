@@ -6,10 +6,6 @@ block content
     script(src='/javascripts/common.js')
     
     .container
-      .container
-        div.alert.alert-dismissible.alert-success
-          button.close(type='button', data-dismiss='alert') x
-          strong 更新成功
       table.table.table-striped
         thead
           tr
@@ -36,7 +32,7 @@ block content
       form#form-horizontal(method='post', action='/api/admin/track-list/' + page_id)
         textarea#content(name='content', class='form-control', placeholder='歌曲信息')
         input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
-        input.bottom-margin.col-sm-4.col-sm-offset-4.btn.btn-info(type='submit', value='更新')
+        input.btn.btn-primary(type='submit', value='更新')
       div.container
         div.modal
           div.modal-dialog
@@ -60,5 +56,5 @@ block content
                 label(for='track_lrc_cn') 中文歌词
                 textarea#track_lrc_cn.form-control(type='text', name='track_lrc_cn')
               div.modal-footer
-                buttton.btn.btn-default(data-dismiss='modal', type='button') Close
-                buttton#update.btn.btn-primary(type='button') Save Changes
+                input.btn.btn-default(data-dismiss='modal', value='Close')
+                input#update.btn.btn-primary(value='Save Changes')
