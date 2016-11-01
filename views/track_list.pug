@@ -2,58 +2,66 @@ extends layout
 
 block content
   body
-    script(src='/javascripts/autosize.min.js')
     script(src='/javascripts/common.js')
-    
-    .container
-      table.table.table-striped
-        thead
-          tr
-            th.right-border.align-center 序号
-            th.align-center(colspan='2') 歌手名
-            th.align-center(colspan='2') 歌曲名
-            th.left-border
-              a#create(href='/api/admin/add-track?id=' + page_id)
-                button.btn.btn-primary.edit-btn 添加
-        tbody#tracks
-          each track in tracks
-           tr.align-center
-            td.right-border.trackId #{track.track_id}
-            td.right-border(colspan='2') #{track.track_artist}
-            td(colspan='2') #{track.track_name}
-            td.left-border
-              - var id = track.track_id.toString()
-              button.editBtn.edit(data-id=id)
-                span.fa.fa-edit.fa-lg
-              button.removeBtn.edit(data-id=id, data-list-id=listId)
-                span.fa.fa-trash.fa-lg
-
-      form#form-horizontal(method='post', action='/api/admin/track-list/' + page_id)
-        textarea#content(name='content', class='form-control', placeholder='歌曲信息')
-        input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
-        input.btn.btn-primary(type='submit', value='更新')
-      div.container
-        div.modal
-          div.modal-dialog
-            div.modal-content
-              div.modal-header
-                button.close(type='button', data-dismiss='modal', aria-hidden='true') x
-                h4.modal-title 修改歌曲信息
-              form.modal-body
-                label.control-label(for='track_id') 歌曲ID
-                input#track_id.form-control(type='text', name='track_id')
-                label(for='track_artist') 歌手名
-                input#track_artist.form-control(type='text', name='track_artist')
-                label(for='track_name') 歌曲名
-                input#track_name.form-control(type='text', name='track_name')
-                label(for='track_cover') 专辑封面地址
-                input#track_cover.form-control(type='text', name='track_cover')
-                label(for='track_url') 歌曲试听地址
-                input#track_url.form-control(type='text', name='track_url')
-                label(for='track_lrc') 默认歌词
-                textarea#track_lrc.form-control(type='text', name='track_lrc')
-                label(for='track_lrc_cn') 中文歌词
-                textarea#track_lrc_cn.form-control(type='text', name='track_lrc_cn')
-              div.modal-footer
-                input.btn.btn-default(data-dismiss='modal', value='Close')
-                input#update.btn.btn-primary(value='Save Changes')
+    include header
+    div.row
+      div.col.s6.offset-s3
+        table.bordered.highlight.responsive-table
+          thead
+            tr.teal-text
+              th 序号
+              th(colspan='2') 歌手名
+              th(colspan='2') 歌曲名
+              th.left-border
+                a#create(href='/api/admin/add-track?id=' + page_id)
+                  button.waves-effect.waves-light.btn-flat ADD
+          tbody#tracks
+            each track in tracks
+             tr
+              td.right-border.trackId #{track.track_id}
+              td.pink-text.right-border(colspan='2') #{track.track_artist}
+              td.pink-text(colspan='2') #{track.track_name}
+              td.pink-text.left-border
+                - var id = track.track_id.toString()
+                button.editBtn.edit(data-id=id, data-target='update_info')
+                  span.fa.fa-edit.fa-lg
+                button.removeBtn.edit(data-id=id, data-list-id=listId)
+                  span.fa.fa-trash.fa-lg
+        form.col.s12#form-horizontal(method='post', action='/api/admin/track-list/' + page_id)
+          textarea.materialize-textarea#content(name='content', class='form-control', placeholder='歌曲信息')
+          input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
+          input.btn.btn-primary(type='submit', value='更新')
+        div.modal.row#update_info
+          div.modal-content.col.s12
+            form.details
+              div.row.col.s2
+                div.input-field
+                  input#track_id(type='text', name='track_id')
+                  label.col.offset-s1(for='track_id') track_id
+              div.row.col.s10
+                div.input-field
+                  input#track_artist(type='text', name='track_artist')
+                  label.col.offset-s6(for='track_artist') 歌手名
+              div.row.col.s12
+                div.input-field
+                  input#track_name(type='text', name='track_name')
+                  label.col.offset-s8(for='track_name') 歌曲名
+              div.row.col.s6
+                div.input-field
+                  input#track_cover(type='text', name='track_cover')
+                  label.col.offset-s8(for='track_cover') 歌曲封面
+              div.row.col.s6
+                div.input-field
+                  input#track_url(type='text', name='track_url')
+                  label.col.offset-s8(for='track_url') 歌曲地址
+              div.row.col.s12
+                div.input-field
+                  textarea.materialize-textarea#track_lrc(type='text', name='track_lrc')
+                  label.col.offset-s8(for='track_lrc') 默认歌词
+              div.row.col.s12
+                div.input-field
+                  textarea.materialize-textarea#track_lrc_cn(type='text', name='track_lrc_cn')
+                  label.col.offset-s8(for='track_lrc_cn') 中文歌词
+            div.modal-footer
+              a.btn.waves-effect.waves-light#update Submit
+              a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close

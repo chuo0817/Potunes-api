@@ -7,6 +7,7 @@ export function* get(next) {
     this.render('track_list', {
       tracks,
       title: '歌单',
+      header: 'Playlist',
       page_id: this.params.id,
     })
     return null
@@ -14,6 +15,7 @@ export function* get(next) {
   const articles = yield Articles.getAll()
   this.render('admin_index', {
     title: '管理员首页',
+    header: 'AdminHome',
     articles,
   })
   return null
@@ -22,6 +24,7 @@ export function* get(next) {
 export function *edit(next) {
   this.render('new_article', {
     title: '新增文章',
+    header: '新建',
   })
 }
 

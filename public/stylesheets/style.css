@@ -39,17 +39,6 @@ button {
   width: 90px;
 }
 
-/*.modal-body {
-  margin-bottom: 30px;
-}*/
-
-/*input {
-  margin-top: 10px !important;
-}
-
-input#content {
-  height: 330px;
-}*/
 
 .sel {
   position: absolute;
@@ -58,26 +47,8 @@ input#content {
   width: 100%;
 }
 
-a {
-  cursor:pointer;
-}
 
-.file {
-  width: 10%;
-}
-#fileToUpload {
-    position: absolute;
-    font-size:50px;
-    opacity: 0;
-    width: 100%;
-    top: 0px;
-}
-.file:hover {
-    background: #AADFFD;
-    border-color: #78C3F3;
-    color: #004974;
-    text-decoration: none;
-}
+
 .upload {
   position: relative;
   border-style: dashed;
@@ -88,12 +59,12 @@ a {
   text-align: center;
 }
 
-fieldset {
-  padding:0;
-  border:0;
-  margin-top:25px;
+
+
+table, tr>th, tr>td {
+  text-align: center;
 }
 
-table, tr>th {
-  text-align: center;
+textarea {
+  height: 12px;
 }

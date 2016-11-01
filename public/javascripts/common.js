@@ -1,5 +1,8 @@
 $(function() {
-  autosize($('textarea'))
+  // $('#content').val('New Text');
+  $('#content').trigger('autoresize')
+  $('.modal').modal()
+  $(".button-collapse").sideNav()
   const trlist = $('#tracks').children('tr')
   const ids = []
   for (let i = 0; i < trlist.length; i++) {
@@ -33,7 +36,7 @@ $(function() {
 	})
 
   $('#update').click(function() {
-    const form = $('.modal-body')
+    const form = $('.details')
 		const updateInfo = JSON.stringify(form.serializeArray())
     $.ajax(
 			{

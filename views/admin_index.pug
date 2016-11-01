@@ -4,24 +4,26 @@ block content
   head
 
   body
-    script(src='/javascripts/autosize.min.js')
     script(src='/javascripts/common.js')
-    .container
-      .col-md-4(style="max-width:100%;")
-        table.table.table-striped.table-hover
+    include header
+    div.row
+      div.col.s6.offset-s3
+        table.bordered.highlight
           thead
-          tr
-            th #
-            th Name
-            th Operations
+            tr.teal-text
+              th(data-field='id') #
+              th(data-field='name') Name
+              th(data-field='op') Operations
           tbody
             each a in articles
-              tr.active
-                td.text-danger #{a.article_id}
+              tr
+                td #{a.article_id}
                 td 
-                  a(href='/api/admin/articles/' + a.article_id) #{a.article_title}
-                td.align-center.left-border
-                  a.text-danger.editBtn.edit(href='/api/admin/articles/' + a.article_id, data-id=id)
+                  a.pink-text(href='/api/admin/articles/' + a.article_id) #{a.article_title}
+                td.left-border
+                  a.pink-text.editBtn.edit(href='/api/admin/articles/' + a.article_id, data-id=id)
                     span.fa.fa-edit.fa-lg
-                  a.text-danger.removeBtn.edit
+                  a.pink-text.removeBtn.edit
                     span.fa.fa-trash.fa-lg
+                    
+      

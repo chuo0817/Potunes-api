@@ -1,59 +1,6 @@
 extends layout
 
 block content
-  head
-    link(rel="stylesheet",type="text/css",href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700")
-    link(rel="stylesheet" href="/stylesheets/vendor.css")
-    link(rel="stylesheet" href="/stylesheets/ghost.css")
-  body.ember-application.editor
-    script(src='/javascripts/ghost.js')
-    script(src='/javascripts/vendor.js')
-    div.ember-view
-      div.ember-view.gh-app
-          div.gh-viewport
-            include admin_panel
-            main.ember-view.gh-main(role='main')
-              section.ember-view.gh-view
-                header.view-header
-                  h2.ember-view.view-title
-                    button.gh-mobilemenu-button(role='presentation',data-ember-action='1452')
-                      i.icon-gh
-                        span.sr-only Menu
-                    input.ember-view.ember-text-field.gh-input(placeholder="Your Post Title",tabindex="1",type="text")
-                  section.view-actions
-                    button.post-settings(title='Post Settings', data-ember-action='1495')
-                      i.icon-settings
-                    section.ember-view.splitbtn.js-publish-splitbutton
-                      button.btn.btn-sm.js-publish-button.btn-blue.ember-view.closed(type='button') Save Draft
-                      button.btn.btn-sm.btn-blue.dropdown-toggle.up.ember-view.closed(role='button')
-                        i.options.icon-arrow2
-                        span.sr-only Toggle Settings Menu
-                      div.ember-view.dropdown.editor-options.closed.fade-out.closed
-                        ul.dropdown-menu.dropdown-triangle-bottom-right
-                          li.post-save-publish 
-                            a(href='#', data-ember-action='1500') Publish Now
-                          li.post-save-draft.active 
-                            a(href='#', data-ember-action='1501') Save Draft
-                          li.divider.delete
-                          li.delete
-                            a(href='#',data-ember-action='1502') Delete Post
-                section.view-container.view-editor
-                  section.entry-markdown.js-entry-markdown.active
-                    header.floatingheader
-                      span.desktop-tabs Markdown
-                      //- span.mobile-tabs
-                      //-   a.active(href="#",data-ember-action='1503') Markdown
-                      //-   a(href="#",data-ember-action='1504') Preview
-                      a.markdown-help(href="",title="Markdown Help",data-ember-action="1505")
-                        i.icon-markdown
-                    section.entry-markdown-content#entry-markdown-content
-                      textarea.ember-view.ember-text-area.markdown-editor.js-markdown-editor(spellcheck="true",tabindex="1",class="")
-                  section.entry-preview.js-entry-preview
-                    header.floatingheader
-                      span.desktop-tabs Preview
-                      span.mobile-tabs
-                        a.active(href="#",data-ember-action="1507") Markdown
-                        a(href="#",data-ember-action="1508") Preview
-                      span.entry-word-count 0 words
-                    section.entry-preview-content.js-entry-preview-content
-                      div.ember-view.rendered-markdown.js-rendered-markdown
+  body
+    script(src='/javascripts/common.js')
+    include header
