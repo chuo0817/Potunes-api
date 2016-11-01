@@ -4,3 +4,26 @@ block content
   body
     script(src='/javascripts/common.js')
     include header
+    main
+      .container
+        .row
+          form.col.s10.offset-s1(method='post', action='/api/admin/article/new')
+            div.row.col.s12
+              div.input-field
+                input#title(type='text', name='title')
+                label(for='title') Title
+              div.input-field
+                select(name='type')
+                  option(value='') Choose your option
+                  option(value='0') 精选
+                  option(value='1') 专辑
+                label album type
+              div.input-field
+                textarea.materialize-textarea(name='content')
+                label 文章内容
+              div.input-field
+                input#prefixUrl(type='text', name='prefixUrl')
+                label prefix url
+              div.input-field
+                input#songCount(type='text', name='songCount')
+            input(type='submit', value='走你')

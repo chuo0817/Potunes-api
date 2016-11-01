@@ -65,7 +65,7 @@ export function *save(article) {
       track_url = `${preURL}${t}.mp3`
       track_cover = `${preURL}${t}.jpg`
     }
-    if (article.type === '专辑') {
+    if (article.type === '1') {
       track_cover = `${preURL}cover.jpg`
     }
     const trackParams = ['unwritten', 'unwritten', 'unwritten', 'unwritten']

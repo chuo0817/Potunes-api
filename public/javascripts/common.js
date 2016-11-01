@@ -3,6 +3,7 @@ $(function() {
   $('#content').trigger('autoresize')
   $('.modal').modal()
   $(".button-collapse").sideNav()
+  $('select').material_select()
   const trlist = $('#tracks').children('tr')
   const ids = []
   for (let i = 0; i < trlist.length; i++) {

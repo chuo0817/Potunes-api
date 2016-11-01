@@ -31,6 +31,7 @@ export function *edit(next) {
 
 export function *create(next) {
   const body = this.request.body
+  console.log(body)
   yield Articles.save(body)
   this.redirect('/api/admin/articles')
 }

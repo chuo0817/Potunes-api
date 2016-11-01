@@ -1,20 +1,16 @@
 header
-  nav
+  nav.top-nav
     div.container
       div.nav-wrapper
-        a.page-title.center-align #{header}
-        //- a.button-collapse(data-activates='nav-mobile')
-        //-   i.material-icons menu
-        //- ul.right.hide-on-med-and-down
-        //-   li.bold
-        //-     a(href='/api/admin/article/new') 新建
-        //-   li.bold
-        //-     a 草稿箱
-        //- ul.side-nav#nav-mobile
-        //-   ul.collapsible.collapsible-accordion
-        //-     li.bold
-        //-       a.collapsible-header.waves-effect.waves-teal(href='/api/admin/article/new') 新建
-        //-   ul.collapsible.collapsible-accordion
-        //-     li.bold
-        //-       a.collapsible-header.waves-effect.waves-teal 草稿箱
-        //- 
+        a.page-title #{header}
+  div.container
+    a.button-collapse.top-nav.full.hide-on-large-only(data-activates='nav-mobile')
+      i.material-icons menu
+  ul.side-nav.fixed#nav-mobile
+    ul.collapsible.collapsible-accordion
+      li.bold
+        a.collapsible-header.waves-effect.waves-teal(href='/api/admin/article/new') 新建
+    ul.collapsible.collapsible-accordion
+      li.bold
+        a.collapsible-header.waves-effect.waves-teal 草稿箱
+    
