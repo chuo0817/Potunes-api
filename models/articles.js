@@ -15,7 +15,7 @@ export function *getAll() {
 }
 
 export function* getAllByMobile() {
-  const articleQuery = 'SELECT article_id,article_title,article_cover FROM articles order by article_id desc'
+  const articleQuery = 'SELECT article_id,article_title,article_cover FROM articles where is_ready = 1 order by article_id desc'
   const articles = yield pool.query(articleQuery)
   return articles
 }
