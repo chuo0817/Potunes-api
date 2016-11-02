@@ -52,3 +52,8 @@ export function* draft(next) {
   })
   return null
 }
+
+export function* ready(next) {
+  yield Articles.ready(this.request.body.article_id)
+  return this.body = 'done'
+}

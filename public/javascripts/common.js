@@ -16,18 +16,18 @@ $(function() {
     const data_id = $(this).attr('data-id')
     const url = `/api/admin/tracks?id=${data_id}`
     $.ajax({
-    	url: url,
+      url: url,
     })
 		.done(result => {
-			const track = result
-			$('.modal').modal()
-			document.getElementById('track_id').value = track.track_id
-			document.getElementById('track_artist').value = track.track_artist
-			document.getElementById('track_name').value = track.track_name
-			document.getElementById('track_cover').value = track.track_cover
-			document.getElementById('track_url').value = track.track_url
+      const track = result
+      $('.modal').modal()
+      document.getElementById('track_id').value = track.track_id
+      document.getElementById('track_artist').value = track.track_artist
+      document.getElementById('track_name').value = track.track_name
+      document.getElementById('track_cover').value = track.track_cover
+      document.getElementById('track_url').value = track.track_url
       document.getElementById('track_lrc').value = track.track_lrc
-			document.getElementById('track_lrc_cn').value = track.track_lrc_cn
+      document.getElementById('track_lrc_cn').value = track.track_lrc_cn
 		})
 		.fail(function() {
 			alert('error')
@@ -38,7 +38,7 @@ $(function() {
 
   $('#update').click(function() {
     const form = $('.details')
-		const updateInfo = JSON.stringify(form.serializeArray())
+    const updateInfo = JSON.stringify(form.serializeArray())
     $.ajax(
 			{
 				url: '/api/admin/track-list',
@@ -74,4 +74,15 @@ $(function() {
 		})
 	})
 
+  $('#done').click(function(event) {
+    const article_id = $(this).attr('page')
+    $.ajax({
+      url: '/api/admin/ready',
+      type: 'POST',
+      data: { article_id }
+    })
+    .always(function() {
+      location.href = '/api/admin/articles'
+    })
+  })
 })

@@ -145,3 +145,10 @@ export function* getDrafts(next) {
   const drafts = yield pool.query(query)
   return drafts
 }
+
+export function* ready(id) {
+  const query = 'UPDATE articles SET is_ready = 1 WHERE article_id = ?'
+  const params = [id]
+  yield pool.query(query, params)
+  return null
+}

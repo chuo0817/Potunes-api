@@ -21,6 +21,8 @@ export default function() {
   router.post('/article/new', authentication, controllers.article.create)
   // 草稿箱
   router.get('/drafts', authentication, controllers.article.draft)
+  // 发布草稿箱文章
+  router.post('/ready', authentication, controllers.article.ready)
   // 获取某篇文章下面的所有歌曲
   router.get('/track-list', authentication, controllers.track_list.getTracks)
   // 更新一首歌信息

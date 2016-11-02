@@ -6,8 +6,8 @@ block content
     include header
     div.row
       div.fixed-action-btn
-        a.btn-floating.btn-large.red
-          i.large.material-icons mode_edit
+        a.btn-floating.btn-large.red#done(page=page_id)
+          i.large.material-icons done
         ul
           li
             a.btn-floating.green#create(href='/api/admin/add-track?id=' + page_id)
@@ -34,9 +34,11 @@ block content
             form
               div.row
                 div.input-field
-                  input#ids(name='ids', placeholder='文章ID')
+                  input#ids(name='ids', type='text')
+                  label track_ids
                 div.input-field
-                  textarea.materialize-textarea#content(name='content', placeholder='歌曲信息')
+                  textarea.materialize-textarea#content(name='content', type='text')
+                  label xml infos
                 div.input-field
                   input.btn.waves-effect.waves-light(type='submit', value='更新')
           
