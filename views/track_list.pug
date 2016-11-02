@@ -49,61 +49,15 @@ block content
                 div.input-field
                   input#track_id(type='text', name='track_id')
                   label.col.offset-s1(for='track_id') track_id
-              div.row.col.s10
-                div.input-field
-                  input#track_artist(type='text', name='track_artist')
-                  label.col.offset-s6(for='track_artist') 歌手名
-              div.row.col.s12
-                div.input-field
-                  input#track_name(type='text', name='track_name')
-                  label.col.offset-s8(for='track_name') 歌曲名
-              div.row.col.s6
-                div.input-field
-                  input#track_cover(type='text', name='track_cover')
-                  label.col.offset-s8(for='track_cover') 歌曲封面
-              div.row.col.s6
-                div.input-field
-                  input#track_url(type='text', name='track_url')
-                  label.col.offset-s8(for='track_url') 歌曲地址
-              div.row.col.s12
-                div.input-field
-                  textarea.materialize-textarea#track_lrc(type='text', name='track_lrc')
-                  label.col.offset-s8(for='track_lrc') 默认歌词
-              div.row.col.s12
-                div.input-field
-                  textarea.materialize-textarea#track_lrc_cn(type='text', name='track_lrc_cn')
-                  label.col.offset-s8(for='track_lrc_cn') 中文歌词
+              include track_info
             div.modal-footer
               a.btn.waves-effect.waves-light#update Submit
               a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close
               
         div.modal.row#new_track
           div.modal-content.col.s12
-            form.details
-              div.row.col.s10
-                div.input-field
-                  input#track_artist(type='text', name='track_artist')
-                  label 歌手名
-              div.row.col.s10
-                div.input-field
-                  input#track_name(type='text', name='track_name')
-                  label 歌曲名
-              div.row.col.s10
-                div.input-field
-                  input#track_cover(type='text', name='track_cover')
-                  label 歌曲封面
-              div.row.col.s10
-                div.input-field
-                  input#track_url(type='text', name='track_url')
-                  label 歌曲地址
-              div.row.col.s10
-                div.input-field
-                  textarea.materialize-textarea#track_lrc(type='text', name='track_lrc')
-                  label 默认歌词
-              div.row.col.s10
-                div.input-field
-                  textarea.materialize-textarea#track_lrc_cn(type='text', name='track_lrc_cn')
-                  label 中文歌词
+            form.new_track
+              include track_info
             div.modal-footer.col.s2.offset-s10
               a.btn.waves-effect.waves-light#new Submit
               a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close

@@ -84,4 +84,24 @@ $(function() {
       location.href = '/api/admin/articles'
     })
   })
+
+  $('#new').click(function(event) {
+    /* Act on the event */
+    const form = $('.new_track')
+    const track = JSON.stringify(form.serializeArray())
+    $.ajax(
+			{
+				url: '/api/admin/tracks/new',
+				type: 'POST',
+				data: track,
+				contentType: 'application/json',
+				success: data => {
+          // 刷新页面
+          // location.reload()
+				},
+				error: errorThrown => {
+					alert(`error: ${errorThrown}`)
+				},
+			})
+  })
 })
