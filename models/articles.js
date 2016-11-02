@@ -9,7 +9,7 @@ const series = promisify(async.series)
 
 // 获取所有的文章
 export function *getAll() {
-  const articleQuery = 'SELECT * FROM articles order by article_id desc'
+  const articleQuery = 'SELECT * FROM articles where is_ready = 1 order by article_id desc'
   const articles = yield pool.query(articleQuery)
   return articles
 }
@@ -138,4 +138,10 @@ export function* getMaxId(next) {
   const query = 'select max(article_id) as id from articles'
   const max = yield pool.query(query)
   return max[0].id
+}
+
+export function* getDrafts(next) {
+  const query = 'SELECT * FROM articles where is_ready = 0 order by article_id desc'
+  const drafts = yield pool.query(query)
+  return drafts
 }

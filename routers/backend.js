@@ -19,6 +19,8 @@ export default function() {
   // 新建文章
   router.get('/article/new', authentication, controllers.article.edit)
   router.post('/article/new', authentication, controllers.article.create)
+  // 草稿箱
+  router.get('/drafts', authentication, controllers.article.draft)
   // 获取某篇文章下面的所有歌曲
   router.get('/track-list', authentication, controllers.track_list.getTracks)
   // 更新一首歌信息

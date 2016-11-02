@@ -28,9 +28,12 @@ block content
                 button.removeBtn.edit(data-id=id, data-list-id=listId)
                   span.fa.fa-trash.fa-lg
         form.col.s12#form-horizontal(method='post', action='/api/admin/track-list/' + page_id)
-          textarea.materialize-textarea#content(name='content', class='form-control', placeholder='歌曲信息')
+          textarea.materialize-textarea#content(name='content', placeholder='歌曲信息')
           input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
           input.btn.btn-primary(type='submit', value='更新')
+        div.input-field
+          textarea.materialize-textarea(name='article', placeholder='文章内容')
+          
         div.modal.row#update_info
           div.modal-content.col.s12
             form.details
