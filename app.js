@@ -23,7 +23,7 @@ const pug = new Pug({
 })
 
 
-const THIRTY_MINTUES = 30 * 60 * 1000
+const THIRTY_MINTUES = 24 * 60 * 60 * 1000
 
 const config = {
   user: 'root',

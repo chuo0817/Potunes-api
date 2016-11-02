@@ -1,5 +1,4 @@
 $(function() {
-  // $('#content').val('New Text');
   $('#content').trigger('autoresize')
   $('.modal').modal()
   $(".button-collapse").sideNav()
