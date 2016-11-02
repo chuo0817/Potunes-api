@@ -5,16 +5,18 @@ block content
     script(src='/javascripts/common.js')
     include header
     div.row
-      div.col.s6.offset-s3
+      div.fixed-action-btn
+        a.btn-floating.btn-large.red
+          i.large.material-icons mode_edit
+        ul
+          li
+            a.btn-floating.green#create(href='/api/admin/add-track?id=' + page_id)
+              i.material-icons add
+          li
+            a.btn-floating.blue.darken-1(data, data-target='infos')
+              i.material-icons audiotrack
+      div.col.s6.offset-s4
         table.bordered.highlight.responsive-table
-          thead
-            tr.teal-text
-              th 序号
-              th(colspan='2') 歌手名
-              th(colspan='2') 歌曲名
-              th.left-border
-                a#create(href='/api/admin/add-track?id=' + page_id)
-                  button.waves-effect.waves-light.btn-flat ADD
           tbody#tracks
             each track in tracks
              tr
@@ -27,12 +29,16 @@ block content
                   span.fa.fa-edit.fa-lg
                 button.removeBtn.edit(data-id=id, data-list-id=listId)
                   span.fa.fa-trash.fa-lg
-        form.col.s12#form-horizontal(method='post', action='/api/admin/track-list/' + page_id)
-          textarea.materialize-textarea#content(name='content', placeholder='歌曲信息')
-          input#ids(name='ids', class='form-control', placeholder='文章ID', height='14')
-          input.btn.btn-primary(type='submit', value='更新')
-        div.input-field
-          textarea.materialize-textarea(name='article', placeholder='文章内容')
+        div.modal.row#infos
+          div.modal-content.col.s12
+            form
+              div.row
+                div.input-field
+                  input#ids(name='ids', placeholder='文章ID')
+                div.input-field
+                  textarea.materialize-textarea#content(name='content', placeholder='歌曲信息')
+                div.input-field
+                  input.btn.waves-effect.waves-light(type='submit', value='更新')
           
         div.modal.row#update_info
           div.modal-content.col.s12
