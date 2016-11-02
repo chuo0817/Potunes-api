@@ -15,7 +15,7 @@ export function *getAll() {
 }
 
 export function* getAllByMobile() {
-  const articleQuery = `SELECT article_id,article_title,article_cover FROM articles order by article_id desc`
+  const articleQuery = 'SELECT article_id,article_title,article_cover FROM articles order by article_id desc'
   const articles = yield pool.query(articleQuery)
   return articles
 }
@@ -105,7 +105,14 @@ export function* fecthOldArticles(next) {
         const article = {}
         const temp = result[i]
         article.prefixUrl = temp.coverImage.substr(0, temp.coverImage.length - 9)
+        console.log(temp.category)
         const cover = `${article.prefixUrl}cover.png`
+        if (temp.category == '精选') {
+          temp.category = 0
+        }
+        if (temp.category == '专辑') {
+          temp.category = 1
+        }
         const articleParams = [
           temp.title,
           temp.category,

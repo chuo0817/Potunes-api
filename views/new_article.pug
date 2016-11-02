@@ -19,13 +19,12 @@ block content
                   option(value='1') 专辑
                 label album type
               div.input-field
-                textarea.materialize-textarea(name='content')
-                label 文章内容
-              div.input-field
                 input#prefixUrl(type='text', name='prefixUrl')
                 label prefix url
               div.input-field
                 input#songCount(type='text', name='songCount')
-            input(type='submit', value='走你')
-            
-            h1 这里应该修改一下数据库的article_type,以及抓取旧数据时存入数据库时的类型
+                label song count
+              div.input-field
+                textarea.materialize-textarea(name='content')
+                label content
+            input.waves-effect.waves-light.btn.col.s2.offset-s5(type='submit', value='走你')
