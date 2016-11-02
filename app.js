@@ -22,9 +22,6 @@ const pug = new Pug({
   app,
 })
 
-
-const THIRTY_MINTUES = 24 * 60 * 60 * 1000
-
 const config = {
   user: 'root',
   password: '',
@@ -46,7 +43,7 @@ app.use(session({
   prefix: 'poche:',
   store: new MysqlStore(config),
   cookie: {
-    maxage: THIRTY_MINTUES,
+    maxage: null,
     path: '/',
     httpOnly: true,
     rewrite: true,

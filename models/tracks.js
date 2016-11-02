@@ -188,3 +188,7 @@ export function* getLrc(query) {
   const lrc = yield pool.query(lrcQuery, lrcParam)
   return lrc[0]
 }
+
+export function* create(body) {
+  console.log('123')
+}

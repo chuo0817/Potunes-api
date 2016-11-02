@@ -28,3 +28,8 @@ export function* getLrc(next) {
   const lrc = yield Tracks.getLrc(this.params.id)
   this.body = lrc
 }
+
+export function* create(next) {
+  yield Tracks.create(this.request.body)
+  this.body = 'done'
+}
