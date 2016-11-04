@@ -31,6 +31,8 @@ export function* getLrc(next) {
 
 export function* create(next) {
   console.log(this.request.body)
-  // yield Tracks.create(this.request.body)
-  this.redirect('/')
+  const track = yield Tracks.create(this.request.body)
+  this.body = track
+  // this.redirect('/')
+  // this.body = this.request.body
 }

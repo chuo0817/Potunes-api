@@ -5,7 +5,8 @@ $(function() {
   $('select').material_select()
 
 
-	$('#modal').click(function() {
+	$('.modaledit').click(function() {
+    alert('123')
     const data_id = $(this).attr('data-id')
     const url = `/api/admin/tracks?id=${data_id}`
     $.ajax({
@@ -13,6 +14,7 @@ $(function() {
     })
 		.done(result => {
       const track = result
+      console.log(track)
       $('.modal').modal()
       document.getElementById('track_id').value = track.track_id
       document.getElementById('track_artist').value = track.track_artist
@@ -46,7 +48,7 @@ $(function() {
 			})
   })
 
-	$('#delete').click(function() {
+	$('.delete').click(function() {
 		const track_id = $(this).attr('data-id')
 		const data = { track_id }
 
@@ -84,21 +86,22 @@ $(function() {
       url: url,
     })
     .done(result => {
-      console.log(result)
       const article = result
       $('.modal').modal()
       document.getElementById('title').value = article.article_title
 
     })
     .fail(function() {
-      console.log("error");
+      alert("error");
     })
   })
 
   $('#new').click(function(event) {
     /* Act on the event */
     const form = $('.new_track')
-    const track = JSON.stringify(form.serializeArray())
+    const trackInfo = form.serializeArray()
+    trackInfo.push( {name:'article_id',value:$(this).attr('a_id')} )
+    const track = JSON.stringify(trackInfo)
     $.ajax({
 				url: '/api/admin/tracks/new',
 				type: 'POST',
@@ -106,7 +109,7 @@ $(function() {
 				contentType: 'application/json',
 				success: data => {
           // 刷新页面
-          // location.reload()
+          location.reload()
         },
 				error: errorThrown => {
 					alert(`error: ${errorThrown}`)

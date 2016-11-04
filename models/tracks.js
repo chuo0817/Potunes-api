@@ -190,5 +190,15 @@ export function* getLrc(query) {
 }
 
 export function* create(body) {
-  console.log('123')
+  const trackQuery = `insert into tracks(track_artist,
+  track_name, track_cover, track_url, track_lrc, track_lrc_cn) values(?,?,?,?,?,?)`
+  const trackParams = []
+  for (let i = 0; i < body.length - 1; i++) {
+    trackParams.push(body[i].value)
+  }
+  const result = yield pool.query(trackQuery, trackParams)
+  const articleQuery = 'insert into article_tracks(article_id) values(?)'
+  const articleParams = [body[body.length - 1].value]
+  const success = yield pool.query(articleQuery, articleParams)
+  return success
 }
