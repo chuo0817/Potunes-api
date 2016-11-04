@@ -3,15 +3,9 @@ $(function() {
   $('.modal').modal()
   $(".button-collapse").sideNav()
   $('select').material_select()
-  const trlist = $('#tracks').children('tr')
-  const ids = []
-  for (let i = 0; i < trlist.length; i++) {
-    const tdArr = trlist.eq(i).find('td')
-    ids.push(tdArr.eq(0).text())
-  }
-  document.getElementById('ids').value = ids
 
-	$('.editBtn').click(function() {
+
+	$('#modal').click(function() {
     const data_id = $(this).attr('data-id')
     const url = `/api/admin/tracks?id=${data_id}`
     $.ajax({
@@ -30,8 +24,6 @@ $(function() {
 		})
 		.fail(function() {
 			alert('error')
-		})
-		.always(function() {
 		})
 	})
 
@@ -54,7 +46,7 @@ $(function() {
 			})
   })
 
-	$('.removeBtn').click(function() {
+	$('#delete').click(function() {
 		const track_id = $(this).attr('data-id')
 		const data = { track_id }
 
@@ -85,12 +77,29 @@ $(function() {
     })
   })
 
+  $('#edit').click(function(event) {
+    const a_id = $(this).attr('article_id')
+    const url = `/api/app/articles?id=${a_id}`
+    $.ajax({
+      url: url,
+    })
+    .done(result => {
+      console.log(result)
+      const article = result
+      $('.modal').modal()
+      document.getElementById('title').value = article.article_title
+
+    })
+    .fail(function() {
+      console.log("error");
+    })
+  })
+
   $('#new').click(function(event) {
     /* Act on the event */
     const form = $('.new_track')
     const track = JSON.stringify(form.serializeArray())
-    $.ajax(
-			{
+    $.ajax({
 				url: '/api/admin/tracks/new',
 				type: 'POST',
 				data: track,
@@ -98,10 +107,23 @@ $(function() {
 				success: data => {
           // 刷新页面
           // location.reload()
-				},
+        },
 				error: errorThrown => {
 					alert(`error: ${errorThrown}`)
 				},
 			})
   })
+
+  $('#delete_article').click(function(event) {
+    
+  })
+
+  const trlist = $('#tracks').children('tr')
+  const ids = []
+  for (let i = 0; i < trlist.length; i++) {
+    const tdArr = trlist.eq(i).find('td')
+    ids.push(tdArr.eq(0).text())
+  }
+
+  document.getElementById('ids').value = ids
 })

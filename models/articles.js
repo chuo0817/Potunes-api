@@ -20,8 +20,11 @@ export function* getAllByMobile() {
   return articles
 }
 // 获取单个文章列表
-export function getOne() {
-
+export function* getOne(id) {
+  const articleQuery = 'select * from articles where article_id = ?'
+  const parmas = [id]
+  const articles = yield pool.query(articleQuery, parmas)
+  return articles[0]
 }
 
 // 保存文章

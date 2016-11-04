@@ -2,7 +2,6 @@ extends layout
 
 block content
   body
-    script(src='/javascripts/common.js')
     include header
     div.row
       div.fixed-action-btn
@@ -15,49 +14,50 @@ block content
           li
             a.btn-floating.blue.darken-1(data-target='infos')
               i.material-icons audiotrack
-      div.col.s6.offset-s4
-        table.bordered.highlight.responsive-table
-          tbody#tracks
-            each track in tracks
-             tr
-              td.right-border.trackId #{track.track_id}
-              td.pink-text.right-border(colspan='2') #{track.track_artist}
-              td.pink-text(colspan='2') #{track.track_name}
-              td.pink-text.left-border
-                - var id = track.track_id.toString()
-                button.editBtn.edit(data-id=id, data-target='update_info')
-                  span.fa.fa-edit.fa-lg
-                button.removeBtn.edit(data-id=id, data-list-id=listId)
-                  span.fa.fa-trash.fa-lg
-        div.modal.row#infos
-          div.modal-content.col.s12
-            form(method='post', action='/api/admin/track-list/' + page_id)
-              div.row
-                div.input-field
-                  input#ids(name='ids', type='text')
-                  label track_ids
-                div.input-field
-                  textarea.materialize-textarea#content(name='content', type='text')
-                  label xml infos
-                div.input-field
-                  input.btn.waves-effect.waves-light(type='submit', value='更新')
-          
-        div.modal.row#update_info
-          div.modal-content.col.s12
-            form.details
-              div.row.col.s2
-                div.input-field
-                  input#track_id(type='text', name='track_id')
-                  label.col.offset-s1(for='track_id') track_id
-              include track_info
-            div.modal-footer
-              a.btn.waves-effect.waves-light#update Submit
-              a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close
-              
-        div.modal.row#new_track
-          div.modal-content.col.s12
-            form.new_track
-              include track_info
-            div.modal-footer.col.s2.offset-s10
-              a.btn.waves-effect.waves-light#new Submit
-              a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close
+      main
+        div.container
+          table.bordered.highlight
+            tbody#tracks
+              each track in tracks
+               tr
+                td.right-border.trackId #{track.track_id}
+                td.pink-text.right-border(colspan='2') #{track.track_artist}
+                td.pink-text(colspan='2') #{track.track_name}
+                td.left-border
+                  - var id = track.track_id.toString()
+                  a.editBtn.edit#modal(data-id=id, data-target='update_info')
+                    span.fa.fa-edit.fa-lg
+                  a.removeBtn.edit#delete(data-id=id, data-list-id=listId)
+                    span.fa.fa-trash.fa-lg
+          div.modal.row#infos
+            div.modal-content.col.s12
+              form(method='post', action='/api/admin/track-list/' + page_id)
+                div.row
+                  div.input-field
+                    input#ids(name='ids', type='text')
+                    label track_ids
+                  div.input-field
+                    textarea.materialize-textarea#content(name='content', type='text')
+                    label xml infos
+                  div.input-field
+                    input.btn.waves-effect.waves-light(type='submit', value='更新')
+            
+          div.modal#update_info
+            div.modal-content.col.s12
+              form.details
+                div.row.col.s2
+                  div.input-field
+                    input#track_id(type='text', name='track_id')
+                    label.col.offset-s1(for='track_id') track_id
+                include track_info
+              div.modal-footer
+                a.btn.waves-effect.waves-light#update Submit
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close
+                
+          div.modal#new_track
+            div.modal-content.col.s12
+              form.new_track
+                include track_info
+              div.modal-footer.col.s2.offset-s10
+                a.btn.waves-effect.waves-light#new Submit
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close

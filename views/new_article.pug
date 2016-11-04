@@ -8,30 +8,12 @@ block content
     include header
     main
       .container
-        .row
-          form.col.s10.offset-s1(method='post', action='/api/admin/article/new')
-            div.row.col.s12
-              div.input-field.col.s12
-                input#title(type='text', name='title')
-                label(for='title') Title
-            div.row.col.s12
-              div.input-field.col.s3
-                select(name='type')
-                  option(value='') Choose your option
-                  option(value='0') 精选
-                  option(value='1') 专辑
-                label album type
-              div.input-field.col.s6
-                input#prefixUrl(type='text', name='prefixUrl')
-                label prefix url
-              div.input-field.col.s3
-                input#songCount(type='text', name='songCount')
-                label song count
-            div.row.col.s12
-              div.input-field.col.s6
-                textarea.card.horizontal.materialize-textarea.mdhtmlform-md(name='content')
-                label contet
-              div.col.s6.mdhtmlform-html
-            div.row
-              input.waves-effect.waves-light.btn.col.s2.offset-s5(type='submit', value=button)
-          
+        if article
+          include article
+        else
+          include article_info
+
+      //- if article
+      //-   include article
+      //- else
+      //-   include article_info

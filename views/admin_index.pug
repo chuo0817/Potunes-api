@@ -1,13 +1,10 @@
 extends layout
 
 block content
-  head
-
   body
-    script(src='/javascripts/common.js')
     include header
-    div.row
-      div.col.s6.offset-s3
+    main
+      div.container
         table.bordered.highlight
           thead
             tr.teal-text
@@ -18,12 +15,14 @@ block content
             each a in articles
               tr
                 td #{a.article_id}
-                td 
+                td
                   a.pink-text(href='/api/admin/articles/' + a.article_id) #{a.article_title}
                 td.left-border
-                  a.pink-text.editBtn.edit(href='/api/admin/articles/' + a.article_id, data-id=id)
-                    span.fa.fa-edit.fa-lg
-                  a.pink-text.removeBtn.edit
+                  a.removeBtn.edit#delete(data-target='update_info')
                     span.fa.fa-trash.fa-lg
-                    
-      
+        div.modal#update_info
+          div.modal-content
+            p 确定要删除吗
+            div.modal-footer
+              a.btn.waves-effect.waves-light#update Submit
+              a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close

@@ -12,6 +12,15 @@ export function* get(next) {
     })
     return null
   }
+  if (this.query.id) {
+    const article = yield Articles.getOne(this.query.id)
+    this.render('new_article', {
+      article,
+      title: article.article_title,
+      header: article.article_title,
+    })
+    return null
+  }
   const articles = yield Articles.getAll()
   this.render('admin_index', {
     title: '管理员首页',
@@ -56,4 +65,8 @@ export function* draft(next) {
 export function* ready(next) {
   yield Articles.ready(this.request.body.article_id)
   return this.body = 'done'
+}
+
+export function* update(next) {
+  console.log(this.request.body)
 }
