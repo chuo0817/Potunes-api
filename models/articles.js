@@ -155,3 +155,26 @@ export function* ready(id) {
   yield pool.query(query, params)
   return null
 }
+
+export function* del(id) {
+  const tracksQuery = 'select * from article_tracks where article_id = ?'
+  const trackParams = [id]
+  const result = yield pool.query(tracksQuery, trackParams)
+  const articleQuery = 'DELETE articles, article_tracks from articles LEFT JOIN article_tracks ON articles.article_id = article_tracks.article_id WHERE articles.article_id= ?'
+  yield pool.query(articleQuery, trackParams)
+  const delTrackQuery = 'delete from tracks where track_id = ?'
+  const tracks = []
+  for (let i = 0; i < result.length; i++) {
+    const param = [result[i].track_id]
+    tracks.push(pool.cr(delTrackQuery, param))
+  }
+  return new Promise((resolve, reject) => {
+    series(tracks)
+    .then(() => {
+      resolve('success')
+    })
+    .catch(err => {
+      reject(err)
+    })
+  })
+}

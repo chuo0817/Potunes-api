@@ -18,11 +18,11 @@ block content
                 td
                   a.pink-text(href='/api/admin/articles/' + a.article_id) #{a.article_title}
                 td.left-border
-                  a.removeBtn.edit#delete(data-target='update_info')
+                  a.removeBtn.edit.delete_article(data-target='update_info', data-id = a.article_id)
                     span.fa.fa-trash.fa-lg
         div.modal#update_info
           div.modal-content
             p 确定要删除吗
             div.modal-footer
-              a.btn.waves-effect.waves-light#update Submit
+              a.btn.waves-effect.waves-light(data-id='')#submit DELETE
               a.modal-action.modal-close.waves-effect.waves-green.btn-flat Close

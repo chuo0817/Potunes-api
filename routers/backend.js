@@ -19,7 +19,8 @@ export default function() {
   // 新建文章
   router.get('/article/new', authentication, controllers.article.edit)
   router.post('/article/new', authentication, controllers.article.create)
-  router.post('/article/:id', authentication, controllers.article.update)
+  // 删除一篇文章
+  router.post('/article/:id', authentication, controllers.article.del)
   // 草稿箱
   router.get('/drafts', authentication, controllers.article.draft)
   // 发布草稿箱文章

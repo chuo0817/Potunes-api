@@ -67,6 +67,7 @@ export function* ready(next) {
   return this.body = 'done'
 }
 
-export function* update(next) {
-  console.log(this.request.body)
+export function* del(next) {
+  yield Articles.del(this.params.id)
+  return this.body = 'done'
 }

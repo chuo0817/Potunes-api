@@ -114,8 +114,23 @@ $(function() {
 			})
   })
 
-  $('#delete_article').click(function(event) {
-    
+  $('.delete_article').click(function(event) {
+    $('#submit').attr('data-id', $(this).attr('data-id'))
+  })
+
+  $('#submit').click(function(event) {
+    const a_id = $(this).attr('data-id')
+    const url = `/api/admin/article/${a_id}`
+    $.ajax({
+      url,
+      type: 'POST',
+    })
+    .done(function() {
+      location.reload()
+    })
+    .fail(function() {
+      alert('error')
+    })
   })
 
   const trlist = $('#tracks').children('tr')
