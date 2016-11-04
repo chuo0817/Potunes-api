@@ -75,8 +75,8 @@ export function *updateTracksInfo(body) {
       }
       series(tracksFunc)
       .then((result) => {
-        resolve(result)
         console.log('歌曲信息修改成功')
+        resolve(result)
       })
     })
     .catch((err) => {
