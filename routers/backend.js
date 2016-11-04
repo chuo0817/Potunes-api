@@ -13,18 +13,18 @@ export default function() {
   router.get('/', controllers.admin.index)
   router.post('/', controllers.admin.login)
   // 管理员首页
-  router.get('/articles/', authentication, controllers.article.get)
+  router.get('/playlists/', authentication, controllers.playlist.get)
   // 获取一篇文章下的歌曲
-  router.get('/articles/:id', authentication, controllers.article.get)
+  router.get('/playlists/:id', authentication, controllers.playlist.get)
   // 新建文章
-  router.get('/article/new', authentication, controllers.article.edit)
-  router.post('/article/new', authentication, controllers.article.create)
+  router.get('/playlist/new', authentication, controllers.playlist.edit)
+  router.post('/playlist/new', authentication, controllers.playlist.create)
   // 删除一篇文章
-  router.post('/article/:id', authentication, controllers.article.del)
+  router.post('/playlist/:id', authentication, controllers.playlist.del)
   // 草稿箱
-  router.get('/drafts', authentication, controllers.article.draft)
+  router.get('/drafts', authentication, controllers.playlist.draft)
   // 发布草稿箱文章
-  router.post('/ready', authentication, controllers.article.ready)
+  router.post('/ready', authentication, controllers.playlist.ready)
   // 获取某篇文章下面的所有歌曲
   router.get('/track-list', authentication, controllers.track_list.getTracks)
   // 更新一首歌信息

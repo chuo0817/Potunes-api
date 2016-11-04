@@ -20,11 +20,11 @@ block content
             tbody#tracks
               each track in tracks
                tr
-                td.right-border.trackId #{track.track_id}
-                td.pink-text.right-border(colspan='2') #{track.track_artist}
-                td.pink-text(colspan='2') #{track.track_name}
+                td.right-border.trackId #{track.id}
+                td.pink-text.right-border(colspan='2') #{track.artist}
+                td.pink-text(colspan='2') #{track.name}
                 td.left-border
-                  - var id = track.track_id.toString()
+                  - var id = track.id.toString()
                   a.editBtn.edit.modaledit(data-id=id, data-target='update_info')
                     span.fa.fa-edit.fa-lg
                   a.removeBtn.edit.delete(data-id=id, data-list-id=listId)
@@ -47,8 +47,8 @@ block content
               form.details
                 div.row.col.s2
                   div.input-field
-                    input#track_id(type='text', name='track_id')
-                    label.col.offset-s1(for='track_id') track_id
+                    input#track_id(type='text', name='id')
+                    label.col.offset-s1(for='track_id') id
                 include track_info
               div.modal-footer
                 a.btn.waves-effect.waves-light#update Submit

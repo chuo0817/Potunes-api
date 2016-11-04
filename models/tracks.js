@@ -8,12 +8,12 @@ import agent from 'superagent-es6-promise'
 const series = promisify(async.series)
 
 // 获取某篇文章下面的所有歌曲
-export function *get(article_id) {
-  const articleQuery = 'SELECT * FROM article_tracks where article_id = ?'
-  const articleQuery_Params = [article_id]
+export function *get(id) {
+  const playlistQuery = 'SELECT * FROM playlist_tracks where playlist_id = ?'
+  const playlistQuery_Params = [id]
   const trackIDs = []
-  const result = yield pool.query(articleQuery, articleQuery_Params)
-  const idQuery = 'SELECT * FROM tracks WHERE track_id = ?'
+  const result = yield pool.query(playlistQuery, playlistQuery_Params)
+  const idQuery = 'SELECT * FROM tracks WHERE id = ?'
   for (let i = 0; i < result.length; i++) {
     const idParams = [result[i].track_id]
     trackIDs.push(pool.cr(idQuery, idParams))
@@ -34,7 +34,7 @@ export function *get(article_id) {
 }
 
 export function* getTracksByMobile(query) {
-  const tracksQuery = 'SELECT tracks.track_id,track_artist, track_name, track_cover,  track_url FROM tracks INNER JOIN article_tracks ON tracks.track_id = article_tracks.track_id WHERE article_tracks.article_id = ?;'
+  const tracksQuery = 'SELECT tracks.id,artist, name, cover,  url FROM tracks INNER JOIN playlist_tracks ON tracks.id = playlist_tracks.track_id WHERE playlist_tracks.id = ?;'
   const params = [query]
   const tracks = yield pool.query(tracksQuery, params)
   return tracks
@@ -43,7 +43,7 @@ export function* getTracksByMobile(query) {
 
 // 获取一首歌的信息
 export function *getOne(track_id) {
-  const trackQuery = 'SELECT * FROM tracks where track_id = ?'
+  const trackQuery = 'SELECT * FROM tracks where id = ?'
   const trackQuery_params = [track_id]
   const result = yield pool.query(trackQuery, trackQuery_params)
   return result[0]
@@ -51,7 +51,7 @@ export function *getOne(track_id) {
 
 // 批量更新歌曲信息
 export function *updateTracksInfo(body) {
-  const updateQuery = 'UPDATE tracks SET track_artist = ?, track_name = ? WHERE track_id = ?'
+  const updateQuery = 'UPDATE tracks SET artist = ?, name = ? WHERE id = ?'
   let ids = body.ids
   ids = ids.split(',')
   const content = body.content
@@ -67,10 +67,10 @@ export function *updateTracksInfo(body) {
       const tracksFunc = []
       for (let i = 0; i < ids.length; i++) {
         const artist = temp[i][1]
-        const track_name = temp[i][0]
+        const name = temp[i][0]
         const track_id = ids[i]
 
-        const trackParams = [artist, track_name, track_id]
+        const trackParams = [artist, name, track_id]
         tracksFunc.push(pool.cr(updateQuery, trackParams))
       }
       series(tracksFunc)
@@ -87,8 +87,8 @@ export function *updateTracksInfo(body) {
 }
 // 更新一首歌信息
 export function *updateTrack(body) {
-  const updateQuery = `UPDATE tracks SET track_artist = ?,
-  track_name = ?, track_cover = ?, track_url = ? , track_lrc = ?, track_lrc_cn = ? WHERE track_id = ?`
+  const updateQuery = `UPDATE tracks SET artist = ?,
+  name = ?, cover = ?, url = ? , lrc = ?, lrc_cn = ? WHERE id = ?`
   const trackParams = []
   for (let i = 1; i < body.length; i++) {
     trackParams.push(body[i].value)
@@ -100,9 +100,9 @@ export function *updateTrack(body) {
 
 // 删除一首歌的信息
 export function *deleteTrack(body) {
-  const deleteQuery = `DELETE tracks, article_tracks from tracks
-                      LEFT JOIN article_tracks
-                      ON tracks.track_id = article_tracks.track_id WHERE tracks.track_id= ?`
+  const deleteQuery = `DELETE tracks, playlist_tracks from tracks
+                      LEFT JOIN playlist_tracks
+                      ON tracks.id = playlist_tracks.track_id WHERE tracks.id= ?`
   const trackParams = [body.track_id]
   const result = yield pool.query(deleteQuery, trackParams)
   return result
@@ -120,8 +120,8 @@ function cr(url) {
   }
 }
 // 抓取老数据库歌曲信息
-export function* fecthOldTracks(articles) {
-  const oldIdQuery = 'select * from articles order by article_id desc'
+export function* fecthOldTracks(playlists) {
+  const oldIdQuery = 'select * from playlists order by id desc'
   const ids = []
   const tracksArr = []
   const result = yield pool.query(oldIdQuery)
@@ -137,11 +137,11 @@ export function* fecthOldTracks(articles) {
     })
     .then((tracks) => {
       const tracksTemp = []
-      const tracksQuery = `INSERT INTO tracks(track_artist,
-      	track_name, album, track_url, track_cover) VALUES(?,?,?,?,?)`
+      const tracksQuery = `INSERT INTO tracks(artist,
+      	name, album, url, cover) VALUES(?,?,?,?,?)`
 
       for (let i = 0; i < tracks[0].length; i++) {
-        const album = result[i].article_title
+        const album = result[i].title
         for (let j = 0; j < tracks[0][i].length; j++) {
           const track = tracks[0][i][j]
           const tracksParams = [track.author, track.title, album, track.sourceUrl, track.thumb]
@@ -162,19 +162,19 @@ export function* fecthOldTracks(articles) {
 
 export function* match(next) {
   const titleQuery = 'select distinct album from tracks'
-  const idQuery = 'select article_id from articles'
+  const idQuery = 'select id from playlists'
   const titles = yield pool.query(titleQuery)
-  const article_ids = yield pool.query(idQuery)
+  const ids = yield pool.query(idQuery)
   const track_ids = []
   for (let i = 0; i < titles.length; i++) {
-    const matchQuery = `select track_id from tracks where album = '${titles[i].album}'`
+    const matchQuery = `select id from tracks where album = '${titles[i].album}'`
     const result = yield pool.query(matchQuery)
     track_ids.push(result)
   }
-  const reverse = article_ids.reverse()
-  for (let i = 0; i < article_ids.length; i++) {
-    const insertQuery = 'insert into article_tracks(article_id) values(?)'
-    const insertParam = [reverse[i].article_id]
+  const reverse = ids.reverse()
+  for (let i = 0; i < ids.length; i++) {
+    const insertQuery = 'insert into playlist_tracks(playlist_id) values(?)'
+    const insertParam = [reverse[i].id]
     for (let j = 0; j < track_ids[i].length; j++) {
       yield pool.query(insertQuery, insertParam)
     }
@@ -183,22 +183,22 @@ export function* match(next) {
 }
 
 export function* getLrc(query) {
-  const lrcQuery = 'select track_lrc,track_lrc_cn from tracks where track_id = ?'
+  const lrcQuery = 'select lrc,lrc_cn from tracks where id = ?'
   const lrcParam = [query]
   const lrc = yield pool.query(lrcQuery, lrcParam)
   return lrc[0]
 }
 
 export function* create(body) {
-  const trackQuery = `insert into tracks(track_artist,
-  track_name, track_cover, track_url, track_lrc, track_lrc_cn) values(?,?,?,?,?,?)`
+  const trackQuery = `insert into tracks(artist,
+  name, cover, url, lrc, lrc_cn) values(?,?,?,?,?,?)`
   const trackParams = []
   for (let i = 0; i < body.length - 1; i++) {
     trackParams.push(body[i].value)
   }
-  const result = yield pool.query(trackQuery, trackParams)
-  const articleQuery = 'insert into article_tracks(article_id) values(?)'
-  const articleParams = [body[body.length - 1].value]
-  const success = yield pool.query(articleQuery, articleParams)
+  yield pool.query(trackQuery, trackParams)
+  const playlistQuery = 'insert into playlist_tracks(playlist_id) values(?)'
+  const playlistParams = [body[body.length - 1].value]
+  const success = yield pool.query(playlistQuery, playlistParams)
   return success
 }

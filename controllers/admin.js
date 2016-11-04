@@ -1,5 +1,5 @@
 import * as User from '../models/user'
-import * as Articles from '../models/articles'
+import * as Playlists from '../models/playlists'
 
 // 首页
 export function *index(next) {
@@ -22,6 +22,6 @@ export function* login(next) {
   delete user.password
   this.session.user = user
 
-  this.redirect('/api/admin/articles/')
+  this.redirect('/api/admin/playlists/')
   return null
 }

@@ -693,12 +693,12 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table articles
+# Dump of table playlists
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `articles`;
+DROP TABLE IF EXISTS `playlists`;
 
-CREATE TABLE `articles` (
+CREATE TABLE `playlists` (
   `article_id` int(11) NOT NULL AUTO_INCREMENT,
   `article_title` varchar(255) NOT NULL,
   `article_type` tinyint(1) NOT NULL COMMENT '0:精选,1:专辑',
@@ -710,10 +710,10 @@ CREATE TABLE `articles` (
   PRIMARY KEY (`article_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
-LOCK TABLES `articles` WRITE;
-/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
+LOCK TABLES `playlists` WRITE;
+/*!40000 ALTER TABLE `playlists` DISABLE KEYS */;
 
-INSERT INTO `articles` (`article_id`, `article_title`, `article_type`, `article_content`, `article_cover`, `article_songs`, `old_id`, `is_ready`)
+INSERT INTO `playlists` (`article_id`, `article_title`, `article_type`, `article_content`, `article_cover`, `article_songs`, `old_id`, `is_ready`)
 VALUES
 	(1,'JESS GLYNNE - I CRY WHEN I LAUGH (DELUXE)',0,'一开口 就是冠军！ 地表最强、全世界最会唱歌的冠军製造姬！ 主唱Clean Bandit红遍全球冠军曲','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/cover.png',0,1535,0),
 	(2,'金玟岐 - 完美世界',0,'十年幕后，一鸣惊人，当红艺人御用制作人变身超人气唱作新星 12支demo千万次试听，炼出人生第一张全创作大碟','http://lastshrek.b0.upaiyun.com/2015/jinwenqi-wanmeishijie/cover.png',0,1539,0),
@@ -741,7 +741,7 @@ VALUES
 	(24,'今天',1,'<blockquote>\n<p>测试</p>\n</blockquote>\n','llllllcover.png',6,0,1),
 	(25,'周杰伦的床边故事',1,'<blockquote>\n<p>周杰伦的床边故事</p>\n</blockquote>\n','123/cover.png',10,0,1);
 
-/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
+/*!40000 ALTER TABLE `playlists` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

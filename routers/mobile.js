@@ -8,9 +8,9 @@ export default function() {
     prefix: '/api/app',
   })
   // 歌单列表
-  router.get('/articles', controllers.article.getArticles)
+  router.get('/playlists', controllers.playlist.getPlaylists)
   // 歌单内歌曲
-  router.get('/articles/:id', controllers.tracks.getTracks)
+  router.get('/playlists/:id', controllers.tracks.getTracks)
   router.get('/tracks/:id', controllers.tracks.getOne)
   router.get('/lyrics/:id', controllers.tracks.getLrc)
   return router

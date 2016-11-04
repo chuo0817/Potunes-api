@@ -12,13 +12,13 @@ block content
               th(data-field='name') Name
               th(data-field='op') Operations
           tbody
-            each a in articles
+            each a in playlists
               tr
-                td #{a.article_id}
+                td #{a.id}
                 td
-                  a.pink-text(href='/api/admin/articles/' + a.article_id) #{a.article_title}
+                  a.pink-text(href='/api/admin/playlists/' + a.id) #{a.title}
                 td.left-border
-                  a.removeBtn.edit.delete_article(data-target='update_info', data-id = a.article_id)
+                  a.removeBtn.edit.delete_playlist(data-target='update_info', data-id = a.id)
                     span.fa.fa-trash.fa-lg
         div.modal#update_info
           div.modal-content

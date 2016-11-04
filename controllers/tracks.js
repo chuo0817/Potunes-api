@@ -1,17 +1,14 @@
 import * as Tracks from '../models/tracks'
-import * as Articles from '../models/articles'
+import * as Playlists from '../models/playlists'
 
 export function* fetchOld(next) {
   // 获取旧歌单
-  const articles = yield Articles.fecthOldArticles()
-
+  const playlists = yield Playlists.fecthOldPlaylists()
   // 获取旧歌曲
-  yield Tracks.fecthOldTracks(articles)
-
+  yield Tracks.fecthOldTracks(playlists)
   // 匹配歌曲
   yield Tracks.match()
-
-  this.redirect('/api/admin/articles')
+  this.redirect('/api/admin/playlists')
 }
 
 export function* getTracks(next) {
@@ -30,9 +27,6 @@ export function* getLrc(next) {
 }
 
 export function* create(next) {
-  console.log(this.request.body)
   const track = yield Tracks.create(this.request.body)
   this.body = track
-  // this.redirect('/')
-  // this.body = this.request.body
 }

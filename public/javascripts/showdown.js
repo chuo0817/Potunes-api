@@ -144,9 +144,9 @@ this.makeHtml = function(text) {
 //
 
 	// Clear the global hashes. If we don't clear these, you get conflicts
-	// from other articles when generating a page which contains more than
+	// from other playlists when generating a page which contains more than
 	// one article (e.g. an index page that shows the N most recent
-	// articles):
+	// playlists):
 	g_urls = {};
 	g_titles = {};
 	g_html_blocks = [];

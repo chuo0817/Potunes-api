@@ -6,7 +6,6 @@ $(function() {
 
 
 	$('.modaledit').click(function() {
-    alert('123')
     const data_id = $(this).attr('data-id')
     const url = `/api/admin/tracks?id=${data_id}`
     $.ajax({
@@ -14,15 +13,14 @@ $(function() {
     })
 		.done(result => {
       const track = result
-      console.log(track)
       $('.modal').modal()
-      document.getElementById('track_id').value = track.track_id
-      document.getElementById('track_artist').value = track.track_artist
-      document.getElementById('track_name').value = track.track_name
-      document.getElementById('track_cover').value = track.track_cover
-      document.getElementById('track_url').value = track.track_url
-      document.getElementById('track_lrc').value = track.track_lrc
-      document.getElementById('track_lrc_cn').value = track.track_lrc_cn
+      document.getElementById('track_id').value = track.id
+      document.getElementById('track_artist').value = track.artist
+      document.getElementById('track_name').value = track.name
+      document.getElementById('track_cover').value = track.cover
+      document.getElementById('track_url').value = track.url
+      document.getElementById('track_lrc').value = track.lrc
+      document.getElementById('track_lrc_cn').value = track.lrc_cn
 		})
 		.fail(function() {
 			alert('error')
@@ -68,27 +66,27 @@ $(function() {
 	})
 
   $('#done').click(function(event) {
-    const article_id = $(this).attr('page')
+    const playlist_id = $(this).attr('page')
     $.ajax({
       url: '/api/admin/ready',
       type: 'POST',
-      data: { article_id }
+      data: { playlist_id }
     })
     .always(function() {
-      location.href = '/api/admin/articles'
+      location.href = '/api/admin/playlists'
     })
   })
 
   $('#edit').click(function(event) {
-    const a_id = $(this).attr('article_id')
-    const url = `/api/app/articles?id=${a_id}`
+    const a_id = $(this).attr('playlist_id')
+    const url = `/api/app/playlists?id=${a_id}`
     $.ajax({
       url: url,
     })
     .done(result => {
-      const article = result
+      const playlist = result
       $('.modal').modal()
-      document.getElementById('title').value = article.article_title
+      document.getElementById('title').value = playlist.title
 
     })
     .fail(function() {
@@ -100,7 +98,7 @@ $(function() {
     /* Act on the event */
     const form = $('.new_track')
     const trackInfo = form.serializeArray()
-    trackInfo.push( {name:'article_id',value:$(this).attr('a_id')} )
+    trackInfo.push( {name:'id',value:$(this).attr('a_id')} )
     const track = JSON.stringify(trackInfo)
     $.ajax({
 				url: '/api/admin/tracks/new',
@@ -117,13 +115,13 @@ $(function() {
 			})
   })
 
-  $('.delete_article').click(function(event) {
+  $('.delete_playlist').click(function(event) {
     $('#submit').attr('data-id', $(this).attr('data-id'))
   })
 
   $('#submit').click(function(event) {
     const a_id = $(this).attr('data-id')
-    const url = `/api/admin/article/${a_id}`
+    const url = `/api/admin/playlist/${a_id}`
     $.ajax({
       url,
       type: 'POST',
@@ -134,6 +132,10 @@ $(function() {
     .fail(function() {
       alert('error')
     })
+  })
+
+  $('.push').click(function(event) {
+    $('.new').submit()
   })
 
   const trlist = $('#tracks').children('tr')
