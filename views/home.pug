@@ -17,24 +17,32 @@ block body
     link(rel="icon",type="image/png",href="/images/favicon.png")
     link(href="/assets/images/favicon.png",rel="shortcut icon",type="image/png")
     link(href="/apple-touch-icon-precomposed.png",rel="apple-touch-icon")
-
-    link(rel="stylesheet",type="text/css",href="/stylesheets/tomorrow.css")
-    script(src='//cdn.bootcss.com/jquery/3.1.1/jquery.js')
-    link(rel="stylesheet",type="text/css",href="/stylesheets/vno.css")
-  body.home-template
-    span.mobile.btn-mobile-menu
-      i.fa.fa-list.btn-mobile-menu__icon
-      i.fa.fa-angle-up.btn-mobile-close__icon.hidden
-  include side_panel
-  div.content-wrapper
-    div.content-wrapper__inner
-      div.main-post-list
-        ol.post-list
-          include posts
-      include footer
-
-  block script
-    script(src='//cdn.bootcss.com/jquery/3.1.1/jquery.min.js')
-    script(src='/javascripts/main.js')
-    script(src='javascripts/highlight.pack.js')
-    script hljs.initHighlightingOnLoad();
+    link(href='https://fonts.googleapis.com/css?family=Raleway:400,600%7CRoboto+Slab:300,400',rel='stylesheet',type='text/css')
+    link(rel="stylesheet",type="text/css",href="/stylesheets/main.css")
+    link(rel="stylesheet", type='text/css', href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css")
+    script(src="/javascripts/jquery-3.1.1.min.js",type="text/javascript",charset="utf-8")
+  body.home-template.pace-done
+    header#menu-button.expanded
+      a
+        i.fa.fa-align-justify
+    aside.cover(style="background: url(/images/background-cover-2.jpg) center/cover no-repeat fixed")
+      div.cover.container
+        div.profile
+          a#avatar-link(title="link to homepage for 破音万里" href="/#open")
+            img.profile.avatar.rounded.hvr-buzz-out(src="images/4621638.jpeg" alt="破音万里")
+            h1#profile-title 破音万里
+            h3#profile-resume
+          hr.divider.long
+          p Thoughts, stories and ideas
+          hr.divider.short
+          div.navigation
+            div.profile.contact
+              nav.navigation.left
+                ul.links
+                  li.nav-posts.nav-current.expanded
+                    a(href="/#open") Posts
+              include social
+          //- {{> search }}
+    script(src="/javascripts/uno-zen.common.js",type="text/javascript",charset="utf-8")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js",type="text/javascript",charset="utf-8")
+  
