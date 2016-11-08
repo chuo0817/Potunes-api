@@ -21,7 +21,8 @@ block body
     link(rel="stylesheet",type="text/css",href="/stylesheets/main.css")
     link(rel="stylesheet", type='text/css', href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css")
     script(src="/javascripts/jquery-3.1.1.min.js",type="text/javascript",charset="utf-8")
-  body.home-template.pace-done
+    style #instantclick{position:fixed;top:0;left:0;width:100%;pointer-events:none;z-index:2147483647;transition:opacity .25s .1s}.instantclick-bar{background:#29d;width:100%;margin-left:-100%;height:2px;transition:all .25s}
+  body.home-template
     header#menu-button.expanded
       a
         i.fa.fa-align-justify
@@ -29,9 +30,9 @@ block body
       div.cover.container
         div.profile
           a#avatar-link(title="link to homepage for 破音万里" href="/#open")
-            img.profile.avatar.rounded.hvr-buzz-out(src="images/4621638.jpeg" alt="破音万里")
-            h1#profile-title 破音万里
-            h3#profile-resume
+            img.avatar.rounded.hvr-buzz-out(src="images/4621638.jpeg" alt="破音万里")
+            h1#profile-title Purchas Collection
+            h3#profile-resume Software Engineer
           hr.divider.long
           p Thoughts, stories and ideas
           hr.divider.short
@@ -39,10 +40,13 @@ block body
             div.profile.contact
               nav.navigation.left
                 ul.links
-                  li.nav-posts.nav-current.expanded
+                  li.nav-posts
                     a(href="/#open") Posts
               include social
           //- {{> search }}
-    script(src="/javascripts/uno-zen.common.js",type="text/javascript",charset="utf-8")
+    include playlist
     script(src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js",type="text/javascript",charset="utf-8")
+    script jQuery = Zepto
+    script(src="/javascripts/uno-zen.common.js",type="text/javascript",charset="utf-8")
+
   
