@@ -1,0 +1,6 @@
+apps:
+  script : bin/www
+  instances: 1
+  name: potunes-server
+  env    :
+    NODE_ENV: production
