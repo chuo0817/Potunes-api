@@ -24,9 +24,9 @@ const pug = new Pug({
 
 const config = {
   user: 'root',
-  password: '',
+  password: 'Purchasr7',
   database: 'Potunes',
-  host: 'localhost',
+  host: 'mysql',
 }
 
 app.use(function* error(next) {
