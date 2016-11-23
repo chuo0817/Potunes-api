@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.10)
 # Database: Potunes
-# Generation Time: 2016-11-02 12:32:46 +0000
+# Generation Time: 2016-11-23 06:24:54 +0000
 # ************************************************************
 
 
@@ -20,124 +20,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table _mysql_session_store
+# Dump of table playlist_tracks
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `_mysql_session_store`;
+DROP TABLE IF EXISTS `playlist_tracks`;
 
-CREATE TABLE `_mysql_session_store` (
-  `id` varchar(255) NOT NULL,
-  `expires` bigint(20) DEFAULT NULL,
-  `data` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `_mysql_session_store` WRITE;
-/*!40000 ALTER TABLE `_mysql_session_store` DISABLE KEYS */;
-
-INSERT INTO `_mysql_session_store` (`id`, `expires`, `data`)
-VALUES
-	('poche:-rNnBw7eD6wayZmmqiuuQWsDJjShp8qQ',1478080903606,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:-VQlw-tsL-hiABJfdQyw0l1ZUWQX6zTM',1478079077376,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:0g_alufAzDgofoi8u5jfvFE5LYcE5oS6',1477818733512,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:0K-lg5oSF-UyWfNbuCejUB7S1qmO-NRs',1477034599493,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:1IYk0NjJn-LV-tDiLkQ4CVc6pyMDZU5Z',1477457233234,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:1qpyHQ8BlsdxPWtd37Q1-XZ9kg3aZ8ws',1477902721056,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:2eNQSRwDddM2dvIeVwA_JvesEzIIp6yC',1477984374305,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:3LYsDOmbduVGvN4e4VyBlCj9nR1H7JtK',1477910340846,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:3w5CAzKJaBty9mc0Ots10aXP0kloOJyE',1477972658052,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:4CaBVIYtR7_yB5iQY47131TEjt8pLlBq',1477472071730,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:4T7zXo_p4QP6vPtS8eGo3TB8xfdvk3bK',1477380169982,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:5gEX4NW0L3Jj7ButjTd_-iKACtAAWHzu',1478070932386,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:5S0FVaJMiKl5Zb3lTGdcZT6quvAMpaer',1477887403503,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:5Tcr1eZq4vloYoLnc_k2aWE-uJP4r6M6',1477885384043,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:6j1OfMkvAMQWdtLykocgk2g-JGtA5gZg',1477562003124,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:776erePnvpolKIXA5DIJYEEbGU31FSSS',1476966312559,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:9G-851um_DeYHV_D-uEuDFBDIXjiGPSN',1477474003446,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:AKx1whLGtX4e7FWVKnA77enYcvkfbfun',1477556296016,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:bEhx7yYhRZV27SazTrikhsv83ii3tHZw',1477479381932,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:Bo0bL-DHixPaF0TfTthPH_D0Z0a-alq5',1478082711579,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:bodPgqPrvD9cn6O6cIaf_X0wjvNoVN6z',1477366642399,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:cHbgB2e1Xd6Su8oaQVn4yr6gyaAl72pW',1476966598014,'{\"cookie\":{\"maxage\":null,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:cxF-qThgawOyJJO1evlhgnDvHkVTTa9z',1477973359978,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:C_J6oxf0yGK59rZAy6gUPcGKxhp82kwk',1477453170773,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:d8C-RDrn7mpZyS3FZx7Uuc9HLj59C5wD',1477554054711,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:dBJyHRAp_X1L3-oN8616oCArHn_3mod6',1478058211425,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:DKAwS8WnhEhBCZTJR5pE-aw8g3d1jcq_',1477279647490,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:dQAEzZnuTv7VdD4zd36xbbLqmdZHI9zA',1477998400560,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:DQN8efuUY4F7SUYNiaRKriNoAWWO33pq',1477975282222,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:e1ixsIPf1udjzuQ3aMZNPuQDlgIYfsDu',1477986478368,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:erpbwZvyScUl_ydoHrJduSPK-HzfZtBM',1476966207100,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:f2jK2MhmWUFs8-RMegQJykZsY7HkD2mp',1477914073751,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:F2ShnuYs3JVkNIaoCvxEIHz4hZh3LIC2',1477391501873,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:gNo6RZRy_PSoM3njwrR3dkc1DqYdMBkC',1477904561084,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:gwnhr4heI9W0U_v87MA8RKtPvw9AKqlu',1477369210279,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:gyJi2Yl3pmqL8DkGvBvdRYvaCDgAEtLo',1477469290913,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:H-S02DPbFFNxAWnkpuer19uccsRWxxsu',1477896900065,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:h5CGMZHxBZCju1muPR8ZpGvkcsrd_uCC',1477559922649,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:h6UrKHXlfbOjrmRIU5WwU9-WR8ni7VN2',1478088086273,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:JEM_MSUPUWBmsMeaIZBsWCcjhbkTeTVf',1477982558084,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:jhRrDSaULS5L76fiVVtmy7mf_93jGPCL',1477378199627,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:j_BuNYs7ZC-17kEbYFzdONtFw7MsGXao',1478086267647,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:kyJfpbxVL_JMoqwsIo1viaqyFvDCuz-v',1477973175224,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:LbAfzPau_x4oYishi6t33tkOrmjjcPfx',1477564461742,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:lK84liE495KRLnzkHAaTWTw4GVoue5j1',1477389489581,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:ltvXmFD8s_cst_Ewls6IlnVV53phyp0f',1477900767012,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:m71R9PcfCJcllxXxyYg5hwrPob3x97Dk',1477908373705,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:mLZfjyntjQwU_X8ihVYKljSGhU7WEnTk',1477455089830,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:MYsvP5KFqVwFTZZ2h6eCFha39TlAQDRl',1477912190040,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:N1j4HomVxCzDg1c-aqiLBfbxRBjrjwZJ',1477463599489,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:Nwj2aGtxOjuu1_9s7q7tNF9OuQZEpyQ2',1477992111421,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:O0UnGJbfnG8bqUHhVro08ujCcoZRuwTM',1477844618543,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:OryspsqyqXXjIGs0JhPSeexRZ6JME7K1',1477889814860,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:oZizB8wyG_jcFPCHGqjGhzJenMAS9XNX',1477467484307,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:PaQ2Lpn_OfPcqtP4ZCe6uta6FEf3y0Wo',1477994183633,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:PhTmCKzgr4yp0hPnlSO9H55RgZOaWby8',1478072737988,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:PuXWcLzwJZOUSgw0NWwFjisYd78upWBJ',1477571053368,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:pxSNTQFdSc1VRthgREochNGY6jk-U6Lh',1477539506312,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:QfdlWweQ3yrvUeamrzc4MW36XVFCHJAE',1477988297596,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:qMVv0XxdufckdY4qP5sYVnkohjCFZwuC',1477385097436,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:rIfQeYdVB0JdF4T-UUUxEfIiqiQxlu-F',1477990136888,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:rx0BTC5VeH2TE4AE59DOFGzGqhjdlyd_',1477906526446,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:sOl-ufcwgCKq_EMKuqVyW8Ifz2zfW9GQ',1477566320889,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:TSOdQ4j6DyKVSXEloXgqgVM8rya78J9J',1478056322099,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:UfOV1us79Cmn8Wcqvr83b8VExTbXvKLT',1477032784860,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:uhBvhyQVeRmjPiMZ-xyM0Vgshjryr6kG',1477896778354,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:UPFCaxwJS-dKmWBT33_IfD-PCoviibbD',1476966611922,'{\"cookie\":{\"maxage\":null,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:vBds7p7N0UACpeChWRlFin5_FeCDhLL9',1477628905393,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:VCg7ovh_AZQjdApAj1jKCwijkfOgB2LH',1477386996887,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:vqekL59PS5Per05185Hlh-Ux99ZAE5uU',1478060209958,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:VZHProm78stGEt12WJNUBfiI_znbnxpb',1477980624976,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:wNIuqvHf5gH__9b0pGrLd_4ByRIGEYoM',1477969849576,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:XBC6Mh4Ek99AWRAD2zqTpPOqNf7fRqWG',1476968534670,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:xS8eCiZn6-HjjbjjZm6GFbJOkMQQUXVp',1477127185708,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:XxFw1fsC_QS6GKXSe7bIE5DxPsu7W2Dx',1476966614163,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:y0Wjvc3ghdV_N5uknMfagCYhnjM6IqiZ',1477465599074,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:YaNyc9sXzqatUvdHk-lRB0lUH1h2dP9X',1477842638760,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:YHVb0jvPzTQikF2AaVeZoMouXXvL0mD7',1477898741826,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:ZcKiCQbO7IZ0fYahAY9O64IA79tODLCp',1477461106793,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:zljBsAQ6f6xrNC4t381K7hUyDI9P6Ynu',1478077264732,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}'),
-	('poche:ZwsOzSStnuDMX5aH3Z2SqvQCyY1DqOg4',1478089920659,'{\"cookie\":{\"maxage\":1800000,\"path\":\"/\",\"httpOnly\":true,\"rewrite\":true,\"signed\":true,\"overwrite\":true},\"user\":{\"name\":\"lastshrek\",\"email\":\"lastshrek@foxmail.com\"}}');
-
-/*!40000 ALTER TABLE `_mysql_session_store` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table article_tracks
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `article_tracks`;
-
-CREATE TABLE `article_tracks` (
-  `article_id` int(11) DEFAULT NULL,
+CREATE TABLE `playlist_tracks` (
+  `playlist_id` int(11) DEFAULT NULL,
   `track_id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`track_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=550 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `article_tracks` WRITE;
-/*!40000 ALTER TABLE `article_tracks` DISABLE KEYS */;
+LOCK TABLES `playlist_tracks` WRITE;
+/*!40000 ALTER TABLE `playlist_tracks` DISABLE KEYS */;
 
-INSERT INTO `article_tracks` (`article_id`, `track_id`)
+INSERT INTO `playlist_tracks` (`playlist_id`, `track_id`)
 VALUES
 	(19,1),
 	(19,2),
@@ -663,33 +560,9 @@ VALUES
 	(1,522),
 	(1,523),
 	(1,524),
-	(1,525),
-	(20,526),
-	(20,527),
-	(21,528),
-	(21,529),
-	(22,530),
-	(22,531),
-	(23,532),
-	(23,533),
-	(24,534),
-	(24,535),
-	(24,536),
-	(24,537),
-	(24,538),
-	(24,539),
-	(25,540),
-	(25,541),
-	(25,542),
-	(25,543),
-	(25,544),
-	(25,545),
-	(25,546),
-	(25,547),
-	(25,548),
-	(25,549);
+	(1,525);
 
-/*!40000 ALTER TABLE `article_tracks` ENABLE KEYS */;
+/*!40000 ALTER TABLE `playlist_tracks` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -699,47 +572,41 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `playlists`;
 
 CREATE TABLE `playlists` (
-  `article_id` int(11) NOT NULL AUTO_INCREMENT,
-  `article_title` varchar(255) NOT NULL,
-  `article_type` tinyint(1) NOT NULL COMMENT '0:精选,1:专辑',
-  `article_content` text,
-  `article_cover` varchar(255) NOT NULL,
-  `article_songs` int(11) DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `type` tinyint(1) NOT NULL COMMENT '0:精选,1:专辑',
+  `content` text,
+  `cover` varchar(255) NOT NULL DEFAULT '',
+  `songs` int(11) DEFAULT '0',
   `old_id` int(11) DEFAULT '0',
   `is_ready` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`article_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `playlists` WRITE;
 /*!40000 ALTER TABLE `playlists` DISABLE KEYS */;
 
-INSERT INTO `playlists` (`article_id`, `article_title`, `article_type`, `article_content`, `article_cover`, `article_songs`, `old_id`, `is_ready`)
+INSERT INTO `playlists` (`id`, `title`, `type`, `content`, `cover`, `songs`, `old_id`, `is_ready`)
 VALUES
-	(1,'JESS GLYNNE - I CRY WHEN I LAUGH (DELUXE)',0,'一开口 就是冠军！ 地表最强、全世界最会唱歌的冠军製造姬！ 主唱Clean Bandit红遍全球冠军曲','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/cover.png',0,1535,0),
-	(2,'金玟岐 - 完美世界',0,'十年幕后，一鸣惊人，当红艺人御用制作人变身超人气唱作新星 12支demo千万次试听，炼出人生第一张全创作大碟','http://lastshrek.b0.upaiyun.com/2015/jinwenqi-wanmeishijie/cover.png',0,1539,0),
-	(3,'西楼 - 动情祭',0,'假如浪漫是一种罪 有两个字是至高刑罚','http://lastshrek.b0.upaiyun.com/2015/xilou-dongqingji/cover.png',0,1543,0),
-	(4,'破车推荐2015年9月号',0,'牛逼就这么吹出去了','http://lastshrek.b0.upaiyun.com/2015/201509/cover.png',0,1545,0),
-	(5,'破车推荐2015年10月号',0,'bb你妹','http://lastshrek.b0.upaiyun.com/2015/201510/cover.png',0,1546,0),
-	(6,'破车推荐2015年11月号',0,'不想bb','http://lastshrek.b0.upaiyun.com/2015/201511/cover.png',0,1547,0),
-	(7,'Ellie Goulding - Delirium',1,'EllieGoulding-Delirium','http://lastshrek.b0.upaiyun.com/2015/EllieGoulding-Delirium/cover.png',0,1548,0),
-	(8,'Mr.Lonely Part1',0,'无可比比','http://lastshrek.b0.upaiyun.com/2015/MrLonely1/cover.png',0,1549,0),
-	(9,'破车推荐2015年12月号',0,'就不bb','http://lastshrek.b0.upaiyun.com/2015/201512/cover.png',0,1550,0),
-	(10,'Adele - 25',1,'不逼逼','http://lastshrek.b0.upaiyun.com/2015/adele-25/cover.png',0,1551,0),
-	(11,'Alessia Cara - Know-It-All',1,'不bb','http://lastshrek.b0.upaiyun.com/2015/alessiacara-knowitall/cover.png',0,1552,0),
-	(12,'林俊杰 - 和自己对话',1,'不bb','http://lastshrek.b0.upaiyun.com/2015/jj-frommetomyself/cover.png',0,1553,0),
-	(13,'2014 - 2015年终精选',0,'不逼逼','http://lastshrek.b0.upaiyun.com/collections/2014/cover.png',0,1555,0),
-	(14,'破车推荐2016年1月号',0,'不bb','http://lastshrek.b0.upaiyun.com/2016/01/cover.png',0,1560,0),
-	(15,'破车推荐2016年2月号',0,'暂无','http://lastshrek.b0.upaiyun.com/2016/02/cover.png',0,1565,0),
-	(16,'破车推荐2016年3月号',0,'no','http://lastshrek.b0.upaiyun.com/2016/03/cover.png',0,1570,0),
+	(1,'JESS GLYNNE - I CRY WHEN I LAUGH (DELUXE)',0,'一开口 就是冠军！ 地表最强、全世界最会唱歌的冠军製造姬！ 主唱Clean Bandit红遍全球冠军曲','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/cover.png',0,1535,1),
+	(2,'金玟岐 - 完美世界',0,'十年幕后，一鸣惊人，当红艺人御用制作人变身超人气唱作新星 12支demo千万次试听，炼出人生第一张全创作大碟','http://lastshrek.b0.upaiyun.com/2015/jinwenqi-wanmeishijie/cover.png',0,1539,1),
+	(3,'西楼 - 动情祭',0,'假如浪漫是一种罪 有两个字是至高刑罚','http://lastshrek.b0.upaiyun.com/2015/xilou-dongqingji/cover.png',0,1543,1),
+	(4,'破车推荐2015年9月号',0,'牛逼就这么吹出去了','http://lastshrek.b0.upaiyun.com/2015/201509/cover.png',0,1545,1),
+	(5,'破车推荐2015年10月号',0,'bb你妹','http://lastshrek.b0.upaiyun.com/2015/201510/cover.png',0,1546,1),
+	(6,'破车推荐2015年11月号',0,'不想bb','http://lastshrek.b0.upaiyun.com/2015/201511/cover.png',0,1547,1),
+	(7,'Ellie Goulding - Delirium',1,'EllieGoulding-Delirium','http://lastshrek.b0.upaiyun.com/2015/EllieGoulding-Delirium/cover.png',0,1548,1),
+	(8,'Mr.Lonely Part1',0,'无可比比','http://lastshrek.b0.upaiyun.com/2015/MrLonely1/cover.png',0,1549,1),
+	(9,'破车推荐2015年12月号',0,'就不bb','http://lastshrek.b0.upaiyun.com/2015/201512/cover.png',0,1550,1),
+	(10,'Adele - 25',1,'不逼逼','http://lastshrek.b0.upaiyun.com/2015/adele-25/cover.png',0,1551,1),
+	(11,'Alessia Cara - Know-It-All',1,'不bb','http://lastshrek.b0.upaiyun.com/2015/alessiacara-knowitall/cover.png',0,1552,1),
+	(12,'林俊杰 - 和自己对话',1,'不bb','http://lastshrek.b0.upaiyun.com/2015/jj-frommetomyself/cover.png',0,1553,1),
+	(13,'2014 - 2015年终精选',0,'不逼逼','http://lastshrek.b0.upaiyun.com/collections/2014/cover.png',0,1555,1),
+	(14,'破车推荐2016年1月号',0,'不bb','http://lastshrek.b0.upaiyun.com/2016/01/cover.png',0,1560,1),
+	(15,'破车推荐2016年2月号',0,'暂无','http://lastshrek.b0.upaiyun.com/2016/02/cover.png',0,1565,1),
+	(16,'破车推荐2016年3月号',0,'no','http://lastshrek.b0.upaiyun.com/2016/03/cover.png',0,1570,1),
 	(17,'破车推荐2016年4月号',0,'不bb','http://lastshrek.b0.upaiyun.com/2016/04/cover.png',0,1571,1),
-	(18,'破车推荐2016年5月号',0,'不bb','http://lastshrek.b0.upaiyun.com/2016/05/cover.png',0,1582,0),
-	(19,'破车推荐2016年6月号',0,'不bb','http://lastshrek.b0.upaiyun.com/2016/06/cover.png',0,1584,0),
-	(20,'测试',0,'<blockquote>\n<p>一二三四五</p>\n</blockquote>\n','123cover.png',2,0,1),
-	(21,'test',0,'<p>fdafad</p>\n','ddddcover.png',2,0,1),
-	(22,'test',0,'<p>fdafad</p>\n','ddddcover.png',2,0,1),
-	(23,'test',0,'<p>fdafad</p>\n','ddddcover.png',2,0,1),
-	(24,'今天',1,'<blockquote>\n<p>测试</p>\n</blockquote>\n','llllllcover.png',6,0,1),
-	(25,'周杰伦的床边故事',1,'<blockquote>\n<p>周杰伦的床边故事</p>\n</blockquote>\n','123/cover.png',10,0,1);
+	(18,'破车推荐2016年5月号',0,'不bb','http://lastshrek.b0.upaiyun.com/2016/05/cover.png',0,1582,1),
+	(19,'破车推荐2016年6月号',0,'不bb','http://lastshrek.b0.upaiyun.com/2016/06/cover.png',0,1584,1);
 
 /*!40000 ALTER TABLE `playlists` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -751,21 +618,21 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tracks`;
 
 CREATE TABLE `tracks` (
-  `track_id` int(20) NOT NULL AUTO_INCREMENT,
-  `track_name` text NOT NULL,
-  `track_artist` varchar(255) NOT NULL,
-  `track_cover` varchar(255) NOT NULL,
-  `track_url` varchar(255) NOT NULL,
-  `track_lrc` text,
-  `track_lrc_cn` text,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `artist` varchar(255) NOT NULL DEFAULT '',
+  `cover` varchar(255) NOT NULL DEFAULT '',
+  `url` varchar(255) NOT NULL DEFAULT '',
+  `lrc` text,
+  `lrc_cn` text,
   `album` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`track_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=550 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `tracks` WRITE;
 /*!40000 ALTER TABLE `tracks` DISABLE KEYS */;
 
-INSERT INTO `tracks` (`track_id`, `track_name`, `track_artist`, `track_cover`, `track_url`, `track_lrc`, `track_lrc_cn`, `album`)
+INSERT INTO `tracks` (`id`, `name`, `artist`, `cover`, `url`, `lrc`, `lrc_cn`, `album`)
 VALUES
 	(1,'Lucky One','EXO','http://lastshrek.b0.upaiyun.com/2016/06/01.jpg','http://lastshrek.b0.upaiyun.com/2016/06/01.mp3','','','破车推荐2016年6月号'),
 	(2,'Colors (Stripped)','Halsey','http://lastshrek.b0.upaiyun.com/2016/06/02.jpg','http://lastshrek.b0.upaiyun.com/2016/06/02.mp3',NULL,NULL,'破车推荐2016年6月号'),
@@ -1291,31 +1158,7 @@ VALUES
 	(522,'My Love (Acoustic)','Jess Glynne','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/cover.jpg','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/17.mp3',NULL,NULL,'JESS GLYNNE - I CRY WHEN I LAUGH (DELUXE)'),
 	(523,'Not Letting Go','Jess Glynne','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/cover.jpg','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/18.mp3',NULL,NULL,'JESS GLYNNE - I CRY WHEN I LAUGH (DELUXE)'),
 	(524,'Rather Be','Jess Glynne','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/cover.jpg','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/19.mp3',NULL,NULL,'JESS GLYNNE - I CRY WHEN I LAUGH (DELUXE)'),
-	(525,'My Love','Jess Glynne','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/cover.jpg','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/20.mp3',NULL,NULL,'JESS GLYNNE - I CRY WHEN I LAUGH (DELUXE)'),
-	(526,'unwritten','unwritten','12301.jpg','12301.mp3','unwritten','unwritten',NULL),
-	(527,'unwritten','unwritten','12302.jpg','12302.mp3','unwritten','unwritten',NULL),
-	(528,'unwritten','unwritten','dddd01.jpg','dddd01.mp3','unwritten','unwritten',NULL),
-	(529,'unwritten','unwritten','dddd02.jpg','dddd02.mp3','unwritten','unwritten',NULL),
-	(530,'unwritten','unwritten','dddd01.jpg','dddd01.mp3','unwritten','unwritten',NULL),
-	(531,'unwritten','unwritten','dddd02.jpg','dddd02.mp3','unwritten','unwritten',NULL),
-	(532,'unwritten','unwritten','dddd01.jpg','dddd01.mp3','unwritten','unwritten',NULL),
-	(533,'unwritten','unwritten','dddd02.jpg','dddd02.mp3','unwritten','unwritten',NULL),
-	(534,'Sit Still, Look Pretty','Daya','llllllcover.jpg','llllll01.mp3','unwritten','unwritten',NULL),
-	(535,'Freal Luv','Far East Movement/Marshmello/Tinashé/朴灿烈','llllllcover.jpg','llllll02.mp3','unwritten','unwritten',NULL),
-	(536,'Million Reasons','Lady Gaga','llllllcover.jpg','llllll03.mp3','unwritten','unwritten',NULL),
-	(537,'U Sure Do (Bombs Away Remix)','Bombs Away/Jolyon Petch','llllllcover.jpg','llllll04.mp3','unwritten','unwritten',NULL),
-	(538,'Still Waiting','Tom Chaplin','llllllcover.jpg','llllll05.mp3','unwritten','unwritten',NULL),
-	(539,'Say You Won\'t Let Go','James Arthur','llllllcover.jpg','llllll06.mp3','unwritten','unwritten',NULL),
-	(540,'床邊故事','周杰倫','123/cover.jpg','123/01.mp3','unwritten','unwritten',NULL),
-	(541,'說走就走','周杰伦','123/cover.jpg','123/02.mp3','unwritten','unwritten',NULL),
-	(542,'一點點','周杰伦','123/cover.jpg','123/03.mp3','unwritten','unwritten',NULL),
-	(543,'前世情人','周杰倫','123/cover.jpg','123/04.mp3','unwritten','unwritten',NULL),
-	(544,'英雄','周杰倫','123/cover.jpg','123/05.mp3','unwritten','unwritten',NULL),
-	(545,'不該','周杰倫 & 張惠妹','123/cover.jpg','123/06.mp3','unwritten','unwritten',NULL),
-	(546,'土耳其冰淇淋','周杰倫','123/cover.jpg','123/07.mp3','unwritten','unwritten',NULL),
-	(547,'告白氣球','周杰倫','123/cover.jpg','123/08.mp3','unwritten','unwritten',NULL),
-	(548,'Now You See Me','周杰倫','123/cover.jpg','123/09.mp3','unwritten','unwritten',NULL),
-	(549,'愛情廢柴','周杰倫','123/cover.jpg','123/10.mp3','unwritten','unwritten',NULL);
+	(525,'My Love','Jess Glynne','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/cover.jpg','http://lastshrek.b0.upaiyun.com/2015/JessGlynne-ICryWhenILaugh/20.mp3',NULL,NULL,'JESS GLYNNE - I CRY WHEN I LAUGH (DELUXE)');
 
 /*!40000 ALTER TABLE `tracks` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1332,7 +1175,7 @@ CREATE TABLE `users` (
   `user_email` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
