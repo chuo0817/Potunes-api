@@ -34,6 +34,7 @@ export function cr(sql, params) {
     .then((connection) => {
       connection.query(sql, params)
       .then((result) => {
+        console.log(result)
         pool.releaseConnection(connection)
         cb(null, result)
       })

@@ -39,7 +39,5 @@ export default function() {
   router.post('/tracks/new', authentication, controllers.tracks.create)
   // 获取旧服务器内容
   router.get('/tracks/fetch-old', authentication, controllers.tracks.fetchOld)
-  // 抓取旧歌词
-  router.get('/lrc/fetch', authentication, controllers.lrc.fecth)
   return router
 }
