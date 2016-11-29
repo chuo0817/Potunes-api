@@ -112,7 +112,6 @@ export function* fecthOldPlaylists(next) {
         const playlist = {}
         const temp = result[i]
         playlist.prefixUrl = temp.coverImage.substr(0, temp.coverImage.length - 9)
-        console.log(temp.category)
         const cover = `${playlist.prefixUrl}cover.png`
         if (temp.category == '精选') {
           temp.category = 0
@@ -169,7 +168,7 @@ export function* del(id) {
   const delTrackQuery = 'delete from tracks where id = ?'
   const tracks = []
   for (let i = 0; i < result.length; i++) {
-    const param = [result[i].id]
+    const param = [result[i].track_id]
     tracks.push(pool.cr(delTrackQuery, param))
   }
   return new Promise((resolve, reject) => {
