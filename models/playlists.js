@@ -97,49 +97,6 @@ export function *save(playlist) {
   })
 }
 
-// 获取旧歌单
-export function* fecthOldPlaylists(next) {
-  const URL = 'http://121.41.121.87:3000/api/v1/lists'
-  return new Promise((resolve, reject) => {
-    agent.get(URL)
-    .then(res => {
-      // 获取全部旧歌单
-      const result = JSON.parse(res.text).reverse()
-      const playlistsTemp = []
-      const playlistQuery = `INSERT INTO playlists(title, type,
-      			content, cover, old_id, is_ready) VALUES(?,?,?,?,?,?)`
-      for (let i = 0; i < result.length; i++) {
-        const playlist = {}
-        const temp = result[i]
-        playlist.prefixUrl = temp.coverImage.substr(0, temp.coverImage.length - 9)
-        const cover = `${playlist.prefixUrl}cover.png`
-        if (temp.category == '精选') {
-          temp.category = 0
-        }
-        if (temp.category == '专辑') {
-          temp.category = 1
-        }
-        const playlistParams = [
-          temp.title,
-          temp.category,
-          temp.content,
-          cover,
-          temp.id,
-          1,
-        ]
-        playlistsTemp.push(pool.cr(playlistQuery, playlistParams))
-      }
-      series(playlistsTemp)
-      .then(() => {
-        resolve(getAll())
-      })
-      .catch(err => {
-        reject(err)
-      })
-    })
-  })
-}
-
 export function* getMaxId(next) {
   const query = 'select max(id) as id from playlists'
   const max = yield pool.query(query)

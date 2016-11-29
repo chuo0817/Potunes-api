@@ -37,7 +37,5 @@ export default function() {
   router.delete('/tracks/:id', authentication, controllers.track_list.deleteTrack)
   // 添加一首歌
   router.post('/tracks/new', authentication, controllers.tracks.create)
-  // 获取旧服务器内容
-  router.get('/tracks/fetch-old', authentication, controllers.tracks.fetchOld)
   return router
 }

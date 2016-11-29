@@ -120,68 +120,6 @@ function cr(url) {
     })
   }
 }
-// 抓取老数据库歌曲信息
-export function* fecthOldTracks(playlists) {
-  const oldIdQuery = 'select * from playlists order by id desc'
-  const ids = []
-  const tracksArr = []
-  const result = yield pool.query(oldIdQuery)
-  for (let i = 0; i < result.length; i++) {
-    const mp3URL = `http://121.41.121.87:3000/api/v1/list-mp3s?id=${result[i].old_id}`
-    ids.push(cr(mp3URL))
-  }
-  return new Promise((resolve, reject) => {
-    series(ids)
-    .then(res => {
-      tracksArr.push(res)
-      return tracksArr
-    })
-    .then((tracks) => {
-      const tracksTemp = []
-      const tracksQuery = `INSERT INTO tracks(artist,
-      	name, album, url, cover) VALUES(?,?,?,?,?)`
-
-      for (let i = 0; i < tracks[0].length; i++) {
-        const album = result[i].title
-        for (let j = 0; j < tracks[0][i].length; j++) {
-          const track = tracks[0][i][j]
-          const tracksParams = [track.author, track.title, album, track.sourceUrl, track.thumb]
-          tracksTemp.push(pool.cr(tracksQuery, tracksParams))
-        }
-      }
-      series(tracksTemp)
-      .then((res) => {
-        resolve(res)
-        console.log('旧歌曲已插入Tracks表')
-      })
-    })
-    .catch(err => {
-      reject(err)
-    })
-  })
-}
-
-export function* match(next) {
-  const titleQuery = 'select distinct album from tracks'
-  const idQuery = 'select id from playlists'
-  const titles = yield pool.query(titleQuery)
-  const ids = yield pool.query(idQuery)
-  const track_ids = []
-  for (let i = 0; i < titles.length; i++) {
-    const matchQuery = `select id from tracks where album = '${titles[i].album}'`
-    const result = yield pool.query(matchQuery)
-    track_ids.push(result)
-  }
-  const reverse = ids.reverse()
-  for (let i = 0; i < ids.length; i++) {
-    const insertQuery = 'insert into playlist_tracks(playlist_id) values(?)'
-    const insertParam = [reverse[i].id]
-    for (let j = 0; j < track_ids[i].length; j++) {
-      yield pool.query(insertQuery, insertParam)
-    }
-  }
-  return titles
-}
 
 export function* getLrc(query) {
   const lrcQuery = 'select lrc,lrc_cn from tracks where id = ?'
