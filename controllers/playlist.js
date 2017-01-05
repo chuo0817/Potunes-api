@@ -39,7 +39,13 @@ export function *create(next) {
 
 
 export function* getPlaylists(next) {
+  if (this.query.v == '1.2.1') {
+    // return fake data
+    const fakeLists = yield Playlists.getFake()
+    return this.body = fakeLists
+  }
   const playlists = yield Playlists.getAllByMobile()
+  console.log(playlists)
   return this.body = playlists
 }
 

@@ -13,9 +13,15 @@ export function *getAll() {
   const playlists = yield pool.query(playlistQuery)
   return playlists
 }
-
+// 客户端返回列表
 export function* getAllByMobile() {
-  const playlistQuery = 'SELECT id,title,cover FROM playlists where is_ready = 1 order by id desc'
+  const playlistQuery = 'SELECT id,title,cover FROM playlists where is_ready = 1 && id <> 35 && id <> 34 && id <> 33 order by id desc'
+  const playlists = yield pool.query(playlistQuery)
+  return playlists
+}
+// 假数据
+export function* getFake() {
+  const playlistQuery = 'SELECT id,title,cover FROM playlists where fake = 1 order by id desc'
   const playlists = yield pool.query(playlistQuery)
   return playlists
 }
