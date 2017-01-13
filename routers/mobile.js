@@ -13,5 +13,6 @@ export default function() {
   router.get('/playlists/:id', controllers.tracks.getTracks)
   router.get('/tracks/:id', controllers.tracks.getOne)
   router.get('/lyrics/:id', controllers.tracks.getLrc)
+  router.get('/wechatlrc/:id', controllers.tracks.wechatlrc)
   return router
 }
