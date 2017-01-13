@@ -20,3 +20,8 @@ export function* create(next) {
   const track = yield Tracks.create(this.request.body)
   this.body = track
 }
+
+export function* wechatlrc(next) {
+  const lrc = yield Tracks.getLrc(this.params.id)
+  this.body = [lrc]
+}
