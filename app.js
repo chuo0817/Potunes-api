@@ -30,7 +30,6 @@ const config = {
 }
 
 
-
 app.use(function* error(next) {
   try {
     yield next

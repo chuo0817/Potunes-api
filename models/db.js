@@ -9,7 +9,6 @@ const pool = mysql.createPool({
 })
 
 
-
 export function* query(sql, params) {
   return new Promise((resolve, reject) => {
     pool.getConnection()
