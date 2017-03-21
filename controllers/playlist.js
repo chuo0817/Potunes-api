@@ -45,7 +45,6 @@ export function* getPlaylists(next) {
     return this.body = fakeLists
   }
   const playlists = yield Playlists.getAllByMobile()
-  console.log(playlists)
   return this.body = playlists
 }
 
@@ -67,4 +66,12 @@ export function* ready(next) {
 export function* del(next) {
   yield Playlists.del(this.params.id)
   return this.body = 'done'
+}
+
+export function* purchas_listening(next) {
+  const tracks = yield Playlists.getNowListening()
+  this.render('track_list', {
+    title: '破车正在听',
+    tracks,
+  })
 }

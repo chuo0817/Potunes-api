@@ -58,8 +58,9 @@ export function *save(playlist) {
                     lrc,
                     lrc_cn,
                     url,
-                    cover) VALUE(?,?,?,?,?,?)`
-  const relationQuery = 'INSERT INTO playlist_tracks(playlist_id) VALUE(?)'
+                    cover,
+                    album) VALUE(?,?,?,?,?,?,?)`
+  const relationQuery = 'INSERT INTO playlist_tracks(playlist_id, track_id) VALUE(?,?)'
 
   for (let i = 0; i < playlist.songCount; i++) {
     let track_url = ''
@@ -78,7 +79,7 @@ export function *save(playlist) {
       track_cover = `${preURL}cover.jpg`
     }
     const trackParams = ['unwritten', 'unwritten', 'unwritten', 'unwritten']
-    trackParams.push(track_url, track_cover)
+    trackParams.push(track_url, track_cover, playlist.title)
     tracksFunc.push(pool.cr(tracksQuery, trackParams))
   }
   const idQuery = 'SELECT * FROM playlists where id = ?'
@@ -86,10 +87,9 @@ export function *save(playlist) {
   const results = yield pool.query(idQuery, idParam)
   return new Promise((resolve, reject) => {
     series(tracksFunc)
-    .then(() => {
-      const relationParams = [results[0].id]
-
+    .then((track) => {
       for (let i = 0; i < playlist.songCount; i++) {
+        const relationParams = [results[0].id, track[i].insertId]
         relationFunc.push(pool.cr(relationQuery, relationParams))
       }
       series(relationFunc)
@@ -143,4 +143,11 @@ export function* del(id) {
       reject(err)
     })
   })
+}
+
+export function* getNowListening() {
+  const tracksQuery = 'select * from tracks where album = ? order by id desc'
+  const trackParams = ['破车正在听']
+  const result = yield pool.query(tracksQuery, trackParams)
+  return result
 }

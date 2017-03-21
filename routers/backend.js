@@ -23,6 +23,8 @@ export default function() {
   router.post('/playlist/:id', authentication, controllers.playlist.del)
   // 草稿箱
   router.get('/drafts', authentication, controllers.playlist.draft)
+  // 最近在听
+  router.get('/purchas_listening', authentication, controllers.playlist.purchas_listening)
   // 发布草稿箱文章
   router.post('/ready', authentication, controllers.playlist.ready)
   // 获取某篇文章下面的所有歌曲
@@ -37,5 +39,6 @@ export default function() {
   router.delete('/tracks/:id', authentication, controllers.track_list.deleteTrack)
   // 添加一首歌
   router.post('/tracks/new', authentication, controllers.tracks.create)
+  router.get('/tracks/add', authentication, controllers.tracks.add)
   return router
 }

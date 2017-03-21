@@ -21,6 +21,15 @@ export function* wechatlrc(next) {
 }
 
 export function* create(next) {
-  const track = yield Tracks.create(this.request.body)
-  this.body = track
+  yield Tracks.add(this.request.body)
+  this.redirect('/api/admin/tracks/add')
+}
+
+
+export function* add(next) {
+  this.render('add_track', {
+    title: '添加单曲',
+    header: 'playlists',
+  })
+  return null
 }
