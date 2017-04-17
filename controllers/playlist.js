@@ -39,7 +39,7 @@ export function *create(next) {
 
 
 export function* getPlaylists(next) {
-  if (this.query.v == '1.2.6' || (this.query.v == 'mina' && this.query.id == '1.0.1')) {
+  if (this.query.v == '1.2.7' || (this.query.v == 'mina' && this.query.id == '1.0.1')) {
     // return fake data
     const fakeLists = yield Playlists.getFake()
     return this.body = fakeLists
