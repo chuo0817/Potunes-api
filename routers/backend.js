@@ -32,7 +32,7 @@ export default function() {
   // 更新一首歌信息
   router.post('/track-list', authentication, controllers.track_list.updateTrack)
   // 批量更新歌曲信息
-  router.post('/track-list/:id', authentication, controllers.track_list.updateTracks)
+  router.post('/track-list/:id', controllers.track_list.updateTracks)
   // 获取一首歌
   router.get('/tracks/', authentication, controllers.track_list.getOne)
   // 删除一首歌
@@ -40,5 +40,12 @@ export default function() {
   // 添加一首歌
   router.post('/tracks/new', authentication, controllers.tracks.create)
   router.get('/tracks/add', authentication, controllers.tracks.add)
+
+  // 绝地求生
+  // 解密群ID
+  router.post('/pubg/getWxGroupId', controllers.pubg.getWxGroupId)
+  // 获取绝地求生个人数据
+  router.post('/pubg/getPubgUserInfo', controllers.pubg.getPubgUserInfo)
+
   return router
 }

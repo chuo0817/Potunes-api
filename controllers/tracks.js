@@ -21,6 +21,7 @@ export function* wechatlrc(next) {
 }
 
 export function* create(next) {
+  console.log(this.request.body)
   yield Tracks.add(this.request.body)
   this.redirect('/api/admin/tracks/add')
 }

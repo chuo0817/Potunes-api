@@ -3,8 +3,6 @@ import * as pool from '../models/db'
 import async from 'async'
 import xml2js from 'xml2js-es6-promise'
 import agent from 'superagent-es6-promise'
-import * as Playlists from '../models/playlists'
-
 
 
 const series = promisify(async.series)
@@ -36,11 +34,8 @@ export function *get(id) {
 }
 
 export function* getTracksByMobile(query) {
-  if (query == 0) {
-    const tracks = yield Playlists.getNowListening()
-    return tracks
-  }
   const tracksQuery = 'SELECT tracks.id,artist, name, cover,  url FROM tracks INNER JOIN playlist_tracks ON tracks.id = playlist_tracks.track_id WHERE playlist_tracks.playlist_id = ?;'
+
   const params = [query]
   const tracks = yield pool.query(tracksQuery, params)
   return tracks
@@ -152,8 +147,14 @@ export function* add(body) {
   name, cover, url, lrc, lrc_cn, album) values(?,?,?,?,?,?,?)`
   const cover = `https://s.poche.fm/nowlistening/${body.track_url}.jpg`
   const url = `https://s.poche.fm/nowlistening/${body.track_url}.mp3`
-  const lrc = 'unwritten'
-  const lrc_cn = 'unwritten'
+  let lrc = 'unwritten'
+  let lrc_cn = 'unwritten'
+  if (body.track_lrc) {
+    lrc = body.track_lrc
+  }
+  if (body.track_lrc_cn) {
+    lrc_cn = body.track_lrc_cn
+  }
   const track_album = '破车正在听'
   const trackParams = [body.track_artist, body.track_name, cover, url, lrc, lrc_cn, track_album]
   const success = yield pool.query(trackQuery, trackParams)

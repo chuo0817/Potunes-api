@@ -12,6 +12,8 @@ export function *getTracks(next) {
 
 // 批量更新歌曲信息
 export function *updateTracks(next) {
+  console.log('123333')
+  console.log(this.request.body)
   yield Tracks.updateTracksInfo(this.request.body)
   this.redirect(`/api/admin/playlists/${this.params.id}`)
 }

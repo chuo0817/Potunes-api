@@ -1,22 +1,12 @@
 import mysql from 'promise-mysql'
 
-// const pool = mysql.createPool({
-//   connectionLimit: 10,
-//   host: 'mysql',
-//   user: 'root',
-//   password: 'Purchasr7',
-//   database: 'Potunes',
-// })
-
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: '112.124.36.151',
+  host: 'mysql',
   user: 'root',
   password: 'Purchasr7',
   database: 'Potunes',
 })
-
-
 
 export function* query(sql, params) {
   return new Promise((resolve, reject) => {
