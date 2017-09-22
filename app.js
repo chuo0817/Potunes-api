@@ -29,7 +29,6 @@ const config = {
   host: 'mysql',
 }
 
-
 app.use(function* error(next) {
   try {
     yield next
