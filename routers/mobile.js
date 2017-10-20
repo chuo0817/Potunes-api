@@ -16,6 +16,7 @@ export default function() {
   router.get('/wechatlrc/:id', controllers.tracks.wechatlrc)
 
   router.get('/android/version', controllers.version.getAndroidVersion)
+  router.get('/radio', controllers.tracks.radio)
 
   return router
 }

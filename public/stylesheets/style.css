@@ -68,3 +68,7 @@ table, tr>th, tr>td {
 textarea {
   height: 12px;
 }
+
+span {
+  color: #fff;
+}

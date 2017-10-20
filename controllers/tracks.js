@@ -34,3 +34,8 @@ export function* add(next) {
   })
   return null
 }
+
+export function* radio(next) {
+  const track = yield Tracks.radio()
+  this.body = track
+}

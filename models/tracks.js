@@ -160,3 +160,14 @@ export function* add(body) {
   const success = yield pool.query(trackQuery, trackParams)
   return success
 }
+
+export function* radio() {
+  const countQuery = 'select count(*) from tracks'
+  const result = yield pool.query(countQuery)
+  const count = result[0]['count(*)']
+  const column = parseInt(Math.random() * (count + 1), 0)
+  console.log(column)
+  const trackQuery = `select * from tracks limit ${column},1;`
+  const track = yield pool.query(trackQuery)
+  return track[0]
+}

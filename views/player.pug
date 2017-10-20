@@ -1,0 +1,19 @@
+div.row.container
+  div.z-depth-5
+    div.card.col.s6.offset-s3
+      div.card-image
+        img.track_cover(src="images/4621638.jpeg", style="width:100%")
+      div.card-content
+        span.card-title.track_name.teal-text.flow-text Hey Porsche
+        span.artist.flow-text Nelly
+        div.progress
+          div.determinate(style="width:0%")
+      div.row
+        a.col.s3.l3
+        a#playOrpause.col.s3.l3.m3
+          i#playpause.material-icons.medium.flow-text.teal-text play_arrow
+        a#nextA.col.s3.m3.l3
+          i#next.material-icons.flow-text.medium.teal-text skip_next
+        a.col.s3.l3
+  div.audio_panel
+    audio#player(autoplay="autoplay", preload="metadata",src="")

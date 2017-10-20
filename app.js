@@ -26,7 +26,7 @@ const config = {
   user: 'root',
   password: 'Purchasr7',
   database: 'Potunes',
-  host: '112.124.36.151',
+  host: 'mysql',
 }
 
 app.use(function* error(next) {
