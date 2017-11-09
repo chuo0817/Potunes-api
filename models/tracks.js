@@ -3,6 +3,7 @@ import * as pool from '../models/db'
 import async from 'async'
 import xml2js from 'xml2js-es6-promise'
 import agent from 'superagent-es6-promise'
+import * as Playlists from '../models/playlists'
 
 
 const series = promisify(async.series)
@@ -34,6 +35,10 @@ export function *get(id) {
 }
 
 export function* getTracksByMobile(query) {
+  if (query == 0) {
+    const tracks = yield Playlists.getNowListening()
+    return tracks
+  }
   const tracksQuery = 'SELECT tracks.id,artist, name, cover,  url FROM tracks INNER JOIN playlist_tracks ON tracks.id = playlist_tracks.track_id WHERE playlist_tracks.playlist_id = ?;'
 
   const params = [query]
