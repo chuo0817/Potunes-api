@@ -24,6 +24,14 @@ const config = {
 }
 
 
+const pug = new Pug({
+  viewPath: `${__dirname}/views/`,
+  debug: false,
+  pretty: false,
+  compileDebug: false,
+  app,
+})
+
 app.use(function* error(next) {
   try {
     yield next
