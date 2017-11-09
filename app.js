@@ -14,13 +14,7 @@ const routers = _requiredir('./routers')
 
 const debug = new Debug('app:index:')
 const app = new Koa()
-const pug = new Pug({
-  viewPath: `${__dirname}/views/`,
-  debug: false,
-  pretty: false,
-  compileDebug: false,
-  app,
-})
+
 
 const config = {
   user: 'root',
@@ -28,6 +22,7 @@ const config = {
   database: 'Potunes',
   host: 'mysql',
 }
+
 
 app.use(function* error(next) {
   try {

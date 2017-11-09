@@ -39,3 +39,12 @@ export function* radio(next) {
   const track = yield Tracks.radio()
   this.body = track
 }
+
+export function* mobilePage(next) {
+  const track = yield Tracks.getOne(this.params.id)
+  console.log(track)
+  this.render('mobile_page', {
+    track,
+  })
+  return null
+}

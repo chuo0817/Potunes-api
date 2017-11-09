@@ -141,6 +141,7 @@ window.onload = function() {
         const disX = e.clientX - this.offsetLeft
         percent_played = disX / this.offsetWidth
         progress_inner.style.width = `${percent_played}%`
+        console.log(percent_played)
         myPlayer.currentTime = parseInt(percent_played * myPlayer.duration, 0)
       })
       // 播放结束自动进行下一首

@@ -14,6 +14,7 @@ export default function() {
   router.get('/tracks/:id', controllers.tracks.getOne)
   router.get('/lyrics/:id', controllers.tracks.getLrc)
   router.get('/wechatlrc/:id', controllers.tracks.wechatlrc)
+  router.get('/track/:id', controllers.tracks.mobilePage)
 
   router.get('/android/version', controllers.version.getAndroidVersion)
   router.get('/radio', controllers.tracks.radio)

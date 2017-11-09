@@ -1,0 +1,40 @@
+block body
+  head
+    title #{title}
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="HandheldFriendly",content="True")
+    meta(name="MobileOptimized",content="320")
+    meta(name="apple-mobile-web-app-capable",content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style",content="black-translucent")
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    link(rel="icon",type="image/png",href="/images/favicon.png")
+    link(href="/assets/images/favicon.png",rel="shortcut icon",type="image/png")
+    link(href="/apple-touch-icon-precomposed.png",rel="apple-touch-icon")
+    link(href='https://fonts.googleapis.com/css?family=Raleway:400,600%7CRoboto+Slab:300,400',rel='stylesheet',type='text/css')
+    link(rel="stylesheet", type='text/css', href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css")
+    script(src="/javascripts/jquery-3.1.1.min.js",type="text/javascript",charset="utf-8")
+    link(rel="stylesheet", type='text/css', href="/stylesheets/main.css")
+    link(rel='stylesheet', href='https://cdn.bootcss.com/materialize/0.100.2/css/materialize.min.css')
+    script(src="//cdn.bootcss.com/materialize/0.97.8/js/materialize.min.js")
+    script(src='/javascripts/common.js')
+    link(href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+  body(style="background: url(/images/background-cover-2.jpg) center/cover no-repeat fixed")
+    div.z-depth-5
+      div.card.col.s12
+        div.card-image
+          img.track_cover(src=track.cover, style="width:100%")
+        div.card-content
+          span.card-title.track_name.teal-text.flow-text #{track.name}
+          span.artist.flow-text #{track.artist}
+          div.progress
+            div.determinate(style="width:0%")
+        div.row
+          a#playOrpause
+            i#playpause.material-icons.medium.flow-text.teal-text play_arrow
+    div.audio_panel
+      audio#player(autoplay="autoplay", preload="metadata",src=track.url)
+    footer
+      p 沪ICP备13026037号-1 
+  script(src="/javascripts/mobile_page.js",type="text/javascript",charset="utf-8")
+  script(src="/javascripts/utils.js",type="text/javascript",charset="utf-8")
