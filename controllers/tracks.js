@@ -21,7 +21,6 @@ export function* wechatlrc(next) {
 }
 
 export function* create(next) {
-  console.log(this.request.body)
   yield Tracks.add(this.request.body)
   this.redirect('/api/admin/tracks/add')
 }
@@ -47,4 +46,10 @@ export function* mobilePage(next) {
     track,
   })
   return null
+}
+
+export function* search(next) {
+  const title = this.request.body.title
+  const tracks = yield Tracks.search(title)
+  return this.body = tracks
 }

@@ -47,7 +47,7 @@ $(function() {
   })
 
 	$('.delete').click(function() {
-		const track_id = $(this).attr('data-id')
+    const track_id = $(this).attr('data-id')
 		const data = { track_id }
 
 		const r = confirm('确定要删除吗?')
@@ -63,6 +63,40 @@ $(function() {
 		.fail(function() {
 			alert("error");
 		})
+	})
+
+  $('.search').click(function() {
+    const title = $(this).parent().parent().children('td').get(2).innerHTML
+    const track_id = $(this).attr('data-id')
+
+    $.ajax({
+      url: '/api/admin/search_track',
+      type: 'POST',
+      data: { title },
+      success: data => {
+        console.log(data)
+      },
+      error: errorThrown => {
+        alert(`error: ${errorThrown}`)
+      },
+    })
+
+
+		// const data = { track_id }
+    //
+		// const r = confirm('确定要删除吗?')
+		// if (r === false) return
+		// $.ajax({
+		// 	url: `/api/admin/tracks/${track_id}`,
+		// 	type: 'DELETE',
+		// 	data: data,
+		// })
+		// .done(function() {
+		// 	location.reload()
+		// })
+		// .fail(function() {
+		// 	alert("error");
+		// })
 	})
 
   $('#done').click(function(event) {

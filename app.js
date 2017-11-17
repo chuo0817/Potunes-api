@@ -16,13 +16,18 @@ const debug = new Debug('app:index:')
 const app = new Koa()
 
 
+// const config = {
+//   user: 'root',
+//   password: 'Purchasr7',
+//   database: 'Potunes',
+//   host: 'mysql',
+// }
 const config = {
   user: 'root',
   password: 'Purchasr7',
   database: 'Potunes',
-  host: 'mysql',
+  host: '112.124.36.151',
 }
-
 
 const pug = new Pug({
   viewPath: `${__dirname}/views/`,

@@ -4,6 +4,7 @@ import async from 'async'
 import xml2js from 'xml2js-es6-promise'
 import agent from 'superagent-es6-promise'
 import * as Playlists from '../models/playlists'
+import m3u from 'm3u8-reader'
 
 
 const series = promisify(async.series)
@@ -60,30 +61,31 @@ export function *updateTracksInfo(body) {
   const updateQuery = 'UPDATE tracks SET artist = ?, name = ? WHERE id = ?'
   let ids = body.ids
   ids = ids.split(',')
-  const content = body.content
-  return new Promise((resolve, reject) => {
-    xml2js(content)
-    .then((js) => {
-      const tracks = js.plist.dict[0].dict[0].dict
-      const temp = []
-      for (let i = 0; i < tracks.length; i++) {
-        const track = tracks[i].string
-        temp.push(track.slice(0, 2))
+  const content = m3u(body.content)
+  const tracks = []
+  for (let i = 0; i < content.length; i += 2) {
+    for (const key in content[i].EXTINF) {
+      if (key.length > 4) {
+        tracks.push(key.split(' - '))
       }
-      const tracksFunc = []
-      for (let i = 0; i < ids.length; i++) {
-        const artist = temp[i][1]
-        const name = temp[i][0]
-        const track_id = ids[i]
+    }
+  }
 
-        const trackParams = [artist, name, track_id]
-        tracksFunc.push(pool.cr(updateQuery, trackParams))
-      }
-      series(tracksFunc)
-      .then((result) => {
-        console.log('歌曲信息修改成功')
-        resolve(result)
-      })
+
+  return new Promise((resolve, reject) => {
+    const tracksFunc = []
+
+    for (let i = 0; i < ids.length; i++) {
+      const artist = tracks[i][1]
+      const name = tracks[i][0]
+      const track_id = ids[i]
+      const trackParams = [artist, name, track_id]
+      tracksFunc.push(pool.cr(updateQuery, trackParams))
+    }
+    series(tracksFunc)
+    .then((result) => {
+      console.log('歌曲信息修改成功')
+      resolve(result)
     })
     .catch((err) => {
       console.log(err)
@@ -175,4 +177,11 @@ export function* radio() {
   const trackQuery = `select * from tracks limit ${column},1;`
   const track = yield pool.query(trackQuery)
   return track[0]
+}
+
+export function* search(body) {
+  const query = 'SELECT * FROM tracks WHERE name LIKE ?'
+  const params = [body]
+  const result = yield pool.query(query, params)
+  return result
 }

@@ -40,6 +40,8 @@ export default function() {
   // 添加一首歌
   router.post('/tracks/new', authentication, controllers.tracks.create)
   router.get('/tracks/add', authentication, controllers.tracks.add)
+  // 搜索一首歌
+  router.post('/search_track', authentication, controllers.tracks.search)
 
   // 绝地求生
   // 解密群ID
