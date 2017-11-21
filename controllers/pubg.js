@@ -9,6 +9,7 @@ export function* getWxGroupId(next) {
 
 export function* getPubgUserInfo(next) {
   const body = this.request.body
+  console.log(this.request.body)
   const user_info = yield Pubg.getPubgUserInfo(body)
   return this.body = user_info
 }

@@ -2,8 +2,8 @@ import request from 'koa-request'
 import crypto from 'crypto'
 import * as pool from '../models/db'
 const appId = 'wx5e66eca60e4e9fc0'
-
-//
+import pubg from 'pubg.js'
+const client = new pubg.Client('e6901174-dc02-4b2c-8b01-00c0b8a452ce')
 
 
 // 根据GroupID返回本群吃鸡排行
@@ -65,13 +65,26 @@ export function* encryptData(body) {
 }
 
 export function* getPubgUserInfo(body) {
-
   const pubg_nickname = body.pubg_nickname
   const open_id = body.open_id
   const open_Gid = body.open_Gid
   const nickname = body.user_info.nickName
   const avatar = body.user_info.avatarUrl
   console.log(avatar)
+  client.getProfile('lastshrek')
+  .then(profile => {
+      // const myRank = profile.getStats({
+      //     region: 'as',
+      //     season: '2017-pre6',
+      //     match: 'squad'
+      // }).getItem('Rating').rank;
+      //
+      // console.log(`My ranking in solo, oceania this season is ${myRank}`);
+    console.log(profile)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 
   // const response = yield request(options)
   // // 如果没有此用户
@@ -85,31 +98,46 @@ export function* getPubgUserInfo(body) {
   // // 返回本群所有数据
   // const result = yield queryGroup(open_Gid)
   return new Promise((resolve, reject) => {
-    api.getProfileByNickname(pubg_nickname)
-      .then((profile) => {
-        const data = profile.content
+    client.getProfile('lastshrek')
+    .then(profile => {
+        // const myRank = profile.getStats({
+        //     region: 'as',
+        //     season: '2017-pre6',
+        //     match: 'squad'
+        // }).getItem('Rating').rank;
+        //
+        // console.log(`My ranking in solo, oceania this season is ${myRank}`);
+      resolve(profile)
+    })
+    .catch(err => {
+      reject(err)
+    })
+    // api.getProfileByNickname(pubg_nickname)
+    //   .then((profile) => {
+    //     const data = profile.content
+    //     console.log(data)
         // 获取当前season
-        const defaultSeason = data.defaultSeason
-        // 获取当前season的数据
-        const stats = data.Stats
-        const thisSeasonStats = []
-        let sum = 0
-        stats.forEach((val, index, arr) => {
-          const stat = arr[index]
-          if (stat.Region == 'agg' && stat.Season == defaultSeason) {
-            const wins = stat.Stats[4].ValueInt
-            sum += wins
-          }
-          if (stat.Region !== 'agg' && stat.Season == defaultSeason) {
-            thisSeasonStats.push(stat)
-          }
-        })
-        console.log(sum)
-        resolve(thisSeasonStats)
-      })
-      .catch(err => {
-        console.log(err)
-        reject(err)
-      })
+        // const defaultSeason = data.defaultSeason
+        // // 获取当前season的数据
+        // const stats = data.Stats
+        // const thisSeasonStats = []
+        // let sum = 0
+        // stats.forEach((val, index, arr) => {
+        //   const stat = arr[index]
+        //   if (stat.Region == 'agg' && stat.Season == defaultSeason) {
+        //     const wins = stat.Stats[4].ValueInt
+        //     sum += wins
+        //   }
+        //   if (stat.Region !== 'agg' && stat.Season == defaultSeason) {
+        //     thisSeasonStats.push(stat)
+        //   }
+        // })
+        // console.log(sum)
+        // resolve(thisSeasonStats)
+      // })
+      // .catch(err => {
+      //   console.log(err)
+      //   reject(err)
+      // })
   })
 }
